@@ -1,0 +1,13 @@
+x_index,x_id,x_type,x_name,x_source,relation,display_relation,y_index,y_id,y_type,y_name,y_source
+1,D001145,Disease,Alzheimer Disease,PrimeKG,has_symptom,Has Symptom,2,S001,Symptom,Memory Loss,PrimeKG
+2,D001145,Disease,Alzheimer Disease,PrimeKG,has_symptom,Has Symptom,3,S002,Symptom,Cognitive Decline,PrimeKG
+3,D001145,Disease,Alzheimer Disease,Clinical Guidelines,diagnostic_criteria,Diagnostic Criteria,4,DC001,Diagnostic Test,Mini-Mental State Examination,Clinical Guidelines
+4,D001145,Disease,Alzheimer Disease,Clinical Guidelines,recommended_treatment,Recommended Treatment,5,T001,Treatment,Cholinesterase inhibitors,Clinical Guidelines
+5,D001145,Disease,Alzheimer Disease,Cochrane Review,effective_intervention,Effective Intervention,6,I001,Intervention,Cognitive stimulation therapy,Cochrane Library
+6,D001145,Disease,Alzheimer Disease,PrimeKG,has_biomarker,Has Biomarker,7,B001,Biomarker,Beta-amyloid levels,PrimeKG
+7,D001145,Disease,Alzheimer Disease,Clinical Guidelines,risk_factor,Risk Factor,8,RF001,Risk Factor,Advanced Age,Clinical Guidelines
+8,T001,Treatment,Cholinesterase inhibitors,PrimeKG,has_side_effect,Has Side Effect,9,SE001,Side Effect,Nausea,PrimeKG
+9,T001,Treatment,Cholinesterase inhibitors,Cochrane Review,evidence_quality,Evidence Quality,10,EV001,Evidence Level,High quality evidence,Cochrane Library
+10,D001145,Disease,Alzheimer Disease,Clinical Guidelines,comorbidity,Common Comorbidity,11,CM001,Disease,Depression,Clinical Guidelines
+11,D001145,Disease,Alzheimer Disease,PrimeKG,genetic_association,Genetic Association,12,G001,Gene,APOE,PrimeKG
+12,D001145,Disease,Alzheimer Disease,Cochrane Review,prevention_strategy,Prevention Strategy,13,PS001,Intervention,Physical Exercise,Cochrane Library 
