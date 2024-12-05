@@ -1,13 +1,74 @@
-x_index,x_id,x_type,x_name,x_source,relation,display_relation,y_index,y_id,y_type,y_name,y_source
-1,D001145,Disease,Alzheimer Disease,PrimeKG,has_symptom,Has Symptom,2,S001,Symptom,Memory Loss,PrimeKG
-2,D001145,Disease,Alzheimer Disease,PrimeKG,has_symptom,Has Symptom,3,S002,Symptom,Cognitive Decline,PrimeKG
-3,D001145,Disease,Alzheimer Disease,Clinical Guidelines,diagnostic_criteria,Diagnostic Criteria,4,DC001,Diagnostic Test,Mini-Mental State Examination,Clinical Guidelines
-4,D001145,Disease,Alzheimer Disease,Clinical Guidelines,recommended_treatment,Recommended Treatment,5,T001,Treatment,Cholinesterase inhibitors,Clinical Guidelines
-5,D001145,Disease,Alzheimer Disease,Cochrane Review,effective_intervention,Effective Intervention,6,I001,Intervention,Cognitive stimulation therapy,Cochrane Library
-6,D001145,Disease,Alzheimer Disease,PrimeKG,has_biomarker,Has Biomarker,7,B001,Biomarker,Beta-amyloid levels,PrimeKG
-7,D001145,Disease,Alzheimer Disease,Clinical Guidelines,risk_factor,Risk Factor,8,RF001,Risk Factor,Advanced Age,Clinical Guidelines
-8,T001,Treatment,Cholinesterase inhibitors,PrimeKG,has_side_effect,Has Side Effect,9,SE001,Side Effect,Nausea,PrimeKG
-9,T001,Treatment,Cholinesterase inhibitors,Cochrane Review,evidence_quality,Evidence Quality,10,EV001,Evidence Level,High quality evidence,Cochrane Library
-10,D001145,Disease,Alzheimer Disease,Clinical Guidelines,comorbidity,Common Comorbidity,11,CM001,Disease,Depression,Clinical Guidelines
-11,D001145,Disease,Alzheimer Disease,PrimeKG,genetic_association,Genetic Association,12,G001,Gene,APOE,PrimeKG
-12,D001145,Disease,Alzheimer Disease,Cochrane Review,prevention_strategy,Prevention Strategy,13,PS001,Intervention,Physical Exercise,Cochrane Library 
+relation,x_type,x_name,y_type,y_name,source_type,source_link,source_date
+HAS_STAGE,Disease,Alzheimer Disease,Stage,Mild (MMSE 21-26),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_STAGE,Disease,Alzheimer Disease,Stage,Moderate (MMSE 10-20),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_STAGE,Disease,Alzheimer Disease,Stage,Severe (MMSE <10),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_SYMPTOM,Stage,Mild (MMSE 21-26),Symptom,Memory loss for recent events,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Mild (MMSE 21-26),Symptom,Difficulty learning new information,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Mild (MMSE 21-26),Symptom,Subtle language problems,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_SYMPTOM,Stage,Moderate (MMSE 10-20),Symptom,Significant memory loss,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Moderate (MMSE 10-20),Symptom,Confusion in daily activities,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Moderate (MMSE 10-20),Symptom,Behavioral changes,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_SYMPTOM,Stage,Severe (MMSE <10),Symptom,Severe memory loss,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Severe (MMSE <10),Symptom,Complete dependence on others,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SYMPTOM,Stage,Severe (MMSE <10),Symptom,Physical symptoms,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+FIRST_LINE_TREATMENT,Stage,Mild (MMSE 21-26),Treatment,Donepezil Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+FIRST_LINE_TREATMENT,Stage,Mild (MMSE 21-26),Treatment,Rivastigmine Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+FIRST_LINE_TREATMENT,Stage,Mild (MMSE 21-26),Treatment,Galantamine Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+FIRST_LINE_TREATMENT,Stage,Moderate (MMSE 10-20),Treatment,Donepezil Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+FIRST_LINE_TREATMENT,Stage,Moderate (MMSE 10-20),Treatment,Memantine Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+FIRST_LINE_TREATMENT,Stage,Severe (MMSE <10),Treatment,Memantine Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+EVIDENCE_LEVEL,Treatment,Donepezil Treatment (NICE),Evidence,High quality (Level A),SR,https://doi.org/10.1002/14651858.CD001190.pub4,2023-01-15
+EVIDENCE_LEVEL,Treatment,Rivastigmine Treatment (NICE),Evidence,Moderate quality (Level B),SR,https://doi.org/10.1002/14651858.CD001191.pub4,2023-01-15
+EVIDENCE_LEVEL,Treatment,Galantamine Treatment (NICE),Evidence,Moderate quality (Level B),SR,https://doi.org/10.1002/14651858.CD004433.pub2,2023-01-15
+EVIDENCE_LEVEL,Treatment,Memantine Treatment (NICE),Evidence,High quality (Level A),SR,https://doi.org/10.1002/14651858.CD003154.pub6,2023-01-15
+
+HAS_TREATMENT,Disease,Alzheimer Disease,Treatment,Donepezil Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+USES_DRUG,Treatment,Donepezil Treatment (NICE),Drug,Donepezil,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_DOSAGE,Treatment,Donepezil Treatment (NICE),Dosage,5mg daily for 4 weeks then 10mg daily,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_DURATION,Treatment,Donepezil Treatment (NICE),Duration,Review every 6 months,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_EFFECTIVENESS,Treatment,Donepezil Treatment (NICE),Effectiveness,Significant improvement in cognitive scores and daily activities,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+FOR_POPULATION,Treatment,Donepezil Treatment (NICE),Population,Mild to moderate Alzheimer's Disease (MMSE 10-26),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_TREATMENT,Disease,Alzheimer Disease,Treatment,Memantine Treatment (NICE),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+USES_DRUG,Treatment,Memantine Treatment (NICE),Drug,Memantine,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_DOSAGE,Treatment,Memantine Treatment (NICE),Dosage,5mg daily increasing weekly by 5mg to 20mg daily,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_DURATION,Treatment,Memantine Treatment (NICE),Duration,Review every 6 months,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_EFFECTIVENESS,Treatment,Memantine Treatment (NICE),Effectiveness,Significant improvement in cognitive decline and behavioral symptoms,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+FOR_POPULATION,Treatment,Memantine Treatment (NICE),Population,Moderate to severe Alzheimer's Disease (MMSE < 20),Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Nausea,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Vomiting,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Diarrhea,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Muscle cramps,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Fatigue,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Donepezil,SideEffect,Insomnia,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_SIDE_EFFECT,Drug,Memantine,SideEffect,Headache,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Memantine,SideEffect,Dizziness,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Memantine,SideEffect,Drowsiness,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_SIDE_EFFECT,Drug,Memantine,SideEffect,Constipation,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+RECOMMENDED_THERAPY,Stage,Mild (MMSE 21-26),Therapy,Cognitive Stimulation Therapy,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+RECOMMENDED_THERAPY,Stage,Mild (MMSE 21-26),Therapy,Reminiscence Therapy,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+RECOMMENDED_THERAPY,Stage,Moderate (MMSE 10-20),Therapy,Behavioral Management,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+RECOMMENDED_THERAPY,Stage,Severe (MMSE <10),Therapy,Music Therapy,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+HAS_EFFECTIVENESS,Therapy,Cognitive Stimulation Therapy,Effectiveness,Improves memory attention and social interaction,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_EFFECTIVENESS,Therapy,Reminiscence Therapy,Effectiveness,Helps maintain long-term memory improves mood,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_EFFECTIVENESS,Therapy,Behavioral Management,Effectiveness,Reduces anxiety and agitation improves daily functioning,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+HAS_EFFECTIVENESS,Therapy,Music Therapy,Effectiveness,Improves mood reduces agitation provides positive emotions,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+CONTRAINDICATION,Drug,Donepezil,Condition,Severe cardiac arrhythmia,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+CONTRAINDICATION,Drug,Memantine,Condition,Severe renal impairment,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+
+MONITORING_REQUIRED,Treatment,Donepezil Treatment (NICE),Monitoring,Cognitive function (MMSE) every 6 months,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+MONITORING_REQUIRED,Treatment,Donepezil Treatment (NICE),Monitoring,Weight monthly,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+MONITORING_REQUIRED,Treatment,Memantine Treatment (NICE),Monitoring,Cognitive function (MMSE) every 6 months,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
+MONITORING_REQUIRED,Treatment,Memantine Treatment (NICE),Monitoring,Behavioral symptoms monthly,Guideline,https://www.nice.org.uk/guidance/ng97,2023-06-01
