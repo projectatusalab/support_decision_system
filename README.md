@@ -62,16 +62,43 @@ Try the app at: [![Streamlit App](https://static.streamlit.io/badges/streamlit_b
 
 ## 安裝說明
 
-1. clone專案
+### 方法一：使用 pip 安裝（推薦）
 
-2. 安裝所需套件：
+1. Clone 專案：
 ```bash
-pip install -r requirements.txt
+git clone <your-repository-url>
+cd Support_Decision_System2
+```
+
+2. 安裝專案：
+```bash
+pip install -e .
 ```
 
 3. 運行應用程式：
 ```bash
-streamlit run app.py
+streamlit run src/app.py
+```
+
+### 方法二：使用 PYTHONPATH
+
+1. Clone 專案：
+```bash
+git clone <your-repository-url>
+cd Support_Decision_System2
+```
+
+2. 運行應用程式（設置 PYTHONPATH）：
+```bash
+PYTHONPATH=$PYTHONPATH:. streamlit run src/app.py
+```
+
+### 可選安裝
+
+為了更好的性能，建議安裝 Watchdog：
+```bash
+xcode-select --install  # 僅 macOS
+pip install watchdog
 ```
 
 ## 數據格式說明
