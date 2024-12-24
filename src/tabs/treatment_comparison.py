@@ -7,7 +7,7 @@ def create_comparison_table(df, treatments):
     comparison_data = []
     
     for treatment in treatments:
-        # 獲取基本信息
+        # 獲取基本資訊
         drug, drug_source = get_value_with_source(df, [
             (df['x_name'] == treatment),
             (df['relation'] == 'USES_DRUG')
@@ -61,9 +61,9 @@ def create_comparison_table(df, treatments):
     return pd.DataFrame(comparison_data)
 
 def render_treatment_details(df, treatment):
-    """渲染治療方案詳細信息"""
+    """渲染治療方案詳細資訊"""
     with st.expander(f"📋 {treatment} 詳細資訊"):
-        # 基本信息
+        # 基本資訊
         drug, drug_source = get_value_with_source(df, [
             (df['x_name'] == treatment),
             (df['relation'] == 'USES_DRUG')

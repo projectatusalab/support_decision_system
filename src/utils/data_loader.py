@@ -114,7 +114,7 @@ def load_data(uploaded_file=None):
             return df
         else:
             # 讀取預設文件
-            df, error_message = safe_read_csv('data/alzheimer_kg.csv')
+            df, error_message = safe_read_csv('data/Alzheimer_and_guideline.csv')
             if error_message:
                 st.error(f"無法讀取預設數據文件: {error_message}")
                 return None

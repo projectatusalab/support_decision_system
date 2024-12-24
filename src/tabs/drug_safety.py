@@ -2,7 +2,7 @@ import streamlit as st
 from utils.data_loader import get_value_with_source, get_values_with_sources
 
 def render_drug_info(df, drug):
-    """渲染藥物信息部分"""
+    """渲染藥物資訊部分"""
     st.write("### 用藥資訊")
     treatments_with_sources = get_values_with_sources(df, [
         (df['relation'] == 'USES_DRUG'),
@@ -24,7 +24,7 @@ def render_drug_info(df, drug):
         st.info("暫無用藥資訊")
 
 def render_safety_info(df, drug):
-    """渲染安全性信息部分"""
+    """渲染安全性資訊部分"""
     st.write("### ⚠️ 安全性資訊")
     
     # 禁忌症

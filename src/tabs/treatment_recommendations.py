@@ -56,6 +56,17 @@ def render(df):
     """渲染治療建議頁面"""
     st.header("治療建議")
     
+    # 使用已存在的 MMSE 分數
+    mmse_score = st.session_state.get('mmse_score', 20)
+    
+    # 根據MMSE判斷疾病階段
+    if mmse_score >= 21:
+        current_stage = "Mild (MMSE 21-26)"
+    elif mmse_score >= 10:
+        current_stage = "Moderate (MMSE 10-20)"
+    else:
+        current_stage = "Severe (MMSE <10)"
+    
     stages = df[df['relation'] == 'HAS_STAGE']['y_name'].unique()
     if len(stages) > 0:
         selected_stage = st.selectbox("選擇疾病階段", stages)

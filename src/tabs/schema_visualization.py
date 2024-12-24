@@ -6,8 +6,8 @@ from src.utils.visualization import create_schema_visualization
 from src.constants import COLOR_MAP
 
 def render_schema_details(df):
-    """渲染Schema詳細信息"""
-    st.subheader("Schema詳細信息")
+    """渲染Schema詳細資訊"""
+    st.subheader("Schema詳細資訊")
     
     relations = df.groupby(['x_type', 'relation', 'y_type']).size().reset_index(name='count')
     relations = relations.sort_values(['x_type', 'relation', 'y_type'])
@@ -42,7 +42,7 @@ def render(df):
     """渲染知識圖譜Schema頁面"""
     st.header("知識圖譜Schema")
     
-    # 顯示schema統計信息
+    # 顯示schema統計資訊
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric("節點類型數量", len(set(df['x_type'].unique()) | set(df['y_type'].unique())))

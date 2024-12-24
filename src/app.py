@@ -11,10 +11,10 @@ from src.tabs import (
 )
 
 # 設置頁面配置
-st.set_page_config(page_title="阿茲海默症臨床決策支持系統", layout="wide")
+st.set_page_config(page_title="阿茲海默症臨床決策支援系統", layout="wide")
 
 def main():
-    st.title("阿茲海默症臨床決策支持系統")
+    st.title("阿茲海默症臨床決策支援系統")
     
     # 添加數據來源選擇
     st.sidebar.title("數據來源設置")
@@ -28,7 +28,7 @@ def main():
         uploaded_file = st.sidebar.file_uploader(
             "上傳知識圖譜CSV文件",
             type=['csv'],
-            help="請上傳包含正確列名的CSV文件。必要的列包括：x_name, x_type, relation, y_name, y_type, source_type, source_link, source_date"
+            help="請上傳包含正確列名的CSV文件(最大1000MB)。必要的列包括：x_name, x_type, relation, y_name, y_type, source_type, source_link, source_date"
         )
         
         if uploaded_file:
@@ -54,7 +54,7 @@ def main():
                 "4. 數據格式正確")
         st.stop()
     
-    # 顯示數據統計信息
+    # 顯示數據統計資訊
     st.sidebar.markdown("---")
     st.sidebar.subheader("數據統計")
     st.sidebar.write(f"節點總數: {len(set(df['x_name'].unique()) | set(df['y_name'].unique()))}")

@@ -67,29 +67,31 @@ def render(df):
     """渲染個案評估與治療頁面"""
     st.header("個案評估與治療")
     
+    # 使用已存在的 MMSE 分數
+    mmse_score = st.session_state.get('mmse_score', 20)
+    
+    # 根據MMSE判斷疾病階段
+    if mmse_score >= 21:
+        current_stage = "Mild (MMSE 21-26)"
+        st.info("📋 輕度階段")
+    elif mmse_score >= 10:
+        current_stage = "Moderate (MMSE 10-20)"
+        st.warning("📋 中度階段")
+    else:
+        current_stage = "Severe (MMSE <10)"
+        st.error("📋 重度階段")
+    
     col1, col2, col3 = st.columns(3)
     with col1:
         age = st.number_input("年齡", 0, 120, 75)
     with col2:
-        mmse = st.number_input("MMSE分數", 0, 30, 20)
-    with col3:
         has_cardiac_issues = st.checkbox("有心臟疾病病史")
         has_renal_issues = st.checkbox("有腎功能不全")
-    
-    # 自動判斷疾病階段
-    if mmse >= 21:
-        stage = "Mild (MMSE 21-26)"
-    elif mmse >= 10:
-        stage = "Moderate (MMSE 10-20)"
-    else:
-        stage = "Severe (MMSE <10)"
-    
-    st.write(f"### 目前疾病階段: {stage}")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        render_treatment_suggestions(df, stage, has_cardiac_issues, has_renal_issues)
+        render_treatment_suggestions(df, current_stage, has_cardiac_issues, has_renal_issues)
     
     with col2:
-        render_non_drug_therapy(df, stage) 
+        render_non_drug_therapy(df, current_stage) 
