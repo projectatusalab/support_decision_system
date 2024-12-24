@@ -38,6 +38,86 @@ def render_schema_details(df):
                 st.write(f"- {example['x_name']} --[{example['relation']}]--> {example['y_name']}")
                 st.caption(f"來源: [{example['source_type']}]({example['source_link']}) ({example['source_date']})")
 
+def render_source_statistics(df):
+    """渲染來源統計資訊"""
+    st.subheader("來源統計資訊")
+    
+    # 確保數據類型一致性
+    df = df.copy()
+    df['x_source'] = df['x_source'].fillna('').astype(str)
+    df['y_source'] = df['y_source'].fillna('').astype(str)
+    df['source_type'] = df['source_type'].fillna('未知來源').astype(str)
+    
+    # 統計 x_type 和 source_type 的關係，並包含原始來源資訊
+    x_source_stats = df.groupby(['x_type', 'source_type'], as_index=False).agg(
+        original_source=('x_source', lambda x: ', '.join(sorted(set(filter(None, x))))),
+        count=('x_name', 'count')  # 使用 x_name 來計數
+    )
+    
+    # 統計 y_type 和 source_type 的關係，並包含原始來源資訊
+    y_source_stats = df.groupby(['y_type', 'source_type'], as_index=False).agg(
+        original_source=('y_source', lambda x: ', '.join(sorted(set(filter(None, x))))),
+        count=('y_name', 'count')  # 使用 y_name 來計數
+    )
+    
+    # 創建兩個標籤頁來顯示統計結果
+    source_tabs = st.tabs(["來源節點統計", "目標節點統計"])
+    
+    with source_tabs[0]:
+        st.write("### 來源節點(x)與資料來源的關係")
+        
+        # 處理未知來源的原始來源資訊
+        def format_source(row):
+            if row['source_type'] == "未知來源" and row['original_source']:
+                return f"{row['original_source']}"
+            return row['source_type']
+        
+        x_source_stats['source_type'] = x_source_stats.apply(format_source, axis=1)
+        
+        # 創建樞紐表以準備堆疊條形圖數據
+        pivot_data = x_source_stats.pivot(
+            index='x_type',
+            columns='source_type',
+            values='count'
+        ).fillna(0)
+        
+        # 按總數排序
+        pivot_data['total'] = pivot_data.sum(axis=1)
+        pivot_data = pivot_data.sort_values('total', ascending=True)
+        pivot_data = pivot_data.drop('total', axis=1)
+        
+        # 繪製堆疊條形圖
+        st.bar_chart(pivot_data)
+        
+        # 顯示詳細數據
+        with st.expander("查看詳細數據"):
+            st.dataframe(pivot_data)
+    
+    with source_tabs[1]:
+        st.write("### 目標節點(y)與資料來源的關係")
+        
+        # 處理未知來源的原始來源資訊
+        y_source_stats['source_type'] = y_source_stats.apply(format_source, axis=1)
+        
+        # 創建樞紐表以準備堆疊條形圖數據
+        pivot_data = y_source_stats.pivot(
+            index='y_type',
+            columns='source_type',
+            values='count'
+        ).fillna(0)
+        
+        # 按總數排序
+        pivot_data['total'] = pivot_data.sum(axis=1)
+        pivot_data = pivot_data.sort_values('total', ascending=True)
+        pivot_data = pivot_data.drop('total', axis=1)
+        
+        # 繪製堆疊條形圖
+        st.bar_chart(pivot_data)
+        
+        # 顯示詳細數據
+        with st.expander("查看詳細數據"):
+            st.dataframe(pivot_data)
+
 def render(df):
     """渲染知識圖譜Schema頁面"""
     st.header("知識圖譜Schema")
@@ -73,4 +153,5 @@ def render(df):
             unsafe_allow_html=True
         )
     
-    render_schema_details(df) 
+    render_schema_details(df)
+    render_source_statistics(df)  # 新增來源統計顯示 
