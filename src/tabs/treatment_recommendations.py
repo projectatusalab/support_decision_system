@@ -1,83 +1,105 @@
 import streamlit as st
-from utils.data_loader import get_value_with_source, get_values_with_sources
+from utils.data_loader import get_node_by_id, get_connected_nodes
 
-def render_drug_treatment_strategy(df, stage):
+def render_drug_treatment_strategy(nodes_df, relationships_df, stage_id):
     """渲染藥物治療策略部分"""
     st.write("### 藥物治療策略")
-    treatments_with_sources = get_values_with_sources(df, [
-        (df['x_name'] == stage),
-        (df['relation'] == 'FIRST_LINE_TREATMENT')
-    ])
     
-    if treatments_with_sources:
-        for treatment, source in treatments_with_sources:
+    # 獲取一線治療方案
+    treatment_relations = relationships_df[
+        (relationships_df[':START_ID'] == stage_id) &
+        (relationships_df[':TYPE'] == 'FIRST_LINE_TREATMENT')
+    ]
+    
+    treatments = []
+    for _, rel in treatment_relations.iterrows():
+        treatment_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+        if treatment_name:
+            treatments.append(treatment_name)
+    
+    if treatments:
+        for treatment in treatments:
             st.write(f"#### {treatment}")
-            st.caption(f"來源: {source}")
             
-            drug, drug_source = get_value_with_source(df, [
-                (df['x_name'] == treatment),
-                (df['relation'] == 'USES_DRUG')
-            ])
-            st.write(f"- 使用藥物：{drug}")
-            st.caption(f"來源: {drug_source}")
+            # 獲取使用的藥物
+            treatment_id = nodes_df[nodes_df['name'] == treatment]['nodeID:ID'].iloc[0]
+            drug_relations = relationships_df[
+                (relationships_df[':START_ID'] == treatment_id) &
+                (relationships_df[':TYPE'] == 'USES_DRUG')
+            ]
             
-            effectiveness, eff_source = get_value_with_source(df, [
-                (df['x_name'] == treatment),
-                (df['relation'] == 'HAS_EFFECTIVENESS')
-            ])
-            st.write(f"- 預期效果：{effectiveness}")
-            st.caption(f"來源: {eff_source}")
+            if not drug_relations.empty:
+                drug_name, _ = get_node_by_id(nodes_df, drug_relations.iloc[0][':END_ID'])
+                st.write(f"- 使用藥物：{drug_name if drug_name else '無資料'}")
+            
+            # 獲取預期效果
+            effectiveness_relations = relationships_df[
+                (relationships_df[':START_ID'] == treatment_id) &
+                (relationships_df[':TYPE'] == 'HAS_EFFECTIVENESS')
+            ]
+            
+            if not effectiveness_relations.empty:
+                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0][':END_ID'])
+                st.write(f"- 預期效果：{effect_name if effect_name else '無資料'}")
     else:
         st.info("暫無藥物治療建議資料")
 
-def render_non_drug_interventions(df, stage):
+def render_non_drug_interventions(nodes_df, relationships_df, stage_id):
     """渲染非藥物介入部分"""
     st.write("### 非藥物介入")
-    therapies_with_sources = get_values_with_sources(df, [
-        (df['x_name'] == stage),
-        (df['relation'] == 'RECOMMENDED_THERAPY')
-    ])
     
-    if therapies_with_sources:
-        for therapy, source in therapies_with_sources:
+    # 獲取建議的治療方案
+    therapy_relations = relationships_df[
+        (relationships_df[':START_ID'] == stage_id) &
+        (relationships_df[':TYPE'] == 'RECOMMENDED_THERAPY')
+    ]
+    
+    therapies = []
+    for _, rel in therapy_relations.iterrows():
+        therapy_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+        if therapy_name:
+            therapies.append(therapy_name)
+    
+    if therapies:
+        for therapy in therapies:
             st.write(f"#### {therapy}")
-            st.caption(f"來源: {source}")
             
-            effectiveness, eff_source = get_value_with_source(df, [
-                (df['x_name'] == therapy),
-                (df['relation'] == 'HAS_EFFECTIVENESS')
-            ])
-            st.write(f"- 預期效果：{effectiveness}")
-            st.caption(f"來源: {eff_source}")
+            # 獲取預期效果
+            therapy_id = nodes_df[nodes_df['name'] == therapy]['nodeID:ID'].iloc[0]
+            effectiveness_relations = relationships_df[
+                (relationships_df[':START_ID'] == therapy_id) &
+                (relationships_df[':TYPE'] == 'HAS_EFFECTIVENESS')
+            ]
+            
+            if not effectiveness_relations.empty:
+                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0][':END_ID'])
+                st.write(f"- 預期效果：{effect_name if effect_name else '無資料'}")
     else:
         st.info("暫無非藥物介入建議資料")
 
-def render(df):
+def render(data):
     """渲染治療建議頁面"""
     st.header("治療建議")
     
-    # 使用已存在的 MMSE 分數
-    mmse_score = st.session_state.get('mmse_score', 20)
+    nodes_df, relationships_df = data
     
-    # 根據MMSE判斷疾病階段
-    if mmse_score >= 21:
-        current_stage = "Mild (MMSE 21-26)"
-    elif mmse_score >= 10:
-        current_stage = "Moderate (MMSE 10-20)"
-    else:
-        current_stage = "Severe (MMSE <10)"
+    # 獲取所有疾病階段
+    stage_nodes = nodes_df[nodes_df['type:LABEL'] == 'Stage']
     
-    stages = df[df['relation'] == 'HAS_STAGE']['y_name'].unique()
-    if len(stages) > 0:
-        selected_stage = st.selectbox("選擇疾病階段", stages)
+    if not stage_nodes.empty:
+        stage_names = stage_nodes['name'].tolist()
+        selected_stage = st.selectbox("選擇疾病階段", stage_names)
         
         if selected_stage:
+            # 獲取選中階段的ID
+            stage_id = stage_nodes[stage_nodes['name'] == selected_stage]['nodeID:ID'].iloc[0]
+            
             col1, col2 = st.columns(2)
             
             with col1:
-                render_drug_treatment_strategy(df, selected_stage)
+                render_drug_treatment_strategy(nodes_df, relationships_df, stage_id)
             
             with col2:
-                render_non_drug_interventions(df, selected_stage)
+                render_non_drug_interventions(nodes_df, relationships_df, stage_id)
     else:
         st.info("暫無疾病階段資料") 

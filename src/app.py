@@ -23,44 +23,58 @@ def main():
         ["使用預設數據", "上傳自定義數據"]
     )
     
-    uploaded_file = None
+    nodes_file = None
+    relationships_file = None
     if data_source == "上傳自定義數據":
-        uploaded_file = st.sidebar.file_uploader(
-            "上傳知識圖譜CSV文件",
+        nodes_file = st.sidebar.file_uploader(
+            "上傳節點數據 (nodes.csv)",
             type=['csv'],
-            help="請上傳包含正確列名的CSV文件(最大1000MB)。必要的列包括：x_name, x_type, relation, y_name, y_type, source_type, source_link, source_date"
+            help="請上傳Neo4j格式的節點文件，必須包含 nodeID:ID、name 和 type 列"
+        )
+        relationships_file = st.sidebar.file_uploader(
+            "上傳關係數據 (relationships.csv)",
+            type=['csv'],
+            help="請上傳Neo4j格式的關係文件，必須包含 START_ID、END_ID 和 TYPE 列"
         )
         
-        if uploaded_file:
+        if nodes_file and relationships_file:
             st.sidebar.success("文件上傳成功！")
             # 顯示數據預覽按鈕
             if st.sidebar.button("預覽上傳的數據"):
-                df = load_data(uploaded_file)
-                if df is not None:
-                    st.sidebar.dataframe(df.head(), use_container_width=True)
+                nodes_df, relationships_df = load_data(nodes_file, relationships_file)
+                if nodes_df is not None and relationships_df is not None:
+                    st.sidebar.write("節點數據預覽：")
+                    st.sidebar.dataframe(nodes_df.head(), use_container_width=True)
+                    st.sidebar.write("關係數據預覽：")
+                    st.sidebar.dataframe(relationships_df.head(), use_container_width=True)
                 # 重置文件指針
-                uploaded_file.seek(0)
+                nodes_file.seek(0)
+                relationships_file.seek(0)
         else:
-            st.sidebar.info("請上傳CSV文件或選擇使用預設數據")
+            st.sidebar.info("請上傳Neo4j格式的CSV文件或選擇使用預設數據")
     
     # 載入數據
-    df = load_data(uploaded_file)
+    data = load_data(nodes_file, relationships_file)
+    nodes_df, relationships_df = data if data is not None else (None, None)
     
-    if df is None:
+    if nodes_df is None or relationships_df is None:
         st.error("無法載入數據。請確保：\n" + 
                 "1. CSV文件不是空的\n" +
                 "2. 文件格式正確（UTF-8編碼的CSV）\n" +
-                "3. 包含所有必要的列\n" +
-                "4. 數據格式正確")
+                "3. 節點文件包含 nodeID:ID、name 和 type:LABEL 列\n" +
+                "4. 關係文件包含 :START_ID、:END_ID 和 :TYPE 列")
         st.stop()
+    
+    # Debug information
+    st.write("Debug - Relationship columns:", relationships_df.columns.tolist())
     
     # 顯示數據統計資訊
     st.sidebar.markdown("---")
     st.sidebar.subheader("數據統計")
-    st.sidebar.write(f"節點總數: {len(set(df['x_name'].unique()) | set(df['y_name'].unique()))}")
-    st.sidebar.write(f"關係總數: {len(df)}")
-    st.sidebar.write(f"節點類型數: {len(set(df['x_type'].unique()) | set(df['y_type'].unique()))}")
-    st.sidebar.write(f"關係類型數: {len(df['relation'].unique())}")
+    st.sidebar.write(f"節點總數: {len(nodes_df)}")
+    st.sidebar.write(f"關係總數: {len(relationships_df)}")
+    st.sidebar.write(f"節點類型數: {len(nodes_df['type'].unique())}")
+    st.sidebar.write(f"關係類型數: {len(relationships_df['TYPE'].unique())}")
     
     # 側邊欄：功能選擇
     st.sidebar.title("功能選擇")
@@ -77,19 +91,19 @@ def main():
     
     try:
         if "1. 快速診療指引" in function_option:
-            quick_guide.render(df)
+            quick_guide.render(data)
         elif "2. 個案評估與治療" in function_option:
-            case_assessment.render(df)
+            case_assessment.render(data)
         elif "3. 用藥安全查詢" in function_option:
-            drug_safety.render(df)
+            drug_safety.render(data)
         elif "4. 治療建議" in function_option:
-            treatment_recommendations.render(df)
+            treatment_recommendations.render(data)
         elif "5. 臨床監測追蹤" in function_option:
-            clinical_monitoring.render(df)
+            clinical_monitoring.render(data)
         elif "6. 治療方案比較" in function_option:
-            treatment_comparison.render(df)
+            treatment_comparison.render(data)
         elif "7. 知識圖譜Schema" in function_option:
-            schema_visualization.render(df)
+            schema_visualization.render(data)
     except Exception as e:
         st.error(f"渲染頁面時發生錯誤: {str(e)}")
         st.error("請檢查數據格式是否正確，或嘗試重新載入頁面")

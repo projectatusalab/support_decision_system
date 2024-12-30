@@ -1,142 +1,104 @@
 import streamlit as st
 import pandas as pd
-from utils.data_loader import get_value_with_source, get_values_with_sources
+from utils.data_loader import get_node_by_id, get_connected_nodes
 
-def create_comparison_table(df, treatments):
-    """創建治療方案比較表"""
-    comparison_data = []
-    
-    for treatment in treatments:
-        # 獲取基本資訊
-        drug, drug_source = get_value_with_source(df, [
-            (df['x_name'] == treatment),
-            (df['relation'] == 'USES_DRUG')
-        ])
-        
-        effectiveness, eff_source = get_value_with_source(df, [
-            (df['x_name'] == treatment),
-            (df['relation'] == 'HAS_EFFECTIVENESS')
-        ])
-        
-        dosage, dosage_source = get_value_with_source(df, [
-            (df['x_name'] == treatment),
-            (df['relation'] == 'HAS_DOSAGE')
-        ])
-        
-        # 獲取副作用
-        side_effects = []
-        if drug != "資料不可用":
-            side_effects_with_sources = get_values_with_sources(df, [
-                (df['x_name'] == drug),
-                (df['relation'] == 'HAS_SIDE_EFFECT')
-            ])
-            side_effects = [se[0] for se in side_effects_with_sources]
-        
-        # 獲取禁忌症
-        contraindications = []
-        if drug != "資料不可用":
-            contraindications_with_sources = get_values_with_sources(df, [
-                (df['x_name'] == drug),
-                (df['relation'] == 'CONTRAINDICATION')
-            ])
-            contraindications = [c[0] for c in contraindications_with_sources]
-        
-        # 獲取適用階段
-        stages_with_sources = get_values_with_sources(df, [
-            (df['y_name'] == treatment),
-            (df['relation'] == 'FIRST_LINE_TREATMENT')
-        ], 'x_name')
-        stages = [s[0] for s in stages_with_sources]
-        
-        comparison_data.append({
-            '治療方案': treatment,
-            '使用藥物': drug,
-            '適用階段': ', '.join(stages) if stages else '不明',
-            '建議劑量': dosage,
-            '預期效果': effectiveness,
-            '副作用': ', '.join(side_effects) if side_effects else '無資料',
-            '禁忌症': ', '.join(contraindications) if contraindications else '無資料'
-        })
-    
-    return pd.DataFrame(comparison_data)
-
-def render_treatment_details(df, treatment):
+def render_treatment_details(nodes_df, relationships_df, treatment_id):
     """渲染治療方案詳細資訊"""
-    with st.expander(f"📋 {treatment} 詳細資訊"):
-        # 基本資訊
-        drug, drug_source = get_value_with_source(df, [
-            (df['x_name'] == treatment),
-            (df['relation'] == 'USES_DRUG')
-        ])
-        st.write(f"#### 使用藥物：{drug}")
-        st.caption(f"來源：{drug_source}")
-        
-        # 適用階段
-        stages_with_sources = get_values_with_sources(df, [
-            (df['y_name'] == treatment),
-            (df['relation'] == 'FIRST_LINE_TREATMENT')
-        ], 'x_name')
-        if stages_with_sources:
-            st.write("#### 適用階段")
-            for stage, source in stages_with_sources:
-                st.write(f"- {stage}")
-                st.caption(f"來源：{source}")
-        
-        # 療效信息
-        effectiveness, eff_source = get_value_with_source(df, [
-            (df['x_name'] == treatment),
-            (df['relation'] == 'HAS_EFFECTIVENESS')
-        ])
-        st.write(f"#### 預期效果：{effectiveness}")
-        st.caption(f"來源：{eff_source}")
-        
-        # 副作用
-        if drug != "資料不可用":
-            side_effects_with_sources = get_values_with_sources(df, [
-                (df['x_name'] == drug),
-                (df['relation'] == 'HAS_SIDE_EFFECT')
-            ])
-            if side_effects_with_sources:
-                st.write("#### 副作用")
-                for side_effect, source in side_effects_with_sources:
-                    st.write(f"- {side_effect}")
-                    st.caption(f"來源：{source}")
+    # 獲取藥物資訊
+    drug_relations = relationships_df[
+        (relationships_df[':START_ID'] == treatment_id) &
+        (relationships_df[':TYPE'] == 'USES_DRUG')
+    ]
+    
+    drugs = []
+    for _, rel in drug_relations.iterrows():
+        drug_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+        if drug_name:
+            drugs.append(drug_name)
+    
+    if drugs:
+        st.write("#### 使用藥物")
+        for drug in drugs:
+            st.write(f"- {drug}")
+    
+    # 獲取效果資訊
+    effectiveness_relations = relationships_df[
+        (relationships_df[':START_ID'] == treatment_id) &
+        (relationships_df[':TYPE'] == 'HAS_EFFECTIVENESS')
+    ]
+    
+    if not effectiveness_relations.empty:
+        st.write("#### 預期效果")
+        for _, rel in effectiveness_relations.iterrows():
+            effect_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+            if effect_name:
+                st.write(f"- {effect_name}")
+    
+    # 獲取副作用資訊
+    side_effect_relations = relationships_df[
+        (relationships_df[':START_ID'] == treatment_id) &
+        (relationships_df[':TYPE'] == 'HAS_SIDE_EFFECT')
+    ]
+    
+    if not side_effect_relations.empty:
+        st.write("#### 可能副作用")
+        for _, rel in side_effect_relations.iterrows():
+            effect_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+            if effect_name:
+                st.warning(f"- {effect_name}")
+    
+    # 獲取適用階段
+    stage_relations = relationships_df[
+        (relationships_df[':END_ID'] == treatment_id) &
+        (relationships_df[':TYPE'] == 'STAGE_TREATMENT')
+    ]
+    
+    stages = []
+    for _, rel in stage_relations.iterrows():
+        stage_name, _ = get_node_by_id(nodes_df, rel[':START_ID'])
+        if stage_name:
+            stages.append(stage_name)
+    
+    if stages:
+        st.write("#### 適用階段")
+        for stage in stages:
+            st.write(f"- {stage}")
 
-def render(df):
+def render(data):
     """渲染治療方案比較頁面"""
     st.header("治療方案比較")
     
+    nodes_df, relationships_df = data
+    
     # 獲取所有治療方案
-    all_treatments = df[
-        (df['relation'] == 'FIRST_LINE_TREATMENT') | 
-        (df['relation'] == 'SECOND_LINE_TREATMENT')
-    ]['y_name'].unique()
+    treatment_nodes = nodes_df[nodes_df['type:LABEL'] == 'Treatment']
     
-    if len(all_treatments) == 0:
-        st.info("暫無治療方案資料")
-        return
-    
-    # 選擇要比較的治療方案
-    selected_treatments = st.multiselect(
-        "選擇要比較的治療方案",
-        all_treatments,
-        default=list(all_treatments)[:2] if len(all_treatments) >= 2 else list(all_treatments)
-    )
-    
-    if selected_treatments:
-        # 創建比較表
-        comparison_df = create_comparison_table(df, selected_treatments)
+    if not treatment_nodes.empty:
+        # 選擇要比較的治療方案
+        col1, col2 = st.columns(2)
         
-        # 顯示比較表
-        st.write("### 治療方案比較表")
-        st.dataframe(
-            comparison_df.set_index('治療方案'),
-            use_container_width=True
-        )
+        with col1:
+            st.subheader("治療方案 A")
+            treatment_a = st.selectbox(
+                "選擇第一個治療方案",
+                treatment_nodes['name'].tolist(),
+                key="treatment_a"
+            )
+            if treatment_a:
+                treatment_a_id = treatment_nodes[treatment_nodes['name'] == treatment_a]['nodeID:ID'].iloc[0]
+                render_treatment_details(nodes_df, relationships_df, treatment_a_id)
         
-        # 顯示詳細資訊
-        st.write("### 詳細資訊")
-        for treatment in selected_treatments:
-            render_treatment_details(df, treatment)
+        with col2:
+            st.subheader("治療方案 B")
+            # 過濾掉已選擇的治療方案
+            available_treatments = treatment_nodes[treatment_nodes['name'] != treatment_a]['name'].tolist()
+            treatment_b = st.selectbox(
+                "選擇第二個治療方案",
+                available_treatments,
+                key="treatment_b"
+            )
+            if treatment_b:
+                treatment_b_id = treatment_nodes[treatment_nodes['name'] == treatment_b]['nodeID:ID'].iloc[0]
+                render_treatment_details(nodes_df, relationships_df, treatment_b_id)
     else:
-        st.warning("請選擇至少一個治療方案進行比較") 
+        st.info("暫無治療方案資料") 
