@@ -1,0 +1,791 @@
+NODE_ID,TYPE,NAME
+n_0,disease,dementia/parkinsonism with non-Alzheimer amyloid plaques
+n_1,disease,Alzheimer disease
+n_2,disease,"Alzheimer disease, familial early-onset, with coexisting amyloid and prion pathology"
+n_3,disease,familial Alzheimer disease
+n_4,disease,Alzheimer disease without neurofibrillary tangles
+n_5,disease,"Alzheimer disease, susceptibility to, mitochondrial"
+n_6,pathway,Deregulated CDK5 triggers multiple neurodegenerative pathways in Alzheimer's disease models
+n_7,Stage,Mild (MMSE 21-26)
+n_8,Stage,Moderate (MMSE 10-20)
+n_9,Stage,Severe (MMSE <10)
+n_10,Treatment,Donepezil Treatment (NICE)
+n_11,Treatment,Rivastigmine Treatment (NICE)
+n_12,Treatment,Rivastigmine Patch Treatment (NICE)
+n_13,Treatment,Galantamine Treatment (NICE)
+n_14,Treatment,Galantamine Treatment moderate hepatic impairment (NICE)
+n_15,Treatment,Memantine Treatment (NICE)
+n_16,Treatment,Memantine Treatment renal impairment 1 (NICE)
+n_17,Treatment,Memantine Treatment renal impairment 2 (NICE)
+n_18,Treatment,Memantine Treatment renal impairment 3 (NICE)
+n_19,Treatment,Haloperidol Treatment (NICE)
+n_20,Treatment,Risperidone Treatment (NICE)
+n_21,Step,Donepezil Treatment (NICE) (1)
+n_22,Dosage,Donepezil 5mg/day
+n_23,Step,Donepezil Treatment (NICE) (2)
+n_24,Step,Galantamine Treatment (NICE) (1)
+n_25,Dosage,Galantamine 8mg/day
+n_26,Step,Galantamine Treatment (NICE) (2)
+n_27,Dosage,Galantamine 16mg/day
+n_28,Step,Galantamine Treatment (NICE) (3)
+n_29,Step,Galantamine Treatment moderate hepatic impairment (NICE) (1)
+n_30,Step,Galantamine Treatment moderate hepatic impairment (NICE) (2)
+n_31,Dosage,Galantamine 8-16mg/day
+n_32,Step,Rivastigmine Patch Treatment (NICE) (1)
+n_33,Dosage,Rivastigmine Patch 4.6mg/day
+n_34,Step,Rivastigmine Patch Treatment (NICE) (2)
+n_35,Dosage,Rivastigmine Patch 9.5mg/day
+n_36,Step,Rivastigmine Patch Treatment (NICE) (3)
+n_37,Dosage,Risperidone 0.5-5 mg/day
+n_38,drug,Donepezil
+n_39,drug,Galantamine
+n_40,drug,Rivastigmine
+n_41,drug,Memantine
+n_42,drug,Haloperidol
+n_43,drug,Risperidone
+n_44,Therapy,Cognitive Stimulation Therapy
+n_45,Therapy,Reminiscence Therapy
+n_46,Therapy,Behavioral Management
+n_47,Therapy,Music Therapy
+n_48,Treatment,Donepezil Treatment (成大)
+n_49,Step,Donepezil Treatment (成大) (1)
+n_50,Step,Donepezil Treatment (成大) (2)
+n_51,Treatment,Rivastigmine Treatment (成大)
+n_52,Treatment,Galantamine Treatment (成大)
+n_53,Step,Galantamine Treatment (成大) (1)
+n_54,Step,Galantamine Treatment (成大) (2)
+n_55,Treatment,Memantine Treatment (成大)
+n_56,drug,Rivastigmine patch
+n_57,Stage,Mild  (ADAS-Cog)
+n_58,Stage,Moderate (ADAS-Cog)
+n_59,Stage,Severe (ADAS-Cog)
+n_60,Treatment,Donepezil Treatment  (MaHTAS)
+n_61,Treatment,Rivastigmine Patch Treatment (MaHTAS)
+n_62,Treatment,Rivastigmine Treatment (MaHTAS)
+n_63,Treatment,Galantamine Treatment (MaHTAS)
+n_64,Treatment,Memantine Treatment (MaHTAS)
+n_65,Treatment,Donepezil Treatment (MaHTAS)
+n_66,Dosage,Donepezil 10 mg/day
+n_67,Dosage,Rivastigmine 6 - 12 mg/day*2
+n_68,Dosage,Rivastigmine Patch 9.5 mg/day
+n_69,drug,Rivastigmine Patch
+n_70,Therapy,Exercise
+n_71,Therapy,Diet and supplement
+n_72,Treatment,Donepezil Treatment (AmericanAcademy of Family Physicians)
+n_73,Treatment,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians)
+n_74,Treatment,Rivastigmine Treatment (AmericanAcademy of Family Physicians)
+n_75,Treatment,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians)
+n_76,Treatment,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians)
+n_77,Treatment,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians)
+n_78,Treatment,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians)
+n_79,Treatment,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians)
+n_80,Step,Donepezil Treatment (AmericanAcademy of Family Physicians) (1)
+n_81,Step,Donepezil Treatment (AmericanAcademy of Family Physicians) (2)
+n_82,Step,Donepezil Treatment (AmericanAcademy of Family Physicians) (3)
+n_83,Step,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (1)
+n_84,Dosage,Rivastigmine 1.5 mg/day*2
+n_85,Step,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (2)
+n_86,Dosage,Rivastigmine 3 mg/day*2
+n_87,Step,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (3)
+n_88,Dosage,Rivastigmine 4.5 mg/day*2
+n_89,Step,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (1)
+n_90,Dosage,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (1)
+n_91,Step,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (2)
+n_92,Dosage,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (2)
+n_93,Step,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (3)
+n_94,Step,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1)
+n_95,Dosage,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1)
+n_96,Step,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2)
+n_97,Dosage,Galantamine 8 mg/day*2
+n_98,Step,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (3)
+n_99,Step,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (1)
+n_100,Dosage,Galantamine 8 mg/day
+n_101,Step,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (2)
+n_102,Step,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (3)
+n_103,Step,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1)
+n_104,Dosage,Memantine 5mg/day
+n_105,Step,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2)
+n_106,Dosage,Memantine 5mg/day*2
+n_107,Dosage,Memantine 10mg/day
+n_108,Step,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (3)
+n_109,Step,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (4)
+n_110,Step,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (1)
+n_111,Dosage,Memantine 7 mg/day
+n_112,Step,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (2)
+n_113,Dosage,Memantine 14 mg/day
+n_114,Step,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (3)
+n_115,Step,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (4)
+n_116,Dosage,Memantine 21 mg/day
+n_117,Step,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (5)
+n_118,Step,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (1)
+n_119,Dosage,Donepezil 10mg/day
+n_120,Dosage,"Vitamin E 1,000IU/day*2"
+n_121,Step,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (2)
+n_122,Step,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (3)
+n_123,Step,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (4)
+n_124,Step,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (5)
+n_125,drug,Vitamin E
+n_126,Therapy,Enjoyable leisure activities
+n_127,Therapy,Mental stimulation programs
+n_128,Therapy,Occupational therapy training in coping strategies and cognitive aides
+n_129,Therapy,Structured physical exercise programs
+n_130,Stage,早期
+n_131,Stage,中期
+n_132,Stage,晚期
+n_133,Treatment,Donepezil Treatment (臺中榮總)
+n_134,Step,Donepezil Treatment (臺中榮總) (1)
+n_135,Dosage,Donepezil 5 mg/day
+n_136,Step,Donepezil Treatment (臺中榮總) (2)
+n_137,Treatment,Rivastigmine Treatment (臺中榮總)
+n_138,Step,Rivastigmine Treatment (臺中榮總) (1)
+n_139,Dosage,Rivastigmine 1.5 mg/day
+n_140,Step,Rivastigmine Treatment (臺中榮總) (2)
+n_141,Step,Rivastigmine Treatment (臺中榮總) (3)
+n_142,Treatment,Rivastigmine Patch Treatment (臺中榮總)
+n_143,Step,Rivastigmine Patch Treatment (臺中榮總) (1)
+n_144,Dosage,Rivastigmine Patch 4.6 mg/day
+n_145,Step,Rivastigmine Patch Treatment (臺中榮總) (2)
+n_146,Treatment,Galantamine Treatment (臺中榮總)
+n_147,Step,Galantamine Treatment (臺中榮總) (1)
+n_148,Step,Galantamine Treatment (臺中榮總) (2)
+n_149,Treatment,Memantine Treatment (臺中榮總)
+n_150,Step,Memantine Treatment (臺中榮總) (1)
+n_151,Step,Memantine Treatment (臺中榮總) (2)
+n_152,Treatment,Memantine Treatment 腎功能不佳者 (臺中榮總)
+n_153,Step,Memantine Treatment 腎功能不佳者 (臺中榮總)
+n_154,Therapy,Cognitive Activities
+n_155,Therapy,Music Therapy Groups
+n_156,Therapy,Art Creation
+n_157,Therapy,Exercise Groups
+n_158,Therapy,Reality Orientation Therapy
+n_159,Therapy,Dance Therapy
+n_160,Therapy,Horticulture Therapy
+n_161,Therapy,Aromatherapy
+n_162,Therapy,Pet Therapy
+n_163,Therapy,Doll Therapy
+n_164,Therapy,Sensory Stimulation
+n_165,Stage,Early stage(GDS 2-5)
+n_166,Stage,Middle stage (GDS 4-6)
+n_167,Stage,Late stage (GDS 7)
+n_168,Treatment,Combined Donepezil and Memantine Treatment (Japanese Society of Neurology)
+n_169,Treatment,Donepezil Treatment (Japanese Society of Neurology)
+n_170,Treatment,Galantamine Treatment (Japanese Society of Neurology)
+n_171,Treatment,Rivastigmine Treatment (Japanese Society of Neurology)
+n_172,Treatment,Rivastigmine Patch Treatment (Japanese Society of Neurology)
+n_173,Treatment,Memantine Treatment (Japanese Society of Neurology)
+n_174,Treatment,Combined ChEIs and Memantine Treatment (Japanese Society of Neurology)
+n_175,Therapy,Exercise therapy
+n_176,Therapy,Music therapy
+n_177,Stage, (MCI) due to Alzheimer's disease
+n_178,Stage,Early stage(mild)
+n_179,Stage,Middle stage (moderate)
+n_180,Stage,Late stage (severe)
+n_181,Stage, MCI due to Alzheimer's disease
+n_182,Treatment,Donanemab Treatment (Alzheimer's Association)
+n_183,Treatment,Lecanemab (Alzheimer's Association)
+n_184,Treatment,Donepezil Treatment (Alzheimer's Association)
+n_185,Treatment,Rivastigmine Treatment (Alzheimer's Association)
+n_186,Treatment,Galantamine Treatment (Alzheimer's Association)
+n_187,Treatment,Memantine Treatment (Alzheimer's Association)
+n_188,Treatment,Memantine + Donepezil (Alzheimer's Association)
+n_189,Treatment,Brexpiprazole Treatment (Alzheimer's Association)
+n_190,Treatment,Suvorexant Treatment (Alzheimer's Association)
+n_191,drug,Donanemab
+n_192,drug,Lecanemab
+n_193,drug,Brexpiprazole
+n_194,drug,Suvorexant
+n_195,Treatment,Donepezil Treatment (Demenzen)
+n_196,Treatment,Rivastigmine Treatment (Demenzen)
+n_197,Treatment,Galantamine Treatment (Demenzen)
+n_198,Treatment,Memantine Treatment (Demenzen)
+n_199,Dosage,Rivastigmine 3mg/day
+n_200,Treatment,Donepezil Treatment (CDPC)
+n_201,Treatment,Rivastigmine Treatment (CDPC)
+n_202,Treatment,Galantamine Treatment (CDPC)
+n_203,Treatment,Memantine Treatment (CDPC)
+n_204,Dosage,Galantamine 5mg/day
+n_205,Dosage,Rivastigmine 5mg/day
+n_206,effect/phenotype,Parkinsonism
+n_207,effect/phenotype,Dementia
+n_208,effect/phenotype,Substantia nigra gliosis
+n_209,effect/phenotype,Autosomal dominant inheritance
+n_210,effect/phenotype,Dysphagia
+n_211,effect/phenotype,Optic ataxia
+n_212,effect/phenotype,Gait disturbance
+n_213,effect/phenotype,Memory impairment
+n_214,effect/phenotype,Babinski sign
+n_215,effect/phenotype,Seizure
+n_216,effect/phenotype,Cerebral cortical atrophy
+n_217,effect/phenotype,Apraxia
+n_218,effect/phenotype,Lower limb hyperreflexia
+n_219,effect/phenotype,Dysarthria
+n_220,effect/phenotype,Spastic tetraparesis
+n_221,effect/phenotype,Adult onset
+n_222,effect/phenotype,Neurofibrillary tangles
+n_223,effect/phenotype,Abnormality of extrapyramidal motor function
+n_224,effect/phenotype,Agnosia
+n_225,effect/phenotype,Personality changes
+n_226,effect/phenotype,Myoclonus
+n_227,effect/phenotype,Rapidly progressive
+n_228,effect/phenotype,Decreased level of GABA in serum
+n_229,effect/phenotype,Long-tract signs
+n_230,effect/phenotype,Heterogeneous
+n_231,effect/phenotype,Sleep-wake cycle disturbance
+n_232,effect/phenotype,Middle age onset
+n_233,effect/phenotype,Cognitive impairment
+n_234,effect/phenotype,Parietal hypometabolism in FDG PET
+n_235,effect/phenotype,Cerebral amyloid angiopathy
+n_236,effect/phenotype,Senile plaques
+n_237,effect/phenotype,Depressivity
+n_238,effect/phenotype,Disinhibition
+n_239,effect/phenotype,Hippocampal atrophy
+n_240,effect/phenotype,Late onset
+n_241,effect/phenotype,Neurological speech impairment
+n_242,effect/phenotype,Cerebral cortex with spongiform changes
+n_243,effect/phenotype,Behavioral abnormality
+n_244,effect/phenotype,Emotional lability
+n_245,effect/phenotype,Anxiety
+n_246,effect/phenotype,Specific learning disability
+n_247,effect/phenotype,Sleep disturbance
+n_248,effect/phenotype,Deficit in phonologic short-term memory
+n_249,effect/phenotype,Attention deficit hyperactivity disorder
+n_250,effect/phenotype,Abdominal symptom
+n_251,effect/phenotype,Perseveration
+n_252,effect/phenotype,Jaw pain
+n_253,effect/phenotype,Agitation
+n_254,effect/phenotype,Hallucinations
+n_255,effect/phenotype,Hypertonia
+n_256,effect/phenotype,Confusion
+n_257,effect/phenotype,Deposits immunoreactive to beta-amyloid protein
+n_258,effect/phenotype,Abnormal social behavior
+n_259,effect/phenotype,Neurodevelopmental abnormality
+n_260,effect/phenotype,Abnormality of vision
+n_261,effect/phenotype,Oculomotor apraxia
+n_262,effect/phenotype,Intellectual disability
+n_263,effect/phenotype,Ataxia
+n_264,effect/phenotype,Aphasia
+n_265,effect/phenotype,Abnormality of higher mental function
+n_266,effect/phenotype,Semantic dementia
+n_267,drug,Phenyltoloxamine
+n_268,drug,Pheniramine
+n_269,drug,Orphenadrine
+n_270,drug,Pravastatin
+n_271,drug,Carisoprodol
+n_272,drug,Citric acid
+n_273,drug,Butalbital
+n_274,drug,Codeine
+n_275,drug,Oxycodone
+n_276,drug,Trolnitrate
+n_277,drug,Salicylamide
+n_278,drug,Phenacetin
+n_279,drug,Phenylephrine
+n_280,drug,Dipyridamole
+n_281,drug,Caffeine
+n_282,drug,Meprobamate
+n_283,drug,Methocarbamol
+n_284,drug,Phenobarbital
+n_285,drug,Dextropropoxyphene
+n_286,drug,Pentazocine
+n_287,drug,Calcium gluconate
+n_288,drug,Phenylpropanolamine
+n_289,drug,Chlorpheniramine
+n_290,drug,Hydrocodone
+n_291,drug,Dihydrocodeine
+n_292,drug,Epicriptine
+n_293,drug,Perazine
+n_294,drug,Alimemazine
+n_295,drug,Isopropamide
+n_296,drug,Molindone
+n_297,drug,Fluphenazine
+n_298,drug,Pramiracetam
+n_299,drug,Methotrimeprazine
+n_300,drug,Promazine
+n_301,drug,Perphenazine
+n_302,drug,Prochlorperazine
+n_303,drug,Clozapine
+n_304,drug,Fluoxetine
+n_305,drug,Chlorpromazine
+n_306,drug,Thioridazine
+n_307,drug,Amitriptyline
+n_308,drug,Propiomazine
+n_309,drug,Thiothixene
+n_310,drug,Acetylcarnitine
+n_311,drug,Acetophenazine
+n_312,drug,Pimozide
+n_313,drug,Loxapine
+n_314,drug,Ziprasidone
+n_315,drug,Triflupromazine
+n_316,drug,Paliperidone
+n_317,drug,Iloperidone
+n_318,drug,Olanzapine
+n_319,drug,Aripiprazole
+n_320,drug,Trifluoperazine
+n_321,drug,Chlorprothixene
+n_322,drug,Quetiapine
+n_323,drug,Asenapine
+n_324,drug,Ipidacrine
+n_325,drug,Tacrine
+n_326,effect/phenotype,Morphological central nervous system abnormality
+n_327,gene/protein,A2M
+n_328,gene/protein,ACHE
+n_329,gene/protein,ADAM10
+n_330,gene/protein,AMFR
+n_331,gene/protein,BIN1
+n_332,gene/protein,APOC1
+n_333,gene/protein,APOE
+n_334,gene/protein,APP
+n_335,gene/protein,ATP5F1A
+n_336,gene/protein,BAX
+n_337,gene/protein,BCHE
+n_338,gene/protein,BCL2
+n_339,gene/protein,BDNF
+n_340,gene/protein,CALM1
+n_341,gene/protein,CASP3
+n_342,gene/protein,CD33
+n_343,gene/protein,CHRNA7
+n_344,gene/protein,CHRNB2
+n_345,gene/protein,CLU
+n_346,gene/protein,TPP1
+n_347,gene/protein,CR1
+n_348,gene/protein,CRH
+n_349,gene/protein,CST3
+n_350,gene/protein,CYP2D6
+n_351,gene/protein,ACE
+n_352,gene/protein,DHCR24
+n_353,gene/protein,DPYSL2
+n_354,gene/protein,EIF2S1
+n_355,gene/protein,ENO1
+n_356,gene/protein,EPHA1
+n_357,gene/protein,ESR1
+n_358,gene/protein,F2
+n_359,gene/protein,GSK3B
+n_360,gene/protein,HFE
+n_361,gene/protein,HLA-DRB5
+n_362,gene/protein,HMOX1
+n_363,gene/protein,IDE
+n_364,gene/protein,IGF1
+n_365,gene/protein,IGF1R
+n_366,gene/protein,IGF2
+n_367,gene/protein,IGF2R
+n_368,gene/protein,IL1B
+n_369,gene/protein,INS
+n_370,gene/protein,INPP5D
+n_371,gene/protein,INSR
+n_372,gene/protein,LEP
+n_373,gene/protein,MAOB
+n_374,gene/protein,MAPT
+n_375,gene/protein,MPO
+n_376,gene/protein,MTHFR
+n_377,gene/protein,NOS3
+n_378,gene/protein,NPY
+n_379,gene/protein,PLAU
+n_380,gene/protein,PLCG2
+n_381,gene/protein,PPARG
+n_382,gene/protein,PRNP
+n_383,gene/protein,RELN
+n_384,gene/protein,PSEN1
+n_385,gene/protein,PSEN2
+n_386,gene/protein,PYY
+n_387,gene/protein,NECTIN2
+n_388,gene/protein,SLC2A4
+n_389,gene/protein,SOD2
+n_390,gene/protein,SORL1
+n_391,gene/protein,TF
+n_392,gene/protein,TFAM
+n_393,gene/protein,TNF
+n_394,gene/protein,TPI1
+n_395,gene/protein,VEGFA
+n_396,gene/protein,VSNL1
+n_397,gene/protein,SLC30A4
+n_398,gene/protein,PICALM
+n_399,gene/protein,UNC5C
+n_400,gene/protein,ADAMTS1
+n_401,gene/protein,ABCA7
+n_402,gene/protein,TOMM40
+n_403,gene/protein,PGRMC1
+n_404,gene/protein,CYP46A1
+n_405,gene/protein,ARC
+n_406,gene/protein,NCSTN
+n_407,gene/protein,CD2AP
+n_408,gene/protein,BACE1
+n_409,gene/protein,GAPDHS
+n_410,gene/protein,PCDH11X
+n_411,gene/protein,ABI3
+n_412,gene/protein,MS4A4A
+n_413,gene/protein,WWOX
+n_414,gene/protein,TREM2
+n_415,gene/protein,SLC30A6
+n_416,gene/protein,CASS4
+n_417,gene/protein,IQCK
+n_418,gene/protein,MIR100
+n_419,gene/protein,MIR146A
+n_420,gene/protein,MIR296
+n_421,gene/protein,MIR375
+n_422,gene/protein,MIR505
+n_423,gene/protein,MIR766
+n_424,gene/protein,MIR708
+n_425,gene/protein,SNAR-I
+n_426,gene/protein,MIR3622B
+n_427,gene/protein,MIR4467
+n_428,gene/protein,ND1
+n_429,gene/protein,ND2
+n_430,disease,tauopathy
+n_431,disease,dementia (disease)
+n_432,disease,Mendelian disease
+n_433,disease,inherited disease susceptibility
+n_434,disease,autosomal dominant disease
+n_435,disease,inherited neurodegenerative disorder
+n_436,disease,genetic dementia
+n_437,disease,inherited prion disease
+n_438,exposure,Aluminum
+n_439,exposure,Cadmium
+n_440,exposure,Metals
+n_441,exposure,Nitrogen Oxides
+n_442,exposure,Ozone
+n_443,exposure,Particulate Matter
+n_444,exposure,Pesticides
+n_445,exposure,Silicon Dioxide
+n_446,pathway,Neurodegenerative Diseases
+n_447,gene/protein,BCL2L11
+n_448,gene/protein,CDK5
+n_449,gene/protein,FOXO3
+n_450,gene/protein,GOLGA2
+n_451,gene/protein,FASLG
+n_452,gene/protein,JUN
+n_453,gene/protein,LMNA
+n_454,gene/protein,LMNB1
+n_455,gene/protein,PRDX1
+n_456,gene/protein,PRDX2
+n_457,gene/protein,YWHAE
+n_458,gene/protein,CAPN1
+n_459,gene/protein,CAPN2
+n_460,gene/protein,CAPNS1
+n_461,gene/protein,CAST
+n_462,gene/protein,CAPNS2
+n_463,gene/protein,CDK5R1
+n_464,gene/protein,CDC25A
+n_465,gene/protein,CDC25B
+n_466,gene/protein,CDC25C
+n_467,Phenotypes,Memory loss for recent events
+n_468,Phenotypes,Difficulty learning new information
+n_469,Phenotypes,Subtle language problems
+n_470,Phenotypes,Significant memory loss
+n_471,Phenotypes,Confusion in daily activities
+n_472,Phenotypes,Behavioral changes
+n_473,Phenotypes,Severe memory loss
+n_474,Phenotypes,Complete dependence on others
+n_475,Phenotypes,Physical symptoms
+n_476,Evidence,High quality (Level A)
+n_477,Evidence,Moderate quality (Level B)
+n_478,Duration,1 month
+n_479,Population,increased if tolerated and necessary
+n_480,Effectiveness,Significant improvement in cognitive scores and daily activities
+n_481,Population,Mild to Severe Alzheimer's Disease (MMSE 0-26)
+n_482,Duration,4 week
+n_483,Duration,least 4 week
+n_484,Dosage,Galantamine 16-24mg/day
+n_485,Population,Mild to moderate Alzheimer's Disease (MMSE 0-26)
+n_486,Duration,1 week
+n_487,Population,moderate hepatic impairment
+n_488,Dosage,Rivastigmine 1.5-6.0 twice daily
+n_489,Duration,6 week
+n_490,Dosage,Rivastigmine Patch 13.3mg/day
+n_491,Dosage,Memantine 5-20 mg/day
+n_492,Effectiveness,Significant improvement in cognitive decline and behavioral symptoms
+n_493,Population,Moderate to severe Alzheimer's Disease (MMSE < 20)
+n_494,Dosage,Memantine 10-20 mg/day
+n_495,Population,eGFR is 30–49 mL/minute/1.73 m²
+n_496,Dosage,Memantine 10 mg/day
+n_497,Population,eGFR is 5 - 29 mL/minute/1.73 m²
+n_498,Dosage,Haloperidol 0.5-5 mg/day
+n_499,Duration,no more than 6 weeks
+n_500,SideEffect,Nausea
+n_501,SideEffect,Vomiting
+n_502,SideEffect,Anorexia
+n_503,SideEffect,Diarrhea
+n_504,SideEffect,Muscle cramps
+n_505,SideEffect,Syncope
+n_506,SideEffect,Headache
+n_507,SideEffect,Dizziness
+n_508,SideEffect,Abnormal dreams
+n_509,SideEffect,Hallucinations
+n_510,SideEffect,Agitation
+n_511,SideEffect,Aggression
+n_512,SideEffect,Urinary incontinence
+n_513,SideEffect,Rash
+n_514,SideEffect,Pruritus
+n_515,SideEffect,Extrapyramidal symptoms
+n_516,SideEffect,Sinoatrial block
+n_517,SideEffect,Atrioventricular (AV) block
+n_518,SideEffect,Liver dysfunction (including hepatitis)
+n_519,SideEffect,Neuroleptic malignant syndrome (NMS)
+n_520,SideEffect,Fatigue
+n_521,SideEffect,Insomnia
+n_522,SideEffect,Abdominal pain
+n_523,SideEffect,Diarrhoea
+n_524,SideEffect,Dyspepsia
+n_525,SideEffect,Decreased appetite
+n_526,SideEffect,Weight loss 
+n_527,SideEffect,Bradycardia
+n_528,SideEffect,Hypertension
+n_529,SideEffect,Depression
+n_530,SideEffect,Tremor
+n_531,SideEffect,Malaise
+n_532,SideEffect,Muscle spasm
+n_533,SideEffect,Retching
+n_534,SideEffect,Dehydration
+n_535,SideEffect,Hypotension
+n_536,SideEffect,Flushing
+n_537,SideEffect,Palpitation
+n_538,SideEffect,Arrhythmias
+n_539,SideEffect,First-degree AV block
+n_540,SideEffect,Taste disturbance
+n_541,SideEffect,Paraesthesia
+n_542,SideEffect,Seizures
+n_543,SideEffect,Hypersomnia
+n_544,SideEffect,Muscular weakness
+n_545,SideEffect,Blurred vision
+n_546,SideEffect,Tinnitus
+n_547,SideEffect,Sweating
+n_548,SideEffect,Exacerbation of Parkinson's disease
+n_549,SideEffect,Hepatitis
+n_550,SideEffect,Serious skin reactions
+n_551,SideEffect,Weight loss
+n_552,SideEffect,Drowsiness
+n_553,SideEffect,Gait abnormalities
+n_554,SideEffect,Fall
+n_555,SideEffect,Anxiety
+n_556,SideEffect,Confusion
+n_557,SideEffect,Parkinsonism
+n_558,SideEffect,Skin reactions
+n_559,SideEffect,Urinary tract infection
+n_560,SideEffect,Atrial fibrillation
+n_561,SideEffect,AV block
+n_562,SideEffect,Gastric and duodenal ulceration
+n_563,SideEffect,Pancreatitis
+n_564,SideEffect,Angina
+n_565,SideEffect,Restlessness
+n_566,SideEffect,Sick sinus syndrome
+n_567,SideEffect,Tachycardia
+n_568,SideEffect,Constipation
+n_569,SideEffect,Dyspnoea
+n_570,SideEffect,Impaired balance
+n_571,SideEffect,Thrombosis
+n_572,SideEffect,Heart failure
+n_573,SideEffect,Abnormal gait
+n_574,SideEffect,Psychosis
+n_575,SideEffect,Suicidal ideation
+n_576,SideEffect,Weight gain
+n_577,SideEffect,Dyslipidaemia
+n_578,SideEffect,Hyperprolactinaemia
+n_579,SideEffect,Sedation
+n_580,SideEffect,Sleep apnoea syndrome
+n_581,SideEffect,Anticholinergic effects
+n_582,SideEffect,Postural hypotension
+n_583,SideEffect,Reduced seizure threshold
+n_584,SideEffect,Impaired glucose tolerance
+n_585,SideEffect,"Cardiomyopathy, myocarditis, and cutaneous vasculitis"
+n_586,SideEffect,QT interval prolongation
+n_587,SideEffect,Stroke risk
+n_588,SideEffect,Venous thromboembolism (VTE)
+n_589,SideEffect,Pneumonia
+n_590,SideEffect,Neutropenia
+n_591,SideEffect,Abnormal liver function tests (LFTs)
+n_592,SideEffect,Photosensitivity
+n_593,SideEffect,Skin and subcutaneous tissue disorders
+n_594,SideEffect,Diplopia
+n_595,SideEffect,Misuse and abuse
+n_596,SideEffect,Restless legs syndrome
+n_597,Effectiveness,Improves memory attention and social interaction
+n_598,Effectiveness,Helps maintain long-term memory improves mood
+n_599,Effectiveness,Reduces anxiety and agitation improves daily functioning
+n_600,Effectiveness,Improves mood reduces agitation provides positive emotions
+n_601,Phenotypes,Severe cardiac arrhythmia
+n_602,Phenotypes,Pregnancy and breastfeeding.
+n_603,Phenotypes,"Known hypersensitivity to donepezil hydrochloride, piperidine derivatives, or any excipients used in the formulation"
+n_604,Phenotypes,"History of bradycardia, heart block, recurrent unexplained syncope."
+n_605,Phenotypes,Concurrent treatment with drugs that reduce heart rate.
+n_606,Phenotypes,Sick sinus syndrome or other supraventricular conduction abnormalities.
+n_607,Phenotypes,Susceptibility to peptic ulcers including concurrent nonsteroidal anti inflammatory (NSAID) use.
+n_608,Phenotypes,Asthma and chronic obstructive pulmonary disease (COPD).
+n_609,Phenotypes,Hepatic impairment. 
+n_610,Phenotypes,Concomitant antipsychotic treatment — increased risk of neuroleptic malignant syndrome (NMS).
+n_611,Phenotypes,Hypersensitivity to galantamine or to any of the excipients.
+n_612,Phenotypes,Severe renal impairment (estimated glomerular filtration rate [eGFR] less than 9 mL/minute/1.73 m²).
+n_613,Phenotypes,Severe hepatic impairment (Child-Pugh score greater than 9).
+n_614,Phenotypes,People who have both significant renal and hepatic dysfunction.
+n_615,Phenotypes,Urinary outflow obstruction.
+n_616,Phenotypes,Gastrointestinal obstruction.
+n_617,Phenotypes,During recovery from bladder or gastrointestinal surgery.
+n_618,Phenotypes,Renal and hepatic impairment.
+n_619,Phenotypes,"Cardiac disease or in those who use medicinal products that significantly reduce heart rate concomitantly, such as digoxin and beta blockers."
+n_620,Phenotypes,QTc interval prolongation or taking drugs that prolong the QTc interval.
+n_621,Phenotypes,Electrolyte disturbances (such as hyperkalaemia or hypokalaemia).
+n_622,Phenotypes,"Susceptibility to peptic ulcers, including concomitant use of NSAIDs."
+n_623,Phenotypes,"History of severe asthma, COPD, or pulmonary infection."
+n_624,Phenotypes,History of seizures.
+n_625,Phenotypes,"Known hypersensitivity to rivastigmine, other carbamate derivatives, or to any of the excipients used in the formulation."
+n_626,Phenotypes,Previous history of application site reactions suggestive of allergic contact dermatitis with the rivastigmine patch.
+n_627,Phenotypes,Hepatic impairment.
+n_628,Phenotypes,Renal impairment.
+n_629,Phenotypes,Gastric or duodenal ulcers (or susceptibility to ulcers).
+n_630,Phenotypes,Sick sinus syndrome or conduction abnormalities.
+n_631,Phenotypes,History of asthma or COPD.
+n_632,Phenotypes,Bladder outflow obstruction.
+n_633,Phenotypes,"Pre-existing, or a family history of, QT interval prolongation."
+n_634,Phenotypes,Higher risk of developing torsade de pointes
+n_635,Phenotypes,"Hypersensitivity to the active substance or to any of the excipients, including people with rare hereditary problems of galactose intolerance, the Lapp lactase deficiency, or glucose-galactose malabsorption."
+n_636,Phenotypes,Severe hepatic impairment.
+n_637,Phenotypes,Severe renal impairment — memantine hydrochloride should be avoided if the estimated glomerular filtration rate (eGFR) is less than 5 mL/minute/1.73 m².
+n_638,Phenotypes,History of convulsions or predisposing factors for epilepsy. 
+n_639,Phenotypes,Severe renal impairment
+n_640,Phenotypes,"Central nervous system depression, comatose states."
+n_641,Phenotypes,"Congenital long QT syndrome, history of Torsade de Pointes, QTc interval"
+n_642,Phenotypes,"prolongation, concurrent use with drugs that prolong the QT interval, history of"
+n_643,Phenotypes,"ventricular arrhythmias, recent myocardial infarction, uncompensated heart failure."
+n_644,Phenotypes,Uncorrected hypokalaemia.
+n_645,Phenotypes,Progressive supranuclear palsy.
+n_646,Phenotypes,Dementia with Lewy bodies.
+n_647,Phenotypes,Parkinson's disease.
+n_648,Phenotypes,Blood dyscrasias.
+n_649,Phenotypes,"Cardiovascular disease — an ECG may be required, particularly if physical examination identifies cardiovascular risk factors, personal history of cardiovascular disease."
+n_650,Phenotypes,Conditions predisposing to seizures.
+n_651,Phenotypes,Depression.
+n_652,Phenotypes,Diabetes (may raise blood glucose).
+n_653,Phenotypes,Epilepsy.
+n_654,Phenotypes,History of jaundice.
+n_655,Phenotypes,Myasthenia gravis.
+n_656,Phenotypes,Parkinsonʼs disease (may be exacerbated).
+n_657,Phenotypes,Photosensitization (may occur with higher dosages).
+n_658,Phenotypes,Prostatic hypertrophy.
+n_659,Phenotypes,Severe respiratory disease.
+n_660,Phenotypes,Susceptibility to angle-closure glaucoma
+n_661,Phenotypes,Bradycardia.
+n_662,Phenotypes,Uncorrected electrolyte disturbances.
+n_663,Phenotypes,Family history of QTc-interval prolongation.
+n_664,Phenotypes,History of heavy alcohol exposure.
+n_665,Phenotypes,Hyperthyroidism.
+n_666,Phenotypes,Hypotension (including orthostatic hypotension).
+n_667,Phenotypes,Prolactin-dependent tumours.
+n_668,Phenotypes,Prolactinaemia.
+n_669,Phenotypes,Risk factors for stroke.
+n_670,Phenotypes,Hypersensitivity to risperidone or to any of the excipients.
+n_671,Phenotypes,Acute porphyrias.
+n_672,Phenotypes,Cataract surgery (risk of intra-operative floppy iris syndrome).
+n_673,Phenotypes,Dehydration.
+n_674,Monitoring,Weight monthly
+n_675,Stage,初期
+n_676,Duration,4-6 week
+n_677,Dosage,Donepezil 5-10 mg/day
+n_678,Dosage,Rivastigmine 1.5-6mg/day*2
+n_679,Treatment,Galantamine  Treatment (NICE)
+n_680,Dosage,Galantamine 4mg/day*2
+n_681,Dosage,Memantine 5-20mg/day
+n_682,SideEffect,decreased appetite
+n_683,SideEffect,Depressed
+n_684,SideEffect,Weight lose
+n_685,SideEffect,Hallucination
+n_686,SideEffect,Myalgia
+n_687,Phenotypes,"Difficulties with instrumental activities of daily living (e.g. housework, managing money)."
+n_688,Phenotypes,"Difficulties with basic activities of daily living (e.g. feeding,dressing)."
+n_689,Phenotypes,Fully dependent
+n_690,Evidence,Moderate to Low quality
+n_691,Duration,12-24 week
+n_692,Population,Mild to Severe Alzheimer's Disease (MMSE 0-26) (ADAS-Cog)
+n_693,Duration,26 week
+n_694,Dosage,Rivastigmine
+n_695,Duration,Rivastigmine
+n_696,Population,Rivastigmine
+n_697,Treatment,Rivastigmine
+n_698,SideEffect,Rivastigmine
+n_699,Therapy,Rivastigmine
+n_700,Effectiveness,Rivastigmine
+n_701,Evidence,Rivastigmine
+n_702,Step,Rivastigmine
+n_703,Phenotypes,Rivastigmine
+n_704,THERAPY_EFFECTIVENESS,Rivastigmine
+n_705,Population,Mild to moderate Alzheimer's Disease (MMSE 10-26)
+n_706,Dosage,Memantine 20 mg/day
+n_707,Dosage,Memantine 28 mg/day
+n_708,Evidence,Low quality (Level C)
+n_709,Effectiveness,attenuates worsening of physical function and activities of daily living
+n_710,Effectiveness,"improving BPSD, including anxiety"
+n_711,Treatment,Suvorexant
+n_712,Treatment,Donepezil Treatment (Alzheimer Society of B.C.)
+n_713,Treatment,Memantine Treatment (Alzheimer Society of B.C.)
+n_714,Phenotypes,memory loss 
+n_715,Phenotypes,cognitive ability loss
+n_716,Phenotypes,Difficultly coming up with the right word or name.
+n_717,Phenotypes,Difficultly remembering names when introduced to new people.
+n_718,Phenotypes,Having difficulty performing tasks in social or work settings.
+n_719,Phenotypes,Forgetting material that was just read.
+n_720,Phenotypes,Losing or misplacing a valuable object.
+n_721,Phenotypes,Experiencing increased trouble with planning or organizing.
+n_722,Phenotypes,Being forgetful of events or personal history.
+n_723,Phenotypes,"Feeling moody or withdrawn, especially in socially or mentally challenging situations."
+n_724,Phenotypes,"Being unable to recall information about themselves like their address or telephone number, and the high school or college they attended."
+n_725,Phenotypes,Experiencing confusion about where they are or what day it is.
+n_726,Phenotypes,Requiring help choosing proper clothing for the season or the occasion.
+n_727,Phenotypes,Having trouble controlling their bladder and bowels.
+n_728,Phenotypes,"Experiencing changes in sleep patterns, such as sleeping during the day and becoming restless at night."
+n_729,Phenotypes,Showing an increased tendency to wander and become lost.
+n_730,Phenotypes,"Demonstrating personality and behavioral changes, including suspiciousness and delusions or compulsive, repetitive behavior like hand-wringing or tissue shredding."
+n_731,Phenotypes,Require around-the-clock assistance with daily personal care.
+n_732,Phenotypes,Lose awareness of recent experiences as well as of their surroundings.
+n_733,Phenotypes,"Experience changes in physical abilities, including walking, sitting and, eventually, swallowing"
+n_734,Phenotypes,Have difficulty communicating.
+n_735,Phenotypes,"Become vulnerable to infections, especially pneumonia."
+n_736,Population, MCI to Mild Alzheimer's Disease
+n_737,Population,Mild to severe Alzheimer's Disease
+n_738,Population,Mild to moderate Alzheimer's Disease
+n_739,Population,Moderate to severe Alzheimer's Disease
+n_740,Population,Agitation associated with dementia due to Alzheimer's disease
+n_741,Population,Insomnia
+n_742,SideEffect,ARIA
+n_743,SideEffect,headache
+n_744,SideEffect,Infusion-related reactions
+n_745,SideEffect,Loss of appetite
+n_746,SideEffect,Increased frequency of bowel movements
+n_747,SideEffect,Sleepiness
+n_748,SideEffect,Common cold symptoms
+n_749,SideEffect,Restlessness or feeling like  need to move
+n_750,SideEffect,Impaired alertness and motor coordination
+n_751,SideEffect,Worsening of depression or suicidal thinking
+n_752,SideEffect,Complex sleep behaviors
+n_753,SideEffect,Sleep paralysis
+n_754,SideEffect,Compromised respiratory function
+n_755,Therapy,Maintain regular times for meals and for going to bed and getting up
+n_756,Therapy,Seek morning sunlight exposure
+n_757,Therapy,"Encourage regular daily exercise, but no later than four hours before bedtime"
+n_758,Therapy,"Avoid alcohol, caffeine and nicotine"
+n_759,Therapy,Treat any pain
+n_760,Therapy,"If the person is taking a cholinesterase inhibitor (tacrine, donepezil, rivastigmine or galantamine), avoid giving the medicine before bed"
+n_761,Therapy,Make sure the bedroom temperature is comfortable
+n_762,Therapy,Provide nightlights and security objects
+n_763,Therapy,"If the person awakens, discourage staying in bed while awake; use the bed only for sleep"
+n_764,Therapy,Discourage watching television during periods of wakefulness
+n_765,Symptom,Memory loss for recent events
+n_766,Symptom,Difficulty learning new information
+n_767,Symptom,Subtle language problems
+n_768,Symptom,Significant memory loss
+n_769,Symptom,Confusion in daily activities
+n_770,Symptom,Behavioral changes
+n_771,Symptom,Severe memory loss
+n_772,Symptom,Complete dependence on others
+n_773,Symptom,Physical symptoms
+n_774,Effectiveness,small significant benefit on cognitive function and ADL
+n_775,Duration,Review every 6 months
+n_776,Effectiveness,significant effect on ADL function at 24 weeks
+n_777,Duration,2 weeks
+n_778,SideEffect,Gastrointestinal
+n_779,SideEffect,Falls
+n_780,Condition,Severe renal impairment
+n_781,Monitoring,Cognitive function (MMSE) every 6 months
+s_0,source,MONDO
+s_1,source,MONDO_grouped
+s_2,source,REACTOME
+s_3,source,Guideline
+s_4,source,DrugBank
+s_5,source,HPO
+s_6,source,NCBI
+s_7,source,CTD

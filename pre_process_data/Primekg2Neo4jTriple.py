@@ -29,13 +29,13 @@ def create_nodes_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     # Create nodes dataframe from x and y columns
     x_nodes = df[['x_type', 'x_name']].rename(columns={
-        'x_type': 'type', 
-        'x_name': 'name'
+        'x_type': 'TYPE', 
+        'x_name': 'NAME'
     })
     
     y_nodes = df[['y_type', 'y_name']].rename(columns={
-        'y_type': 'type',
-        'y_name': 'name'
+        'y_type': 'TYPE',
+        'y_name': 'NAME'
     })
     
     # Combine and process nodes
@@ -57,12 +57,12 @@ def create_source_nodes(df: pd.DataFrame) -> pd.DataFrame:
     """
     source_nodes = pd.concat([
         pd.DataFrame({
-            'type': 'source',
-            'name': df['x_source'].dropna().unique()
+            'TYPE': 'source',
+            'NAME': df['x_source'].dropna().unique()
         }),
         pd.DataFrame({
-            'type': 'source', 
-            'name': df['y_source'].dropna().unique()
+            'TYPE': 'source', 
+            'NAME': df['y_source'].dropna().unique()
         })
     ]).drop_duplicates()
     
@@ -89,7 +89,11 @@ def process_nodes(nodes_df: pd.DataFrame, source_nodes: pd.DataFrame) -> pd.Data
     nodes_df = (nodes_df
                 .reset_index(drop=True)
                 .reset_index()
-                .rename(columns={'index': 'nodeID'}))
+                .rename(columns={'index': 'NODE_ID'}))
+    
+    # Drop level_0 column if it exists
+    if 'level_0' in nodes_df.columns:
+        nodes_df = nodes_df.drop('level_0', axis=1)
     
     return nodes_df
 
@@ -108,22 +112,22 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, source_nodes:
     # Join with x nodes
     df = df.merge(nodes_df, 
                  left_on=['x_type', 'x_name'],
-                 right_on=['type', 'name'],
+                 right_on=['TYPE', 'NAME'],
                  how='left')
-    df = df.rename(columns={'nodeID': ':START_ID'})
+    df = df.rename(columns={'NODE_ID': 'START_ID'})
 
     # Join with y nodes
     df = df.merge(nodes_df,
                  left_on=['y_type', 'y_name'], 
-                 right_on=['type', 'name'],
+                 right_on=['TYPE', 'NAME'],
                  how='left',
                  suffixes=('_x', '_y'))
-    df = df.rename(columns={'nodeID': ':END_ID'})
+    df = df.rename(columns={'NODE_ID': 'END_ID'})
 
     # Join with source nodes for x_source
     df = df.merge(source_nodes,
                  left_on='x_source',
-                 right_on='name',
+                 right_on='NAME',
                  how='left',
                  suffixes=('', '_source'))
     df = df.rename(columns={'index': 'source_id_x'})
@@ -131,7 +135,7 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, source_nodes:
     # Join with source nodes for y_source
     df = df.merge(source_nodes,
                  left_on='y_source', 
-                 right_on='name',
+                 right_on='NAME',
                  how='left',
                  suffixes=('', '_source_y'))
     df = df.rename(columns={'index': 'source_id_y'})
@@ -149,9 +153,9 @@ def create_relations_dataframe(df: pd.DataFrame) -> pd.DataFrame:
         pd.DataFrame: Final relations dataframe
     """
     return pd.concat([
-        df[[':START_ID', ':END_ID', 'relation']].dropna().rename(columns={'relation': ':TYPE'}),
-        df[[':START_ID', 'source_id_x']].dropna().rename(columns={'source_id_x': ':END_ID'}).assign(**{':TYPE': 'SOURCE'}),
-        df[[':END_ID', 'source_id_y']].dropna().rename(columns={':END_ID':':START_ID', 'source_id_y': ':END_ID'}).assign(**{':TYPE': 'SOURCE'})
+        df[['START_ID', 'END_ID', 'relation']].dropna().rename(columns={'relation': 'TYPE'}),
+        df[['START_ID', 'source_id_x']].dropna().rename(columns={'source_id_x': 'END_ID'}).assign(TYPE='SOURCE'),
+        df[['END_ID', 'source_id_y']].dropna().rename(columns={'END_ID': 'START_ID', 'source_id_y': 'END_ID'}).assign(TYPE='SOURCE')
     ], axis=0)
 
 def main():
@@ -169,8 +173,8 @@ def main():
     relations_df = create_relations_dataframe(df)
     
     # Save to CSV
-    nodes_df.to_csv('nodes_test.csv', index=False)
-    relations_df.to_csv('relations_test.csv', index=False)
+    nodes_df.to_csv('nodes.csv', index=False)
+    relations_df.to_csv('relationships.csv', index=False)
 
 if __name__ == "__main__":
     main()
