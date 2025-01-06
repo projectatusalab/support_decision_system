@@ -796,16 +796,9 @@ source,HPO,s_13
 source,DrugBank,s_14
 source,NCBI,s_15
 source,CTD,s_16
-source,NICE,s_17
-source,EMC,s_18
-source,NCKU,s_19
-source,MaHTAS,s_20
-source,Cochrane Library,s_21
-source,AAFP,s_22
-source,JAMA,s_23
-source,VGHTC,s_24
-source,Cocharne Library,s_25
-source,IJN,s_26
-source,AWMF,s_27
-source,pubmed,s_28
-source,CDPC,s_29
+source,EMC,s_17
+source,Cochrane Library,s_18
+source,JAMA,s_19
+source,Cocharne Library,s_20
+source,IJN,s_21
+source,pubmed,s_22

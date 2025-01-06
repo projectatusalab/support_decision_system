@@ -11,21 +11,20 @@ def main():
     # 添加數據來源設置
     st.sidebar.title("數據來源設置")
     
-    # 選擇數據來源
+    # 添加環境選擇
+    environment = st.sidebar.radio(
+        "選擇數據環境",
+        ["開發環境 (Development)", "生產環境 (Production)"],
+        help="選擇要使用的數據環境：生產環境用於正式使用，開發環境用於測試"
+    )
+    
+    # 轉換環境選擇為代碼值
+    env_code = 'prod' if environment == "生產環境 (Production)" else 'dev'
+    
     data_source = st.sidebar.radio(
         "選擇知識圖譜數據來源",
         ["使用預設數據", "上傳自定義數據"]
     )
-    
-    # 如果使用預設數據，才顯示環境選擇
-    env_code = 'dev'  # 預設使用開發環境
-    if data_source == "使用預設數據":
-        environment = st.sidebar.radio(
-            "選擇數據環境",
-            ["開發環境 (Development)", "生產環境 (Production)"],
-            help="選擇要使用的數據環境：生產環境用於正式使用，開發環境用於測試"
-        )
-        env_code = 'prod' if environment == "生產環境 (Production)" else 'dev'
     
     nodes_file = None
     relationships_file = None
@@ -69,9 +68,6 @@ def main():
                 "4. 關係文件包含 subject、predicate 和 object 列")
         st.stop()
     
-    # Debug information
-    st.write("Debug - Relationship columns:", relationships_df.columns.tolist())
-    
     # 顯示數據統計資訊
     st.sidebar.markdown("---")
     st.sidebar.subheader("數據統計")
@@ -85,28 +81,13 @@ def main():
     function_option = st.sidebar.selectbox(
         "選擇功能",
         ["1. 快速診療指引",
-         "2. 個案評估與治療",
-         "3. 用藥安全查詢",
-         "4. 治療建議",
-         "5. 臨床監測追蹤",
-         "6. 治療方案比較",
-         "7. 知識圖譜Schema"]
+         "2. 知識圖譜Schema"]
     )
     
     try:
         if "1. 快速診療指引" in function_option:
             tabs.quick_guide(data)
-        elif "2. 個案評估與治療" in function_option:
-            tabs.case_assessment(data)
-        elif "3. 用藥安全查詢" in function_option:
-            tabs.drug_safety(data)
-        elif "4. 治療建議" in function_option:
-            tabs.treatment_recommendations(data)
-        elif "5. 臨床監測追蹤" in function_option:
-            tabs.clinical_monitoring(data)
-        elif "6. 治療方案比較" in function_option:
-            tabs.treatment_comparison(data)
-        elif "7. 知識圖譜Schema" in function_option:
+        elif "2. 知識圖譜Schema" in function_option:
             tabs.schema_visualization(data)
     except Exception as e:
         st.error(f"渲染頁面時發生錯誤: {str(e)}")

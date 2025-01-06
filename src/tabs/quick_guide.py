@@ -1,31 +1,6 @@
 import streamlit as st
 import pandas as pd
-from utils.data_loader import get_node_by_id, get_connected_nodes, get_nodes_by_type, get_relationships_by_type
-from urllib.parse import urlparse
-
-def get_source_organization(url):
-    """根據URL判斷來源組織/國家"""
-    domain = urlparse(url).netloc.lower()
-    
-    source_mapping = {
-        'nice.org.uk': 'NICE (英國)',
-        'alz.org': 'Alzheimer\'s Association (美國)',
-        'nhmrc.gov.au': 'NHMRC (澳洲)',
-        'neurology-jp.org': 'Japanese Society of Neurology (日本)',
-        'dgppn.de': 'DGPPN (德國)',
-        'vghtc.gov.tw': 'VGHTC (台灣)',
-        'health.tainan.gov.tw': 'Tainan City (台灣)',
-        'medicines.org.uk': 'MHRA (英國)',
-        'pubmed.ncbi.nlm.nih.gov': 'PubMed (美國)',
-        'academic.oup.com': 'Oxford Academic (英國)',
-        'cochranelibrary.com': 'Cochrane Library (國際)',
-        'alzheimer.ca': 'Alzheimer Society (加拿大)'
-    }
-    
-    for key, value in source_mapping.items():
-        if key in domain:
-            return value
-    return '其他來源'
+from utils.data_loader import get_node_by_id
 
 def is_treatment_recommended(treatment_id, stage_id, relationships_df):
     """判斷治療方案是否建議用於特定階段"""
@@ -55,6 +30,27 @@ def render(data):
     
     nodes_df, relationships_df = data
     
+    # 檢查數據是否正確載入
+    if nodes_df is None or relationships_df is None:
+        st.error("無法載入數據，請確認數據來源設置是否正確")
+        return
+    
+    # 檢查必要的節點類型是否存在
+    required_node_types = {'Treatment', 'Stage'}  # Drug is optional
+    existing_types = set(nodes_df['type'].unique())
+    missing_types = required_node_types - existing_types
+    if missing_types:
+        st.error(f"數據缺少必要的節點類型: {', '.join(missing_types)}")
+        return
+    
+    # 檢查必要的關係類型是否存在
+    required_relations = {'STAGE_TREATMENT'}  # USES_DRUG and HAS_EVIDENCE_LEVEL are optional
+    existing_relations = set(relationships_df['predicate'].unique())
+    missing_relations = required_relations - existing_relations
+    if missing_relations:
+        st.error(f"數據缺少必要的關係類型: {', '.join(missing_relations)}")
+        return
+    
     # 初始化 session state
     if 'mmse_score' not in st.session_state:
         st.session_state.mmse_score = 20
@@ -79,57 +75,164 @@ def render(data):
         current_stage = "Severe (MMSE <10)"
         st.error("📋 重度階段")
     
+    # 檢查階段是否存在於數據中
+    stage_exists = len(nodes_df[nodes_df['name'] == current_stage]) > 0
+    if not stage_exists:
+        st.error(f"在數據中找不到對應的疾病階段: {current_stage}")
+        return
+        
     st.write("### 治療建議")
     
-    # 獲取所有治療方案
+    # 獲取所有治療方案（包括 Therapy 和 Treatment）
+    therapy_nodes = nodes_df[nodes_df['type'] == 'Therapy']
     treatment_nodes = nodes_df[nodes_df['type'] == 'Treatment']
     
+    if len(therapy_nodes) == 0 and len(treatment_nodes) == 0:
+        st.info("目前沒有可用的治療方案數據")
+        return
+        
     # 創建治療方案數據表
     treatments_data = []
     
     # 獲取當前階段的節點ID
     stage_id = nodes_df[nodes_df['name'] == current_stage]['node_id'].iloc[0]
     
-    # 添加所有治療方案數據
+    # 處理 Therapy 節點
+    for _, therapy in therapy_nodes.iterrows():
+        therapy_id = therapy['node_id']
+        
+        # 獲取藥物資訊
+        drug_relations = relationships_df[
+            (relationships_df['subject'] == therapy_id) &
+            (relationships_df['predicate'] == 'DRUG_TREATMENT')
+        ] if 'DRUG_TREATMENT' in existing_relations else pd.DataFrame()
+        
+        drugs = []
+        for _, rel in drug_relations.iterrows():
+            drug_name, _ = get_node_by_id(nodes_df, rel['object'])
+            if drug_name:
+                drugs.append(drug_name)
+        drugs_text = ', '.join(drugs) if drugs else ''
+        
+        # 獲取證據等級
+        evidence = ''
+        evidence_relations = relationships_df[
+            (relationships_df['subject'] == therapy_id) &
+            (relationships_df['predicate'] == 'THERAPY_EVIDENCE_LEVEL')
+        ] if 'THERAPY_EVIDENCE_LEVEL' in existing_relations else pd.DataFrame()
+        
+        if not evidence_relations.empty:
+            evidence_node_id = evidence_relations.iloc[0]['object']
+            evidence_node = nodes_df[nodes_df['node_id'] == evidence_node_id]
+            if not evidence_node.empty:
+                evidence = evidence_node.iloc[0]['name']
+        
+        # 獲取來源資訊
+        source_relations = relationships_df[
+            (relationships_df['subject'] == therapy_id) &
+            (relationships_df['predicate'] == 'SOURCE')
+        ]
+        source = ''
+        source_type = ''
+        update_date = pd.Timestamp.now()
+        
+        if not source_relations.empty:
+            source_node_id = source_relations.iloc[0]['object']
+            source_node = nodes_df[nodes_df['node_id'] == source_node_id]
+            if not source_node.empty:
+                node_data = source_node.iloc[0]
+                source = node_data.get('source_secondary', '')  # 來源單位名稱
+                source_type = node_data.get('source_primary', '')  # 來源類型
+                
+                # 嘗試從來源節點獲取更新日期
+                try:
+                    source_date = node_data.get('source_date')
+                    if source_date and pd.notna(source_date):
+                        update_date = pd.to_datetime(source_date)
+                except:
+                    pass
+        
+        treatments_data.append({
+            '建議': True,  # Therapy 總是建議
+            '類型': 'Therapy',  # 新增類型欄位
+            '治療方案': therapy['name'],
+            '使用藥物': drugs_text,
+            '適用階段': 'All Stages',  # Therapy 適用於所有階段
+            '證據等級': evidence,
+            '來源單位': source,
+            '來源類型': source_type,
+            '更新日期': update_date.strftime('%Y-%m-%d')
+        })
+    
+    # 處理 Treatment 節點
     for _, treatment in treatment_nodes.iterrows():
         treatment_id = treatment['node_id']
         
         # 獲取藥物資訊
         drug_relations = relationships_df[
             (relationships_df['subject'] == treatment_id) &
-            (relationships_df['predicate'] == 'USES_DRUG')
-        ]
+            (relationships_df['predicate'] == 'DRUG_TREATMENT')
+        ] if 'DRUG_TREATMENT' in existing_relations else pd.DataFrame()
+        
         drugs = []
         for _, rel in drug_relations.iterrows():
             drug_name, _ = get_node_by_id(nodes_df, rel['object'])
             if drug_name:
                 drugs.append(drug_name)
-        drugs_text = ', '.join(drugs) if drugs else '無'
-        
-        # 獲取證據等級
-        evidence_relations = relationships_df[
-            (relationships_df['subject'] == treatment_id) &
-            (relationships_df['predicate'] == 'HAS_EVIDENCE_LEVEL')
-        ]
-        evidence = '無資料'
-        if not evidence_relations.empty:
-            evidence_name, _ = get_node_by_id(nodes_df, evidence_relations.iloc[0]['object'])
-            if evidence_name:
-                evidence = evidence_name
+        drugs_text = ', '.join(drugs) if drugs else ''
         
         # 獲取適用階段
         applicable_stages = get_applicable_stages(treatment_id, nodes_df, relationships_df)
         stages_text = ', '.join([stage.replace('(MMSE', '').replace(')', '') for stage in applicable_stages])
         
+        # 獲取證據等級
+        evidence = ''
+        evidence_relations = relationships_df[
+            (relationships_df['subject'] == treatment_id) &
+            (relationships_df['predicate'] == 'TREATMENT_EVIDENCE_LEVEL')
+        ] if 'TREATMENT_EVIDENCE_LEVEL' in existing_relations else pd.DataFrame()
+        
+        if not evidence_relations.empty:
+            evidence_node_id = evidence_relations.iloc[0]['object']
+            evidence_node = nodes_df[nodes_df['node_id'] == evidence_node_id]
+            if not evidence_node.empty:
+                evidence = evidence_node.iloc[0]['name']
+        
+        # 獲取來源資訊
+        source_relations = relationships_df[
+            (relationships_df['subject'] == treatment_id) &
+            (relationships_df['predicate'] == 'SOURCE')
+        ]
+        source = ''
+        source_type = ''
+        update_date = pd.Timestamp.now()
+        
+        if not source_relations.empty:
+            source_node_id = source_relations.iloc[0]['object']
+            source_node = nodes_df[nodes_df['node_id'] == source_node_id]
+            if not source_node.empty:
+                node_data = source_node.iloc[0]
+                source = node_data['name']  # 來源單位名稱
+                source_type = node_data.get('source_secondary', '')  # 來源類型
+                
+                # 嘗試從來源節點獲取更新日期
+                try:
+                    source_date = node_data.get('source_date')
+                    if source_date and pd.notna(source_date):
+                        update_date = pd.to_datetime(source_date)
+                except:
+                    pass
+        
         treatments_data.append({
             '建議': is_treatment_recommended(treatment_id, stage_id, relationships_df),
+            '類型': 'Treatment',  # 新增類型欄位
             '治療方案': treatment['name'],
             '使用藥物': drugs_text,
-            '適用階段': stages_text,
+            '適用階段': stages_text if stages_text else '',
             '證據等級': evidence,
-            '來源組織': 'Neo4j',  # 暫時使用固定值
-            '來源連結': '#',      # 暫時使用固定值
-            '更新日期': pd.Timestamp.now().strftime('%Y-%m-%d')  # 暫時使用當前日期
+            '來源單位': source,
+            '來源類型': source_type,
+            '更新日期': update_date.strftime('%Y-%m-%d')
         })
     
     if treatments_data:
@@ -137,7 +240,7 @@ def render(data):
         treatments_df = pd.DataFrame(treatments_data)
         
         # 過濾控制
-        col1, col2, col3 = st.columns([2, 1, 1])
+        col1, col2 = st.columns([2, 1])
         
         with col1:
             # 搜尋框
@@ -151,23 +254,10 @@ def render(data):
             # 過濾建議項目
             show_recommended = st.checkbox("只顯示建議項目", key="recommended_filter")
         
-        with col3:
-            # 國家/組織過濾
-            available_orgs = sorted(treatments_df['來源組織'].unique())
-            selected_orgs = st.multiselect(
-                "選擇來源國家/組織",
-                options=available_orgs,
-                default=available_orgs,
-                key="org_filter"
-            )
-        
         # 應用過濾器
         filtered_df = treatments_df[
-            (
-                (treatments_df['治療方案'].str.contains(search_term, case=False, na=False)) |
-                (treatments_df['使用藥物'].str.contains(search_term, case=False, na=False))
-            ) &
-            (treatments_df['來源組織'].isin(selected_orgs))
+            (treatments_df['治療方案'].str.contains(search_term, case=False, na=False)) |
+            (treatments_df['使用藥物'].str.contains(search_term, case=False, na=False))
         ]
         
         if show_recommended:
@@ -177,18 +267,14 @@ def render(data):
         st.caption(f"顯示 {len(filtered_df)} 筆結果 (共 {len(treatments_df)} 筆)")
         
         # 添加排序選項
-        sort_col, sort_order = st.columns([2, 1])
-        with sort_col:
-            sort_by = st.selectbox(
-                "排序依據",
-                options=['治療方案', '證據等級', '來源組織', '更新日期'],
-                key="sort_by"
-            )
-        with sort_order:
-            ascending = st.checkbox("升序排列", value=True, key="sort_order")
+        sort_by = st.selectbox(
+            "排序依據",
+            options=['類型', '治療方案', '證據等級', '來源單位', '來源類型', '更新日期'],
+            key="sort_by"
+        )
         
         # 應用排序
-        filtered_df = filtered_df.sort_values(by=sort_by, ascending=ascending)
+        filtered_df = filtered_df.sort_values(by=sort_by, ascending=True)
         
         # 顯示互動式表格
         st.dataframe(
@@ -199,6 +285,11 @@ def render(data):
                     help="✓ 表示當前階段建議的治療方案",
                     default=False,
                     disabled=True,
+                    width="small"
+                ),
+                "類型": st.column_config.TextColumn(
+                    "類型",
+                    help="治療方案的類型（Treatment 或 Therapy）",
                     width="small"
                 ),
                 "治療方案": st.column_config.TextColumn(
@@ -221,15 +312,15 @@ def render(data):
                     width="small",
                     help="治療方案的證據等級"
                 ),
-                "來源組織": st.column_config.TextColumn(
-                    "來源組織",
+                "來源單位": st.column_config.TextColumn(
+                    "來源單位",
                     width="medium",
-                    help="指引發布組織/國家"
+                    help="發布指引的單位名稱"
                 ),
-                "來源連結": st.column_config.LinkColumn(
-                    "來源連結",
+                "來源類型": st.column_config.TextColumn(
+                    "來源類型",
                     width="small",
-                    help="點擊查看原始來源"
+                    help="來源單位的類型"
                 ),
                 "更新日期": st.column_config.DateColumn(
                     "更新日期",
@@ -241,93 +332,5 @@ def render(data):
             hide_index=True,
             use_container_width=True
         )
-        
-        # 添加 Schema 資訊表格
-        st.write("### Schema 統計資訊")
-        
-        # 獲取所有關係類型的統計
-        schema_data = []
-        for _, rel in relationships_df.groupby(['predicate']).size().reset_index(name='關係數量').iterrows():
-            # 獲取當前關係類型的所有關係
-            current_relations = relationships_df[relationships_df['predicate'] == rel['predicate']]
-            
-            # 獲取起始和目標節點類型
-            start_types = set()
-            end_types = set()
-            for _, curr_rel in current_relations.iterrows():
-                _, start_type = get_node_by_id(nodes_df, curr_rel['subject'])
-                _, end_type = get_node_by_id(nodes_df, curr_rel['object'])
-                if start_type and end_type:
-                    start_types.add(start_type)
-                    end_types.add(end_type)
-            
-            for start_type in start_types:
-                for end_type in end_types:
-                    # 計算這種特定組合的關係數量
-                    specific_count = 0
-                    for _, curr_rel in current_relations.iterrows():
-                        start_node = nodes_df[nodes_df['node_id'] == curr_rel['subject']]
-                        end_node = nodes_df[nodes_df['node_id'] == curr_rel['object']]
-                        if not start_node.empty and not end_node.empty:
-                            if start_node.iloc[0]['type'] == start_type and end_node.iloc[0]['type'] == end_type:
-                                specific_count += 1
-                    
-                    schema_data.append({
-                        '來源節點類型': start_type,
-                        '關係類型': rel['predicate'],
-                        '目標節點類型': end_type,
-                        '關係數量': specific_count
-                    })
-        
-        # 創建DataFrame並顯示
-        if schema_data:
-            schema_df = pd.DataFrame(schema_data)
-            
-            # 添加排序選項
-            sort_col, sort_order = st.columns([2, 1])
-            with sort_col:
-                sort_by = st.selectbox(
-                    "排序依據",
-                    options=['來源節點類型', '關係類型', '目標節點類型', '關係數量'],
-                    key="schema_sort_by"
-                )
-            with sort_order:
-                ascending = st.checkbox("升序排列", value=True, key="schema_sort_order")
-            
-            # 應用排序
-            schema_df = schema_df.sort_values(by=sort_by, ascending=ascending)
-            
-            # 顯示表格
-            st.dataframe(
-                schema_df,
-                column_config={
-                    "來源節點類型": st.column_config.TextColumn(
-                        "來源節點類型",
-                        help="關係的起始節點類型"
-                    ),
-                    "關係類型": st.column_config.TextColumn(
-                        "關係類型",
-                        help="節點間的關係類型"
-                    ),
-                    "目標節點類型": st.column_config.TextColumn(
-                        "目標節點類型",
-                        help="關係的目標節點類型"
-                    ),
-                    "關係數量": st.column_config.NumberColumn(
-                        "關係數量",
-                        help="該類型關係的數量",
-                        format="%d"
-                    )
-                },
-                hide_index=True,
-                use_container_width=True
-            )
-            
-            # 顯示統計摘要
-            st.caption(
-                f"總共有 {len(nodes_df['type'].unique())} 種節點類型，"
-                f"{len(relationships_df['predicate'].unique())} 種關係類型，"
-                f"以及 {len(schema_df)} 種不同的關係組合。"
-            )
     else:
         st.info("暫無相關資料") 
