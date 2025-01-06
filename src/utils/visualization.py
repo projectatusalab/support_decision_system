@@ -1,6 +1,8 @@
 import pandas as pd
 import pyvis.network as net
 from .data_loader import get_node_by_id
+import os
+import tempfile
 
 # 定義節點類型的顏色映射
 COLOR_MAP = {
@@ -25,7 +27,8 @@ def create_schema_visualization(data):
         height='600px',
         width='100%',
         bgcolor='#ffffff',
-        font_color='black'
+        font_color='black',
+        directed=True
     )
     network.toggle_physics(True)
     network.toggle_drag_nodes(True)
@@ -33,14 +36,14 @@ def create_schema_visualization(data):
     # 添加節點類型
     added_node_types = set()
     for _, node in nodes_df.iterrows():
-        node_type = node['type']
+        node_type = node['type'].lower()  # 轉換為小寫以匹配顏色映射
         if node_type not in added_node_types:
             network.add_node(
                 node_type,
-                label=node_type,
+                label=node['type'],  # 保持原始大小寫顯示
                 color=COLOR_MAP.get(node_type, COLOR_MAP['other']),
                 size=30,
-                title=f"節點類型: {node_type}"
+                title=f"節點類型: {node['type']}"
             )
             added_node_types.add(node_type)
     
@@ -48,16 +51,19 @@ def create_schema_visualization(data):
     added_edges = set()
     for _, rel in relationships_df.iterrows():
         # 獲取起始和目標節點的類型
-        _, start_type = get_node_by_id(nodes_df, rel['START_ID'])
-        _, end_type = get_node_by_id(nodes_df, rel['END_ID'])
+        start_node = nodes_df[nodes_df['node_id'] == rel['subject']]
+        end_node = nodes_df[nodes_df['node_id'] == rel['object']]
         
-        if start_type and end_type:
-            edge_key = (start_type, rel['TYPE'], end_type)
+        if not start_node.empty and not end_node.empty:
+            start_type = start_node.iloc[0]['type'].lower()
+            end_type = end_node.iloc[0]['type'].lower()
+            edge_key = (start_type, rel['predicate'], end_type)
+            
             if edge_key not in added_edges:
                 network.add_edge(
                     start_type,
                     end_type,
-                    label=rel['TYPE'],
+                    label=rel['predicate'],
                     arrows='to',
                     color='#666666'
                 )
@@ -77,6 +83,19 @@ def create_schema_visualization(data):
                 "minVelocity": 0.1,
                 "solver": "forceAtlas2Based",
                 "timestep": 0.35
+            },
+            "edges": {
+                "smooth": {
+                    "type": "continuous",
+                    "forceDirection": "none"
+                }
+            },
+            "interaction": {
+                "hover": true,
+                "navigationButtons": true,
+                "keyboard": {
+                    "enabled": true
+                }
             }
         }
     ''')
@@ -97,67 +116,68 @@ def create_detail_visualization(data, center_node=None):
         height='600px',
         width='100%',
         bgcolor='#ffffff',
-        font_color='black'
+        font_color='black',
+        directed=True
     )
     network.toggle_physics(True)
     network.toggle_drag_nodes(True)
     
     # 如果沒有指定中心節點，使用第一個節點
     if center_node is None and not nodes_df.empty:
-        center_node = nodes_df.iloc[0]['nodeID:ID']
+        center_node = nodes_df.iloc[0]['node_id']
     
     if center_node is None:
         return network
     
     # 獲取與中心節點相關的所有關係
     center_relations = relationships_df[
-        (relationships_df['START_ID'] == center_node) |
-        (relationships_df['END_ID'] == center_node)
+        (relationships_df['subject'] == center_node) |
+        (relationships_df['object'] == center_node)
     ]
     
     # 添加節點
     added_nodes = set()
     
     # 添加中心節點
-    center_node_data = nodes_df[nodes_df['nodeID:ID'] == center_node].iloc[0]
-    center_node_type = center_node_data['type']
+    center_node_data = nodes_df[nodes_df['node_id'] == center_node].iloc[0]
+    center_node_type = center_node_data['type'].lower()
     network.add_node(
         center_node,
         label=center_node_data['name'],
         color=COLOR_MAP.get(center_node_type, COLOR_MAP['other']),
         size=30,
-        title=f"類型: {center_node_type}"
+        title=f"類型: {center_node_data['type']}"
     )
     added_nodes.add(center_node)
     
     # 添加相關節點和關係
     for _, rel in center_relations.iterrows():
-        start_id = rel['START_ID']
-        end_id = rel['END_ID']
+        start_id = rel['subject']
+        end_id = rel['object']
         
         # 添加起始節點
         if start_id not in added_nodes:
-            start_node = nodes_df[nodes_df['nodeID:ID'] == start_id].iloc[0]
-            start_type = start_node['type']
+            start_node = nodes_df[nodes_df['node_id'] == start_id].iloc[0]
+            start_type = start_node['type'].lower()
             network.add_node(
                 start_id,
                 label=start_node['name'],
                 color=COLOR_MAP.get(start_type, COLOR_MAP['other']),
                 size=25,
-                title=f"類型: {start_type}"
+                title=f"類型: {start_node['type']}"
             )
             added_nodes.add(start_id)
         
         # 添加目標節點
         if end_id not in added_nodes:
-            end_node = nodes_df[nodes_df['nodeID:ID'] == end_id].iloc[0]
-            end_type = end_node['type']
+            end_node = nodes_df[nodes_df['node_id'] == end_id].iloc[0]
+            end_type = end_node['type'].lower()
             network.add_node(
                 end_id,
                 label=end_node['name'],
                 color=COLOR_MAP.get(end_type, COLOR_MAP['other']),
                 size=25,
-                title=f"類型: {end_type}"
+                title=f"類型: {end_node['type']}"
             )
             added_nodes.add(end_id)
         
@@ -165,7 +185,7 @@ def create_detail_visualization(data, center_node=None):
         network.add_edge(
             start_id,
             end_id,
-            label=rel['TYPE'],
+            label=rel['predicate'],
             arrows='to',
             color='#666666'
         )
@@ -184,6 +204,19 @@ def create_detail_visualization(data, center_node=None):
                 "minVelocity": 0.1,
                 "solver": "forceAtlas2Based",
                 "timestep": 0.35
+            },
+            "edges": {
+                "smooth": {
+                    "type": "continuous",
+                    "forceDirection": "none"
+                }
+            },
+            "interaction": {
+                "hover": true,
+                "navigationButtons": true,
+                "keyboard": {
+                    "enabled": true
+                }
             }
         }
     ''')

@@ -30,21 +30,21 @@ def get_source_organization(url):
 def is_treatment_recommended(treatment_id, stage_id, relationships_df):
     """判斷治療方案是否建議用於特定階段"""
     stage_treatments = relationships_df[
-        (relationships_df[':START_ID'] == stage_id) &
-        (relationships_df[':END_ID'] == treatment_id) &
-        (relationships_df[':TYPE'] == 'STAGE_TREATMENT')
+        (relationships_df['subject'] == stage_id) &
+        (relationships_df['object'] == treatment_id) &
+        (relationships_df['predicate'] == 'STAGE_TREATMENT')
     ]
     return len(stage_treatments) > 0
 
 def get_applicable_stages(treatment_id, nodes_df, relationships_df):
     """獲取治療方案適用的所有階段"""
     stage_relations = relationships_df[
-        (relationships_df[':END_ID'] == treatment_id) &
-        (relationships_df[':TYPE'] == 'STAGE_TREATMENT')
+        (relationships_df['object'] == treatment_id) &
+        (relationships_df['predicate'] == 'STAGE_TREATMENT')
     ]
     stages = []
     for _, rel in stage_relations.iterrows():
-        stage_name, _ = get_node_by_id(nodes_df, rel[':START_ID'])
+        stage_name, _ = get_node_by_id(nodes_df, rel['subject'])
         if stage_name:
             stages.append(stage_name)
     return stages
@@ -82,38 +82,38 @@ def render(data):
     st.write("### 治療建議")
     
     # 獲取所有治療方案
-    treatment_nodes = nodes_df[nodes_df['type:LABEL'] == 'Treatment']
+    treatment_nodes = nodes_df[nodes_df['type'] == 'Treatment']
     
     # 創建治療方案數據表
     treatments_data = []
     
     # 獲取當前階段的節點ID
-    stage_id = nodes_df[nodes_df['name'] == current_stage]['nodeID:ID'].iloc[0]
+    stage_id = nodes_df[nodes_df['name'] == current_stage]['node_id'].iloc[0]
     
     # 添加所有治療方案數據
     for _, treatment in treatment_nodes.iterrows():
-        treatment_id = treatment['nodeID:ID']
+        treatment_id = treatment['node_id']
         
         # 獲取藥物資訊
         drug_relations = relationships_df[
-            (relationships_df[':START_ID'] == treatment_id) &
-            (relationships_df[':TYPE'] == 'USES_DRUG')
+            (relationships_df['subject'] == treatment_id) &
+            (relationships_df['predicate'] == 'USES_DRUG')
         ]
         drugs = []
         for _, rel in drug_relations.iterrows():
-            drug_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+            drug_name, _ = get_node_by_id(nodes_df, rel['object'])
             if drug_name:
                 drugs.append(drug_name)
         drugs_text = ', '.join(drugs) if drugs else '無'
         
         # 獲取證據等級
         evidence_relations = relationships_df[
-            (relationships_df[':START_ID'] == treatment_id) &
-            (relationships_df[':TYPE'] == 'HAS_EVIDENCE_LEVEL')
+            (relationships_df['subject'] == treatment_id) &
+            (relationships_df['predicate'] == 'HAS_EVIDENCE_LEVEL')
         ]
         evidence = '無資料'
         if not evidence_relations.empty:
-            evidence_name, _ = get_node_by_id(nodes_df, evidence_relations.iloc[0][':END_ID'])
+            evidence_name, _ = get_node_by_id(nodes_df, evidence_relations.iloc[0]['object'])
             if evidence_name:
                 evidence = evidence_name
         
@@ -247,85 +247,76 @@ def render(data):
         
         # 獲取所有關係類型的統計
         schema_data = []
-        for _, rel in relationships_df.groupby([':TYPE']).size().reset_index(name='關係數量').iterrows():
+        for _, rel in relationships_df.groupby(['predicate']).size().reset_index(name='關係數量').iterrows():
             # 獲取當前關係類型的所有關係
-            current_relations = relationships_df[relationships_df[':TYPE'] == rel[':TYPE']]
+            current_relations = relationships_df[relationships_df['predicate'] == rel['predicate']]
             
             # 獲取起始和目標節點類型
             start_types = set()
             end_types = set()
             for _, curr_rel in current_relations.iterrows():
-                _, start_type = get_node_by_id(nodes_df, curr_rel[':START_ID'])
-                _, end_type = get_node_by_id(nodes_df, curr_rel[':END_ID'])
+                _, start_type = get_node_by_id(nodes_df, curr_rel['subject'])
+                _, end_type = get_node_by_id(nodes_df, curr_rel['object'])
                 if start_type and end_type:
                     start_types.add(start_type)
                     end_types.add(end_type)
             
-            # 計算建議數量（僅針對Treatment類型）
-            if 'Treatment' in end_types:
-                recommended_count = len(filtered_df[filtered_df['建議'] == True])
-                total_count = len(filtered_df)
-                recommended_info = f"{recommended_count}/{total_count}"
-            else:
-                recommended_info = '-'
-            
             for start_type in start_types:
                 for end_type in end_types:
+                    # 計算這種特定組合的關係數量
+                    specific_count = 0
+                    for _, curr_rel in current_relations.iterrows():
+                        start_node = nodes_df[nodes_df['node_id'] == curr_rel['subject']]
+                        end_node = nodes_df[nodes_df['node_id'] == curr_rel['object']]
+                        if not start_node.empty and not end_node.empty:
+                            if start_node.iloc[0]['type'] == start_type and end_node.iloc[0]['type'] == end_type:
+                                specific_count += 1
+                    
                     schema_data.append({
-                        '來源節點': start_type,
-                        '關係類型': rel[':TYPE'],
-                        '目標節點': end_type,
-                        '關係總數': rel['關係數量'],
-                        '當前階段建議數': recommended_info
+                        '來源節點類型': start_type,
+                        '關係類型': rel['predicate'],
+                        '目標節點類型': end_type,
+                        '關係數量': specific_count
                     })
         
-        # 顯示 Schema 資訊表格
+        # 創建DataFrame並顯示
         if schema_data:
             schema_df = pd.DataFrame(schema_data)
             
             # 添加排序選項
-            schema_sort_col, schema_sort_order = st.columns([2, 1])
-            with schema_sort_col:
-                schema_sort_by = st.selectbox(
-                    "Schema 排序依據",
-                    options=['關係類型', '目標節點', '關係總數'],
+            sort_col, sort_order = st.columns([2, 1])
+            with sort_col:
+                sort_by = st.selectbox(
+                    "排序依據",
+                    options=['來源節點類型', '關係類型', '目標節點類型', '關係數量'],
                     key="schema_sort_by"
                 )
-            with schema_sort_order:
-                schema_ascending = st.checkbox("Schema 升序排列", value=True, key="schema_sort_order")
+            with sort_order:
+                ascending = st.checkbox("升序排列", value=True, key="schema_sort_order")
             
             # 應用排序
-            schema_df = schema_df.sort_values(by=schema_sort_by, ascending=schema_ascending)
+            schema_df = schema_df.sort_values(by=sort_by, ascending=ascending)
             
             # 顯示表格
             st.dataframe(
                 schema_df,
                 column_config={
-                    "來源節點": st.column_config.TextColumn(
-                        "來源節點",
-                        width="small",
+                    "來源節點類型": st.column_config.TextColumn(
+                        "來源節點類型",
                         help="關係的起始節點類型"
                     ),
                     "關係類型": st.column_config.TextColumn(
                         "關係類型",
-                        width="medium",
                         help="節點間的關係類型"
                     ),
-                    "目標節點": st.column_config.TextColumn(
-                        "目標節點",
-                        width="small",
+                    "目標節點類型": st.column_config.TextColumn(
+                        "目標節點類型",
                         help="關係的目標節點類型"
                     ),
-                    "關係總數": st.column_config.NumberColumn(
-                        "關係總數",
-                        width="small",
-                        help="該類型關係的總數",
+                    "關係數量": st.column_config.NumberColumn(
+                        "關係數量",
+                        help="該類型關係的數量",
                         format="%d"
-                    ),
-                    "當前階段建議數": st.column_config.TextColumn(
-                        "當前階段建議數",
-                        width="small",
-                        help="當前過濾條件下的建議數量/總數"
                     )
                 },
                 hide_index=True,
@@ -333,15 +324,10 @@ def render(data):
             )
             
             # 顯示統計摘要
-            treatment_rows = schema_df[schema_df['目標節點'] == 'Treatment']
-            if not treatment_rows.empty:
-                treatment_row = treatment_rows.iloc[0]
-                recommended_count = int(treatment_row['當前階段建議數'].split('/')[0])
-                total_count = int(treatment_row['當前階段建議數'].split('/')[1])
-                
-                st.caption(
-                    f"總共有 {len(schema_df)} 種關係類型。"
-                    f"當前階段 ({current_stage}) 在過濾條件下建議 {recommended_count} 個治療方案 (共 {total_count} 個可選方案)。"
-                )
+            st.caption(
+                f"總共有 {len(nodes_df['type'].unique())} 種節點類型，"
+                f"{len(relationships_df['predicate'].unique())} 種關係類型，"
+                f"以及 {len(schema_df)} 種不同的關係組合。"
+            )
     else:
         st.info("暫無相關資料") 

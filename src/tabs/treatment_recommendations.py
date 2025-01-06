@@ -7,13 +7,13 @@ def render_drug_treatment_strategy(nodes_df, relationships_df, stage_id):
     
     # 獲取一線治療方案
     treatment_relations = relationships_df[
-        (relationships_df[':START_ID'] == stage_id) &
-        (relationships_df[':TYPE'] == 'FIRST_LINE_TREATMENT')
+        (relationships_df['subject'] == stage_id) &
+        (relationships_df['predicate'] == 'FIRST_LINE_TREATMENT')
     ]
     
     treatments = []
     for _, rel in treatment_relations.iterrows():
-        treatment_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+        treatment_name, _ = get_node_by_id(nodes_df, rel['object'])
         if treatment_name:
             treatments.append(treatment_name)
     
@@ -22,24 +22,24 @@ def render_drug_treatment_strategy(nodes_df, relationships_df, stage_id):
             st.write(f"#### {treatment}")
             
             # 獲取使用的藥物
-            treatment_id = nodes_df[nodes_df['name'] == treatment]['nodeID:ID'].iloc[0]
+            treatment_id = nodes_df[nodes_df['name'] == treatment]['node_id'].iloc[0]
             drug_relations = relationships_df[
-                (relationships_df[':START_ID'] == treatment_id) &
-                (relationships_df[':TYPE'] == 'USES_DRUG')
+                (relationships_df['subject'] == treatment_id) &
+                (relationships_df['predicate'] == 'USES_DRUG')
             ]
             
             if not drug_relations.empty:
-                drug_name, _ = get_node_by_id(nodes_df, drug_relations.iloc[0][':END_ID'])
+                drug_name, _ = get_node_by_id(nodes_df, drug_relations.iloc[0]['object'])
                 st.write(f"- 使用藥物：{drug_name if drug_name else '無資料'}")
             
             # 獲取預期效果
             effectiveness_relations = relationships_df[
-                (relationships_df[':START_ID'] == treatment_id) &
-                (relationships_df[':TYPE'] == 'HAS_EFFECTIVENESS')
+                (relationships_df['subject'] == treatment_id) &
+                (relationships_df['predicate'] == 'HAS_EFFECTIVENESS')
             ]
             
             if not effectiveness_relations.empty:
-                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0][':END_ID'])
+                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0]['object'])
                 st.write(f"- 預期效果：{effect_name if effect_name else '無資料'}")
     else:
         st.info("暫無藥物治療建議資料")
@@ -50,13 +50,13 @@ def render_non_drug_interventions(nodes_df, relationships_df, stage_id):
     
     # 獲取建議的治療方案
     therapy_relations = relationships_df[
-        (relationships_df[':START_ID'] == stage_id) &
-        (relationships_df[':TYPE'] == 'RECOMMENDED_THERAPY')
+        (relationships_df['subject'] == stage_id) &
+        (relationships_df['predicate'] == 'RECOMMENDED_THERAPY')
     ]
     
     therapies = []
     for _, rel in therapy_relations.iterrows():
-        therapy_name, _ = get_node_by_id(nodes_df, rel[':END_ID'])
+        therapy_name, _ = get_node_by_id(nodes_df, rel['object'])
         if therapy_name:
             therapies.append(therapy_name)
     
@@ -65,14 +65,14 @@ def render_non_drug_interventions(nodes_df, relationships_df, stage_id):
             st.write(f"#### {therapy}")
             
             # 獲取預期效果
-            therapy_id = nodes_df[nodes_df['name'] == therapy]['nodeID:ID'].iloc[0]
+            therapy_id = nodes_df[nodes_df['name'] == therapy]['node_id'].iloc[0]
             effectiveness_relations = relationships_df[
-                (relationships_df[':START_ID'] == therapy_id) &
-                (relationships_df[':TYPE'] == 'HAS_EFFECTIVENESS')
+                (relationships_df['subject'] == therapy_id) &
+                (relationships_df['predicate'] == 'HAS_EFFECTIVENESS')
             ]
             
             if not effectiveness_relations.empty:
-                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0][':END_ID'])
+                effect_name, _ = get_node_by_id(nodes_df, effectiveness_relations.iloc[0]['object'])
                 st.write(f"- 預期效果：{effect_name if effect_name else '無資料'}")
     else:
         st.info("暫無非藥物介入建議資料")
@@ -84,7 +84,7 @@ def render(data):
     nodes_df, relationships_df = data
     
     # 獲取所有疾病階段
-    stage_nodes = nodes_df[nodes_df['type:LABEL'] == 'Stage']
+    stage_nodes = nodes_df[nodes_df['type'] == 'Stage']
     
     if not stage_nodes.empty:
         stage_names = stage_nodes['name'].tolist()
@@ -92,7 +92,7 @@ def render(data):
         
         if selected_stage:
             # 獲取選中階段的ID
-            stage_id = stage_nodes[stage_nodes['name'] == selected_stage]['nodeID:ID'].iloc[0]
+            stage_id = stage_nodes[stage_nodes['name'] == selected_stage]['node_id'].iloc[0]
             
             col1, col2 = st.columns(2)
             

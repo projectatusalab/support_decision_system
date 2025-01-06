@@ -3,6 +3,8 @@ import pandas as pd
 from utils.visualization import create_schema_visualization
 from utils.data_loader import get_node_by_id
 import plotly.express as px
+import tempfile
+import os
 
 def render_source_statistics(nodes_df, relationships_df):
     """渲染來源統計資訊"""
@@ -29,7 +31,7 @@ def render_source_statistics(nodes_df, relationships_df):
         st.write("### 關係類型統計")
         
         # 計算每種類型的關係數量
-        relation_type_stats = relationships_df['TYPE'].value_counts().reset_index()
+        relation_type_stats = relationships_df['predicate'].value_counts().reset_index()
         relation_type_stats.columns = ['關係類型', '數量']
         
         # 顯示關係類型統計圖表
@@ -48,28 +50,28 @@ def render_source_statistics(nodes_df, relationships_df):
         if not source_nodes.empty:
             # 獲取與來源相關的關係
             source_relations = relationships_df[
-                (relationships_df['START_ID'].isin(source_nodes['nodeID:ID'])) |
-                (relationships_df['END_ID'].isin(source_nodes['nodeID:ID']))
+                (relationships_df['subject'].isin(source_nodes['node_id'])) |
+                (relationships_df['object'].isin(source_nodes['node_id']))
             ]
             
             # 統計每個來源的引用數量
             source_stats = []
             for _, source in source_nodes.iterrows():
-                source_id = source['nodeID:ID']
+                source_id = source['node_id']
                 citation_count = len(source_relations[
-                    (source_relations['START_ID'] == source_id) |
-                    (source_relations['END_ID'] == source_id)
+                    (source_relations['subject'] == source_id) |
+                    (source_relations['object'] == source_id)
                 ])
                 
                 # 獲取被引用的節點類型統計
                 cited_types = set()
                 for _, rel in source_relations.iterrows():
-                    if rel['START_ID'] == source_id:
-                        node_name, node_type = get_node_by_id(nodes_df, rel['END_ID'])
+                    if rel['subject'] == source_id:
+                        node_name, node_type = get_node_by_id(nodes_df, rel['object'])
                         if node_type:
                             cited_types.add(node_type)
-                    elif rel['END_ID'] == source_id:
-                        node_name, node_type = get_node_by_id(nodes_df, rel['START_ID'])
+                    elif rel['object'] == source_id:
+                        node_name, node_type = get_node_by_id(nodes_df, rel['subject'])
                         if node_type:
                             cited_types.add(node_type)
                 
@@ -142,22 +144,22 @@ def render_source_statistics(nodes_df, relationships_df):
             # 獲取每個來源引用的節點類型統計
             source_type_stats = []
             for _, source in source_nodes.iterrows():
-                source_id = source['nodeID:ID']
+                source_id = source['node_id']
                 source_name = source['name']
                 
                 # 獲取與該來源相關的關係
                 related_relations = relationships_df[
-                    (relationships_df['START_ID'] == source_id) |
-                    (relationships_df['END_ID'] == source_id)
+                    (relationships_df['subject'] == source_id) |
+                    (relationships_df['object'] == source_id)
                 ]
                 
                 # 統計相關節點的類型
                 type_counts = {}
                 for _, rel in related_relations.iterrows():
-                    if rel['START_ID'] == source_id:
-                        _, node_type = get_node_by_id(nodes_df, rel['END_ID'])
+                    if rel['subject'] == source_id:
+                        _, node_type = get_node_by_id(nodes_df, rel['object'])
                     else:
-                        _, node_type = get_node_by_id(nodes_df, rel['START_ID'])
+                        _, node_type = get_node_by_id(nodes_df, rel['subject'])
                     
                     if node_type:
                         type_counts[node_type] = type_counts.get(node_type, 0) + 1
@@ -253,90 +255,57 @@ def render_schema_details(nodes_df, relationships_df):
     """渲染Schema詳細資訊"""
     st.write("### Schema 詳細資訊")
     
-    # 獲取所有關係類型的統計
-    schema_data = []
-    for _, rel in relationships_df.groupby(['TYPE']).size().reset_index(name='關係數量').iterrows():
-        # 獲取當前關係類型的所有關係
-        current_relations = relationships_df[relationships_df['TYPE'] == rel['TYPE']]
-        
-        # 獲取起始和目標節點類型
-        start_types = set()
-        end_types = set()
-        for _, curr_rel in current_relations.iterrows():
-            _, start_type = get_node_by_id(nodes_df, curr_rel['START_ID'])
-            _, end_type = get_node_by_id(nodes_df, curr_rel['END_ID'])
-            if start_type and end_type:
-                start_types.add(start_type)
-                end_types.add(end_type)
-        
-        for start_type in start_types:
-            for end_type in end_types:
-                # 計算這種特定組合的關係數量
-                specific_count = 0
-                for _, curr_rel in current_relations.iterrows():
-                    start_node = nodes_df[nodes_df['nodeID:ID'] == curr_rel['START_ID']]
-                    end_node = nodes_df[nodes_df['nodeID:ID'] == curr_rel['END_ID']]
-                    if not start_node.empty and not end_node.empty:
-                        if start_node.iloc[0]['type'] == start_type and end_node.iloc[0]['type'] == end_type:
-                            specific_count += 1
-                
-                schema_data.append({
-                    '來源節點類型': start_type,
-                    '關係類型': rel['TYPE'],
-                    '目標節點類型': end_type,
-                    '關係數量': specific_count
-                })
+    # 顯示節點類型統計
+    st.write("#### 節點類型統計")
+    node_type_counts = nodes_df['type'].value_counts()
+    st.bar_chart(node_type_counts)
     
-    # 創建DataFrame並顯示
-    if schema_data:
-        schema_df = pd.DataFrame(schema_data)
+    # 顯示關係類型統計
+    st.write("#### 關係類型統計")
+    rel_type_counts = relationships_df['predicate'].value_counts()
+    st.bar_chart(rel_type_counts)
+    
+    # 顯示詳細統計表格
+    with st.expander("查看詳細統計"):
+        col1, col2 = st.columns(2)
         
-        # 添加排序選項
-        sort_col, sort_order = st.columns([2, 1])
-        with sort_col:
-            sort_by = st.selectbox(
-                "排序依據",
-                options=['來源節點類型', '關係類型', '目標節點類型', '關係數量'],
-                key="schema_sort_by"
+        with col1:
+            st.write("節點類型分布")
+            st.dataframe(
+                node_type_counts.reset_index(),
+                column_config={
+                    "index": st.column_config.TextColumn(
+                        "節點類型",
+                        help="節點的類型"
+                    ),
+                    "type": st.column_config.NumberColumn(
+                        "數量",
+                        help="該類型的節點數量",
+                        format="%d"
+                    )
+                },
+                hide_index=True,
+                use_container_width=True
             )
-        with sort_order:
-            ascending = st.checkbox("升序排列", value=True, key="schema_sort_order")
         
-        # 應用排序
-        schema_df = schema_df.sort_values(by=sort_by, ascending=ascending)
-        
-        # 顯示表格
-        st.dataframe(
-            schema_df,
-            column_config={
-                "來源節點類型": st.column_config.TextColumn(
-                    "來源節點類型",
-                    help="關係的起始節點類型"
-                ),
-                "關係類型": st.column_config.TextColumn(
-                    "關係類型",
-                    help="節點間的關係類型"
-                ),
-                "目標節點類型": st.column_config.TextColumn(
-                    "目標節點類型",
-                    help="關係的目標節點類型"
-                ),
-                "關係數量": st.column_config.NumberColumn(
-                    "關係數量",
-                    help="該類型關係的數量",
-                    format="%d"
-                )
-            },
-            hide_index=True,
-            use_container_width=True
-        )
-        
-        # 顯示統計摘要
-        st.caption(
-            f"總共有 {len(nodes_df['type'].unique())} 種節點類型，"
-            f"{len(relationships_df['TYPE'].unique())} 種關係類型，"
-            f"以及 {len(schema_df)} 種不同的關係組合。"
-        )
+        with col2:
+            st.write("關係類型分布")
+            st.dataframe(
+                rel_type_counts.reset_index(),
+                column_config={
+                    "index": st.column_config.TextColumn(
+                        "關係類型",
+                        help="關係的類型"
+                    ),
+                    "predicate": st.column_config.NumberColumn(
+                        "數量",
+                        help="該類型的關係數量",
+                        format="%d"
+                    )
+                },
+                hide_index=True,
+                use_container_width=True
+            )
 
 def render(data):
     """渲染知識圖譜Schema頁面"""
@@ -344,13 +313,17 @@ def render(data):
     
     nodes_df, relationships_df = data
     
-    # 顯示Schema視覺化
+    # 創建Schema視覺化
     st.write("### Schema 視覺化")
     schema_net = create_schema_visualization(data)
-    schema_net.save_graph("temp_schema.html")
-    with open("temp_schema.html", "r", encoding="utf-8") as f:
-        schema_html = f.read()
-    st.components.v1.html(schema_html, height=600)
+    
+    # 創建臨時目錄並保存網絡圖
+    with tempfile.TemporaryDirectory() as temp_dir:
+        temp_path = os.path.join(temp_dir, "temp_schema.html")
+        schema_net.save_graph(temp_path)
+        with open(temp_path, "r", encoding="utf-8") as f:
+            schema_html = f.read()
+        st.components.v1.html(schema_html, height=600)
     
     # 顯示來源統計
     render_source_statistics(nodes_df, relationships_df)
