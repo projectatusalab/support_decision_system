@@ -4,6 +4,20 @@ import streamlit as st
 import io
 import os
 
+def get_data_path(environment='dev'):
+    """Get the correct data path based on the environment
+    
+    Args:
+        environment: 'dev' or 'prod'
+    
+    Returns:
+        str: Path to the data directory
+    """
+    base_path = 'data'
+    if environment not in ['dev', 'prod']:
+        raise ValueError("Environment must be either 'dev' or 'prod'")
+    return os.path.join(base_path, environment, 'output')
+
 def safe_read_neo4j_csv(file_path):
     """安全地讀取Neo4j格式的CSV文件，並統一列名格式"""
     try:
@@ -101,27 +115,38 @@ def get_relationships_by_type(relationships_df, relationship_type):
     return relationships_df[relationships_df['predicate'] == relationship_type]
 
 @st.cache_data
-def load_data(nodes_file=None, relationships_file=None):
+def load_data(nodes_file=None, relationships_file=None, environment='dev'):
     """載入Neo4j格式的知識圖譜數據
     
     Args:
         nodes_file: 節點文件（可選）
         relationships_file: 關係文件（可選）
+        environment: 數據環境，'dev' 或 'prod'（預設為'dev'）
     
     Returns:
         tuple: (nodes_df, relationships_df) Neo4j格式的節點和關係數據框
     """
     try:
+        data_dir = get_data_path(environment)
+        
+        # 檢查目錄是否存在
+        if not os.path.exists(data_dir):
+            st.error(f"數據目錄不存在: {data_dir}")
+            return None, None
+        
         # 如果沒有提供文件，使用預設文件
         if nodes_file is None and relationships_file is None:
-            nodes_df = safe_read_neo4j_csv('data/nodes.csv')
+            nodes_path = os.path.join(data_dir, 'nodes.csv')
+            relationships_path = os.path.join(data_dir, 'relationships.csv')
+            
+            nodes_df = safe_read_neo4j_csv(nodes_path)
             if nodes_df is None:
-                st.error("讀取節點文件時發生錯誤")
+                st.error(f"讀取節點文件時發生錯誤 (環境: {environment})")
                 return None, None
             
-            relationships_df = safe_read_neo4j_csv('data/relationships.csv')
+            relationships_df = safe_read_neo4j_csv(relationships_path)
             if relationships_df is None:
-                st.error("讀取關係文件時發生錯誤")
+                st.error(f"讀取關係文件時發生錯誤 (環境: {environment})")
                 return None, None
             
             # 驗證數據格式
@@ -141,9 +166,10 @@ def load_data(nodes_file=None, relationships_file=None):
                 st.error("讀取上傳的節點文件時發生錯誤")
                 return None, None
         else:
-            nodes_df = safe_read_neo4j_csv('data/nodes.csv')
+            nodes_path = os.path.join(data_dir, 'nodes.csv')
+            nodes_df = safe_read_neo4j_csv(nodes_path)
             if nodes_df is None:
-                st.error("讀取預設節點文件時發生錯誤")
+                st.error(f"讀取預設節點文件時發生錯誤 (環境: {environment})")
                 return None, None
         
         if relationships_file is not None:
@@ -152,9 +178,10 @@ def load_data(nodes_file=None, relationships_file=None):
                 st.error("讀取上傳的關係文件時發生錯誤")
                 return None, None
         else:
-            relationships_df = safe_read_neo4j_csv('data/relationships.csv')
+            relationships_path = os.path.join(data_dir, 'relationships.csv')
+            relationships_df = safe_read_neo4j_csv(relationships_path)
             if relationships_df is None:
-                st.error("讀取預設關係文件時發生錯誤")
+                st.error(f"讀取預設關係文件時發生錯誤 (環境: {environment})")
                 return None, None
         
         # 驗證數據格式

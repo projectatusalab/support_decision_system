@@ -8,12 +8,24 @@ st.set_page_config(page_title="阿茲海默症臨床決策支援系統", layout=
 def main():
     st.title("阿茲海默症臨床決策支援系統")
     
-    # 添加數據來源選擇
+    # 添加數據來源設置
     st.sidebar.title("數據來源設置")
+    
+    # 選擇數據來源
     data_source = st.sidebar.radio(
         "選擇知識圖譜數據來源",
         ["使用預設數據", "上傳自定義數據"]
     )
+    
+    # 如果使用預設數據，才顯示環境選擇
+    env_code = 'dev'  # 預設使用開發環境
+    if data_source == "使用預設數據":
+        environment = st.sidebar.radio(
+            "選擇數據環境",
+            ["開發環境 (Development)", "生產環境 (Production)"],
+            help="選擇要使用的數據環境：生產環境用於正式使用，開發環境用於測試"
+        )
+        env_code = 'prod' if environment == "生產環境 (Production)" else 'dev'
     
     nodes_file = None
     relationships_file = None
@@ -46,7 +58,7 @@ def main():
             st.sidebar.info("請上傳Neo4j格式的CSV文件或選擇使用預設數據")
     
     # 載入數據
-    data = load_data(nodes_file, relationships_file)
+    data = load_data(nodes_file, relationships_file, environment=env_code)
     nodes_df, relationships_df = data if data is not None else (None, None)
     
     if nodes_df is None or relationships_df is None:
