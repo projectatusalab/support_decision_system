@@ -2,3 +2,7 @@
 *.pyc
 *.pyo
 *.pyd
+data/prod/input/*
+!data/prod/input/.gitkeep
+data/prod/output/*
+!data/prod/output/.gitkeep

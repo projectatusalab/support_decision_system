@@ -1,0 +1,1234 @@
+id,x_name,x_type,x_source,x_external_source_id,relation,y_name,y_type,y_source,y_external_source_id
+397,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_STAGE,Mild (MMSE 21-26),Stage,NICE,es_20
+398,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_STAGE,Moderate (MMSE 10-20),Stage,NICE,es_20
+399,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_STAGE,Severe (MMSE <10),Stage,NICE,es_20
+400,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Memory loss for recent events,Phenotypes,NICE,es_20
+401,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Difficulty learning new information,Phenotypes,NICE,es_20
+402,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Subtle language problems,Phenotypes,NICE,es_20
+403,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Significant memory loss,Phenotypes,NICE,es_20
+404,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Confusion in daily activities,Phenotypes,NICE,es_20
+405,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Behavioral changes,Phenotypes,NICE,es_20
+406,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Severe memory loss,Phenotypes,NICE,es_20
+407,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Complete dependence on others,Phenotypes,NICE,es_20
+408,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_PHENOTYPES,Physical symptoms,Phenotypes,NICE,es_20
+409,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Donepezil Treatment (NICE),Treatment,NICE,es_20
+410,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Rivastigmine Treatment (NICE),Treatment,NICE,es_20
+411,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Galantamine Treatment (NICE),Treatment,NICE,es_20
+412,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Donepezil Treatment (NICE),Treatment,NICE,es_20
+413,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Rivastigmine Treatment (NICE),Treatment,NICE,es_20
+414,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Galantamine Treatment (NICE),Treatment,NICE,es_20
+415,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Donepezil Treatment (NICE),Treatment,NICE,es_20
+416,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Donepezil Treatment (NICE),Treatment,NICE,es_20
+417,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_TREATMENT,Memantine Treatment (NICE),Treatment,NICE,es_20
+418,Donepezil Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+419,Rivastigmine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,EMC,es_14
+420,Rivastigmine Patch Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,EMC,es_14
+421,Galantamine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,EMC,es_14
+422,Galantamine Treatment moderate hepatic impairment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,EMC,es_14
+423,Memantine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+424,Memantine Treatment renal impairment 1 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+425,Memantine Treatment renal impairment 2 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+426,Memantine Treatment renal impairment 3 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+427,Haloperidol Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+428,Risperidone Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EVIDENCE_LEVEL,High quality (Level A),Evidence,EMC,es_14
+429,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Donepezil Treatment (NICE),Treatment,NICE,es_20
+430,Donepezil Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Donepezil,drug,NICE,es_20
+431,Donepezil Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_STEP,Donepezil Treatment (NICE) (1),Step,NICE,es_20
+432,Donepezil Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Donepezil 5mg/day,Dosage,NICE,es_20
+433,Donepezil 5mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,1 month,Duration,NICE,es_20
+434,Donepezil Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Donepezil Treatment (NICE) (2),Step,NICE,es_20
+435,Donepezil Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Donepezil 10mg/day,Dosage,NICE,es_20
+436,Donepezil Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_POPULATION,increased if tolerated and necessary,Population,NICE,es_20
+437,Donepezil Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EFFECTIVENESS,Significant improvement in cognitive scores and daily activities,Effectiveness,NICE,es_20
+438,Donepezil Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Mild to Severe Alzheimer's Disease (MMSE 0-26),Population,NICE,es_20
+439,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Galantamine Treatment (NICE),Treatment,NICE,es_20
+440,Galantamine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Galantamine,drug,NICE,es_20
+441,Galantamine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_STEP,Galantamine Treatment (NICE) (1),Step,NICE,es_20
+442,Galantamine Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Galantamine 8mg/day,Dosage,NICE,es_20
+443,Galantamine 8mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,4 week,Duration,NICE,es_20
+444,Galantamine Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Galantamine Treatment (NICE) (2),Step,NICE,es_20
+445,Galantamine Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Galantamine 16mg/day,Dosage,NICE,es_20
+446,Galantamine 16mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,least 4 week,Duration,NICE,es_20
+447,Galantamine Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Galantamine Treatment (NICE) (3),Step,NICE,es_20
+448,Galantamine Treatment (NICE) (3),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Galantamine 16-24mg/day,Dosage,NICE,es_20
+449,Galantamine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 0-26),Population,NICE,es_20
+450,Galantamine Treatment moderate hepatic impairment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Galantamine,drug,NICE,es_20
+451,Galantamine Treatment moderate hepatic impairment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_STEP,Galantamine Treatment moderate hepatic impairment (NICE) (1),Step,NICE,es_20
+452,Galantamine Treatment moderate hepatic impairment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Galantamine 8mg/day,Dosage,NICE,es_20
+453,Galantamine 8mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,1 week,Duration,NICE,es_20
+454,Galantamine Treatment moderate hepatic impairment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Galantamine Treatment moderate hepatic impairment (NICE) (2),Step,NICE,es_20
+455,Galantamine Treatment moderate hepatic impairment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Galantamine 8-16mg/day,Dosage,NICE,es_20
+456,Galantamine 8-16mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,4 week,Duration,NICE,es_20
+457,Galantamine Treatment moderate hepatic impairment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,moderate hepatic impairment,Population,NICE,es_20
+458,Galantamine Treatment moderate hepatic impairment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 0-26),Population,NICE,es_20
+459,Rivastigmine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Rivastigmine,drug,NICE,es_20
+460,Rivastigmine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Rivastigmine 1.5-6.0 twice daily,Dosage,NICE,es_20
+461,Rivastigmine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Mild to Severe Alzheimer's Disease (MMSE 0-26),Population,NICE,es_20
+462,Rivastigmine Patch Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Rivastigmine,drug,NICE,es_20
+463,Rivastigmine Patch Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_STEP,Rivastigmine Patch Treatment (NICE) (1),Step,NICE,es_20
+464,Rivastigmine Patch Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Rivastigmine Patch 4.6mg/day,Dosage,NICE,es_20
+465,Rivastigmine Patch 4.6mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,4 week,Duration,NICE,es_20
+466,Rivastigmine Patch Treatment (NICE) (1),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Rivastigmine Patch Treatment (NICE) (2),Step,NICE,es_20
+467,Rivastigmine Patch Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Rivastigmine Patch 9.5mg/day,Dosage,NICE,es_20
+468,Rivastigmine Patch 9.5mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,6 week,Duration,NICE,es_20
+469,Rivastigmine Patch Treatment (NICE) (2),Step,National Institute for Health and Care Excellence,es_20,STEP_STEP,Rivastigmine Patch Treatment (NICE) (3),Step,NICE,es_20
+470,Rivastigmine Patch Treatment (NICE) (3),Step,National Institute for Health and Care Excellence,es_20,STEP_DOSAGE,Rivastigmine Patch 13.3mg/day,Dosage,NICE,es_20
+471,Rivastigmine Patch Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 0-26),Population,NICE,es_20
+472,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Memantine Treatment (NICE),Treatment,NICE,es_20
+473,Memantine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Memantine,drug,NICE,es_20
+474,Memantine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Memantine 5-20 mg/day,Dosage,NICE,es_20
+475,Memantine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EFFECTIVENESS,Significant improvement in cognitive decline and behavioral symptoms,Effectiveness,NICE,es_20
+476,Memantine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,NICE,es_20
+477,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Memantine Treatment renal impairment 1 (NICE),Treatment,NICE,es_20
+478,Memantine Treatment renal impairment 1 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Memantine,drug,NICE,es_20
+479,Memantine Treatment renal impairment 1 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Memantine 10-20 mg/day,Dosage,NICE,es_20
+480,Memantine Treatment renal impairment 1 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EFFECTIVENESS,Significant improvement in cognitive decline and behavioral symptoms,Effectiveness,NICE,es_20
+481,Memantine Treatment renal impairment 1 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,eGFR is 3049 mL/minute/1.73 m簡,Population,NICE,es_20
+482,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Memantine Treatment renal impairment 2 (NICE),Treatment,NICE,es_20
+483,Memantine Treatment renal impairment 2 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Memantine,drug,NICE,es_20
+484,Memantine Treatment renal impairment 2 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Memantine 10 mg/day,Dosage,NICE,es_20
+485,Memantine Treatment renal impairment 2 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_EFFECTIVENESS,Significant improvement in cognitive decline and behavioral symptoms,Effectiveness,NICE,es_20
+486,Memantine Treatment renal impairment 2 (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_POPULATION,eGFR is 5 - 29 mL/minute/1.73 m簡,Population,NICE,es_20
+487,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Haloperidol Treatment (NICE),Treatment,NICE,es_20
+488,Haloperidol Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Haloperidol,drug,NICE,es_20
+489,Haloperidol Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Haloperidol 0.5-5 mg/day,Dosage,NICE,es_20
+490,Haloperidol Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,no more than 6 weeks,Duration,NICE,es_20
+491,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_TREATMENT,Risperidone Treatment (NICE),Treatment,NICE,es_20
+492,Risperidone Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,DRUG_TREATMENT,Risperidone,drug,NICE,es_20
+493,Risperidone Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,TREATMENT_DOSAGE,Risperidone 0.5-5 mg/day,Dosage,NICE,es_20
+494,Risperidone 0.5-5 mg/day,Dosage,National Institute for Health and Care Excellence,es_20,DOSAGE_DURATION,no more than 6 weeks,Duration,NICE,es_20
+495,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Nausea,SideEffect,NICE,es_20
+496,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NICE,es_20
+497,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Anorexia,SideEffect,NICE,es_20
+498,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,NICE,es_20
+499,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Muscle cramps,SideEffect,NICE,es_20
+500,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Syncope,SideEffect,NICE,es_20
+501,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Headache,SideEffect,NICE,es_20
+502,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NICE,es_20
+503,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abnormal dreams,SideEffect,NICE,es_20
+504,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hallucinations,SideEffect,NICE,es_20
+505,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Agitation,SideEffect,NICE,es_20
+506,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Aggression,SideEffect,NICE,es_20
+507,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Urinary incontinence,SideEffect,NICE,es_20
+508,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Rash,SideEffect,NICE,es_20
+509,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Pruritus,SideEffect,NICE,es_20
+510,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Extrapyramidal symptoms,SideEffect,NICE,es_20
+511,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sinoatrial block,SideEffect,NICE,es_20
+512,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Atrioventricular (AV) block,SideEffect,NICE,es_20
+513,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Liver dysfunction (including hepatitis),SideEffect,NICE,es_20
+514,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Neuroleptic malignant syndrome (NMS),SideEffect,NICE,es_20
+515,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Fatigue,SideEffect,NICE,es_20
+516,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Insomnia,SideEffect,NICE,es_20
+517,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NICE,es_20
+518,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Nausea,SideEffect,NICE,es_20
+519,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abdominal pain,SideEffect,NICE,es_20
+520,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Diarrhoea,SideEffect,NICE,es_20
+521,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dyspepsia,SideEffect,NICE,es_20
+522,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Decreased appetite,SideEffect,NICE,es_20
+523,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Weight loss ,SideEffect,NICE,es_20
+524,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Bradycardia,SideEffect,NICE,es_20
+525,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypertension,SideEffect,NICE,es_20
+526,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Syncope,SideEffect,NICE,es_20
+527,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hallucinations,SideEffect,NICE,es_20
+528,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Depression,SideEffect,NICE,es_20
+529,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NICE,es_20
+530,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Tremor,SideEffect,NICE,es_20
+531,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Headache,SideEffect,NICE,es_20
+532,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Fatigue,SideEffect,NICE,es_20
+533,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Malaise,SideEffect,NICE,es_20
+534,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Muscle spasm,SideEffect,NICE,es_20
+535,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Retching,SideEffect,NICE,es_20
+536,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dehydration,SideEffect,NICE,es_20
+537,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypotension,SideEffect,NICE,es_20
+538,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Flushing,SideEffect,NICE,es_20
+539,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Palpitation,SideEffect,NICE,es_20
+540,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Arrhythmias,SideEffect,NICE,es_20
+541,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,First-degree AV block,SideEffect,NICE,es_20
+542,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Taste disturbance,SideEffect,NICE,es_20
+543,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Paraesthesia,SideEffect,NICE,es_20
+544,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Seizures,SideEffect,NICE,es_20
+545,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypersomnia,SideEffect,NICE,es_20
+546,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Muscular weakness,SideEffect,NICE,es_20
+547,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Blurred vision,SideEffect,NICE,es_20
+548,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Tinnitus,SideEffect,NICE,es_20
+549,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sweating,SideEffect,NICE,es_20
+550,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Exacerbation of Parkinson's disease,SideEffect,NICE,es_20
+551,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hepatitis,SideEffect,NICE,es_20
+552,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Serious skin reactions,SideEffect,NICE,es_20
+553,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Nausea,SideEffect,NICE,es_20
+554,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NICE,es_20
+555,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Diarrhoea,SideEffect,NICE,es_20
+556,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dyspepsia,SideEffect,NICE,es_20
+557,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Anorexia,SideEffect,NICE,es_20
+558,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Weight loss,SideEffect,NICE,es_20
+559,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abdominal pain,SideEffect,NICE,es_20
+560,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Bradycardia,SideEffect,NICE,es_20
+561,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NICE,es_20
+562,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Headache,SideEffect,NICE,es_20
+563,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Drowsiness,SideEffect,NICE,es_20
+564,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Gait abnormalities,SideEffect,NICE,es_20
+565,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Fall,SideEffect,NICE,es_20
+566,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Malaise,SideEffect,NICE,es_20
+567,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Agitation,SideEffect,NICE,es_20
+568,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Anxiety,SideEffect,NICE,es_20
+569,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Tremor,SideEffect,NICE,es_20
+570,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Confusion,SideEffect,NICE,es_20
+571,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Insomnia,SideEffect,NICE,es_20
+572,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Parkinsonism,SideEffect,NICE,es_20
+573,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Syncope,SideEffect,NICE,es_20
+574,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Skin reactions,SideEffect,NICE,es_20
+575,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Urinary tract infection,SideEffect,NICE,es_20
+576,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Urinary incontinence,SideEffect,NICE,es_20
+577,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sweating,SideEffect,NICE,es_20
+578,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Atrial fibrillation,SideEffect,NICE,es_20
+579,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,AV block,SideEffect,NICE,es_20
+580,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Depression,SideEffect,NICE,es_20
+581,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Aggression,SideEffect,NICE,es_20
+582,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Extrapyramidal symptoms,SideEffect,NICE,es_20
+583,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Gastric and duodenal ulceration,SideEffect,NICE,es_20
+584,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Pancreatitis,SideEffect,NICE,es_20
+585,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Angina,SideEffect,NICE,es_20
+586,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Seizures,SideEffect,NICE,es_20
+587,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dehydration,SideEffect,NICE,es_20
+588,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hallucinations,SideEffect,NICE,es_20
+589,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hepatitis,SideEffect,NICE,es_20
+590,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Restlessness,SideEffect,NICE,es_20
+591,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sick sinus syndrome,SideEffect,NICE,es_20
+592,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Tachycardia,SideEffect,NICE,es_20
+593,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypertension,SideEffect,NICE,es_20
+594,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Constipation,SideEffect,NICE,es_20
+595,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypertension,SideEffect,NICE,es_20
+596,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dyspnoea,SideEffect,NICE,es_20
+597,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Headache,SideEffect,NICE,es_20
+598,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NICE,es_20
+599,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Impaired balance,SideEffect,NICE,es_20
+600,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Drowsiness,SideEffect,NICE,es_20
+601,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NICE,es_20
+602,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Thrombosis,SideEffect,NICE,es_20
+603,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Heart failure,SideEffect,NICE,es_20
+604,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Confusion,SideEffect,NICE,es_20
+605,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Fatigue,SideEffect,NICE,es_20
+606,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hallucinations,SideEffect,NICE,es_20
+607,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abnormal gait,SideEffect,NICE,es_20
+608,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Seizures,SideEffect,NICE,es_20
+609,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Pancreatitis,SideEffect,NICE,es_20
+610,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Psychosis,SideEffect,NICE,es_20
+611,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Depression,SideEffect,NICE,es_20
+612,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Suicidal ideation,SideEffect,NICE,es_20
+613,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Extrapyramidal symptoms,SideEffect,NICE,es_20
+614,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Weight gain,SideEffect,NICE,es_20
+615,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dyslipidaemia,SideEffect,NICE,es_20
+616,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hyperprolactinaemia,SideEffect,NICE,es_20
+617,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sedation,SideEffect,NICE,es_20
+618,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sleep apnoea syndrome,SideEffect,NICE,es_20
+619,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Anticholinergic effects,SideEffect,NICE,es_20
+620,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Postural hypotension,SideEffect,NICE,es_20
+621,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypertension,SideEffect,NICE,es_20
+622,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Reduced seizure threshold,SideEffect,NICE,es_20
+623,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Impaired glucose tolerance,SideEffect,NICE,es_20
+624,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,"Cardiomyopathy, myocarditis, and cutaneous vasculitis",SideEffect,NICE,es_20
+625,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,QT interval prolongation,SideEffect,NICE,es_20
+626,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Stroke risk,SideEffect,NICE,es_20
+627,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Venous thromboembolism (VTE),SideEffect,NICE,es_20
+628,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Neuroleptic malignant syndrome (NMS),SideEffect,NICE,es_20
+629,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Pneumonia,SideEffect,NICE,es_20
+630,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Neutropenia,SideEffect,NICE,es_20
+631,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abnormal liver function tests (LFTs),SideEffect,NICE,es_20
+632,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Photosensitivity,SideEffect,NICE,es_20
+633,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Skin and subcutaneous tissue disorders,SideEffect,NICE,es_20
+634,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Diplopia,SideEffect,NICE,es_20
+635,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Misuse and abuse,SideEffect,NICE,es_20
+636,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Restless legs syndrome,SideEffect,NICE,es_20
+637,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Extrapyramidal symptoms,SideEffect,NICE,es_20
+638,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Weight gain,SideEffect,NICE,es_20
+639,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Dyslipidaemia,SideEffect,NICE,es_20
+640,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hyperprolactinaemia,SideEffect,NICE,es_20
+641,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sedation,SideEffect,NICE,es_20
+642,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Sleep apnoea syndrome,SideEffect,NICE,es_20
+643,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Anticholinergic effects,SideEffect,NICE,es_20
+644,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Postural hypotension,SideEffect,NICE,es_20
+645,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Hypertension,SideEffect,NICE,es_20
+646,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Reduced seizure threshold,SideEffect,NICE,es_20
+647,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Impaired glucose tolerance,SideEffect,NICE,es_20
+648,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,"Cardiomyopathy, myocarditis, and cutaneous vasculitis",SideEffect,NICE,es_20
+649,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,QT interval prolongation,SideEffect,NICE,es_20
+650,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Stroke risk,SideEffect,NICE,es_20
+651,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Venous thromboembolism (VTE),SideEffect,NICE,es_20
+652,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Neuroleptic malignant syndrome (NMS),SideEffect,NICE,es_20
+653,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Pneumonia,SideEffect,NICE,es_20
+654,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Neutropenia,SideEffect,NICE,es_20
+655,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Abnormal liver function tests (LFTs),SideEffect,NICE,es_20
+656,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Photosensitivity,SideEffect,NICE,es_20
+657,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Skin and subcutaneous tissue disorders,SideEffect,NICE,es_20
+658,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Diplopia,SideEffect,NICE,es_20
+659,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Misuse and abuse,SideEffect,NICE,es_20
+660,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_SIDE_EFFECT,Restless legs syndrome,SideEffect,NICE,es_20
+661,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_THERAPY,Cognitive Stimulation Therapy,Therapy,NICE,es_20
+662,Mild (MMSE 21-26),Stage,National Institute for Health and Care Excellence,es_20,STAGE_THERAPY,Reminiscence Therapy,Therapy,NICE,es_20
+663,Moderate (MMSE 10-20),Stage,National Institute for Health and Care Excellence,es_20,STAGE_THERAPY,Behavioral Management,Therapy,NICE,es_20
+664,Severe (MMSE <10),Stage,National Institute for Health and Care Excellence,es_20,STAGE_THERAPY,Music Therapy,Therapy,NICE,es_20
+665,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Cognitive Stimulation Therapy,Therapy,NICE,es_20
+666,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Reminiscence Therapy,Therapy,NICE,es_20
+667,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Behavioral Management,Therapy,NICE,es_20
+668,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Music Therapy,Therapy,NICE,es_20
+669,Cognitive Stimulation Therapy,Therapy,National Institute for Health and Care Excellence,es_20,THERAPY_EFFECTIVENESS,Improves memory attention and social interaction,Effectiveness,NICE,es_20
+670,Reminiscence Therapy,Therapy,National Institute for Health and Care Excellence,es_20,THERAPY_EFFECTIVENESS,Helps maintain long-term memory improves mood,Effectiveness,NICE,es_20
+671,Behavioral Management,Therapy,National Institute for Health and Care Excellence,es_20,THERAPY_EFFECTIVENESS,Reduces anxiety and agitation improves daily functioning,Effectiveness,NICE,es_20
+672,Music Therapy,Therapy,National Institute for Health and Care Excellence,es_20,THERAPY_EFFECTIVENESS,Improves mood reduces agitation provides positive emotions,Effectiveness,NICE,es_20
+673,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe cardiac arrhythmia,Phenotypes,NICE,es_20
+674,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Pregnancy and breastfeeding.,Phenotypes,NICE,es_20
+675,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Known hypersensitivity to donepezil hydrochloride, piperidine derivatives, or any excipients used in the formulation",Phenotypes,NICE,es_20
+676,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"History of bradycardia, heart block, recurrent unexplained syncope.",Phenotypes,NICE,es_20
+677,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Concurrent treatment with drugs that reduce heart rate.,Phenotypes,NICE,es_20
+678,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Sick sinus syndrome or other supraventricular conduction abnormalities.,Phenotypes,NICE,es_20
+679,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Susceptibility to peptic ulcers including concurrent nonsteroidalanti inflammatory(NSAID) use.,Phenotypes,NICE,es_20
+680,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Asthma and chronic obstructive pulmonary disease (COPD).,Phenotypes,NICE,es_20
+681,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hepatic impairment.,Phenotypes,NICE,es_20
+682,Donepezil,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Concomitant antipsychotic treatment  increased risk of neuroleptic malignant syndrome (NMS).,Phenotypes,NICE,es_20
+683,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Concomitant antipsychotic treatment  increased risk of neuroleptic malignant syndrome (NMS).,Phenotypes,NICE,es_20
+684,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hypersensitivity to galantamine or to any of the excipients.,Phenotypes,NICE,es_20
+685,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe renal impairment (estimated glomerular filtration rate [eGFR] less than 9 mL/minute/1.73 m簡).,Phenotypes,NICE,es_20
+686,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe hepatic impairment (Child-Pugh score greater than 9).,Phenotypes,NICE,es_20
+687,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,People who have both significant renal and hepatic dysfunction.,Phenotypes,NICE,es_20
+688,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Urinary outflow obstruction.,Phenotypes,NICE,es_20
+689,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Gastrointestinal obstruction.,Phenotypes,NICE,es_20
+690,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,During recovery from bladder or gastrointestinal surgery.,Phenotypes,NICE,es_20
+691,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Pregnancy and breastfeeding.,Phenotypes,NICE,es_20
+692,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Renal and hepatic impairment.,Phenotypes,NICE,es_20
+693,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Cardiac disease or in those who use medicinal products that significantly reduce heart rate concomitantly, such as digoxin and beta blockers.",Phenotypes,NICE,es_20
+694,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,QTc interval prolongation or taking drugs that prolong the QTc interval.,Phenotypes,NICE,es_20
+695,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Electrolyte disturbances (such as hyperkalaemia or hypokalaemia).,Phenotypes,NICE,es_20
+696,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Susceptibility to peptic ulcers, including concomitant use of NSAIDs.",Phenotypes,NICE,es_20
+697,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"History of severe asthma, COPD, or pulmonary infection.",Phenotypes,NICE,es_20
+698,Galantamine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of seizures.,Phenotypes,NICE,es_20
+699,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Known hypersensitivity to rivastigmine, other carbamate derivatives, or to any of the excipients used in the formulation.",Phenotypes,NICE,es_20
+700,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Previous history of application site reactions suggestive of allergic contact dermatitis with the rivastigmine patch.,Phenotypes,NICE,es_20
+701,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Pregnancy and breastfeeding.,Phenotypes,NICE,es_20
+702,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hepatic impairment.,Phenotypes,NICE,es_20
+703,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Renal impairment.,Phenotypes,NICE,es_20
+704,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Gastric or duodenal ulcers (or susceptibility to ulcers).,Phenotypes,NICE,es_20
+705,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Sick sinus syndrome or conduction abnormalities.,Phenotypes,NICE,es_20
+706,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of asthma or COPD.,Phenotypes,NICE,es_20
+707,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of seizures.,Phenotypes,NICE,es_20
+708,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Bladder outflow obstruction.,Phenotypes,NICE,es_20
+709,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Pre-existing, or a family history of, QT interval prolongation.",Phenotypes,NICE,es_20
+710,Rivastigmine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Higher risk of developing torsade de pointes,Phenotypes,NICE,es_20
+711,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Hypersensitivity to the active substance or to any of the excipients, including people with rare hereditary problems of galactose intolerance, the Lapp lactase deficiency, or glucose-galactose malabsorption.",Phenotypes,NICE,es_20
+712,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe hepatic impairment.,Phenotypes,NICE,es_20
+713,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe renal impairment  memantine hydrochloride should be avoided if the estimated glomerular filtration rate (eGFR) is less than 5 mL/minute/1.73 m簡.,Phenotypes,NICE,es_20
+714,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of convulsions or predisposing factors for epilepsy.,Phenotypes,NICE,es_20
+715,Memantine,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe renal impairment,Phenotypes,NICE,es_20
+716,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Central nervous system depression, comatose states.",Phenotypes,NICE,es_20
+717,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Congenital long QT syndrome, history of Torsade de Pointes, QTc interval",Phenotypes,NICE,es_20
+718,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"prolongation, concurrent use with drugs that prolong the QT interval, history of",Phenotypes,NICE,es_20
+719,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"ventricular arrhythmias, recent myocardial infarction, uncompensated heart failure.",Phenotypes,NICE,es_20
+720,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Uncorrected hypokalaemia.,Phenotypes,NICE,es_20
+721,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Progressive supranuclear palsy.,Phenotypes,NICE,es_20
+722,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Dementia with Lewy bodies.,Phenotypes,NICE,es_20
+723,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Parkinson's disease.,Phenotypes,NICE,es_20
+724,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Blood dyscrasias.,Phenotypes,NICE,es_20
+725,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Cardiovascular disease  an ECG may be required, particularly if physical examination identifies cardiovascular risk factors, personal history of cardiovascular disease.",Phenotypes,NICE,es_20
+726,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Conditions predisposing to seizures.,Phenotypes,NICE,es_20
+727,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Depression.,Phenotypes,NICE,es_20
+728,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Diabetes (may raise blood glucose).,Phenotypes,NICE,es_20
+729,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Epilepsy.,Phenotypes,NICE,es_20
+730,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of jaundice.,Phenotypes,NICE,es_20
+731,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Myasthenia gravis.,Phenotypes,NICE,es_20
+732,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Parkinson宎s disease (may be exacerbated).,Phenotypes,NICE,es_20
+733,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Photosensitization (may occur with higher dosages).,Phenotypes,NICE,es_20
+734,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Prostatic hypertrophy.,Phenotypes,NICE,es_20
+735,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe respiratory disease.,Phenotypes,NICE,es_20
+736,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Susceptibility to angle-closure glaucoma,Phenotypes,NICE,es_20
+737,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Bradycardia.,Phenotypes,NICE,es_20
+738,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Uncorrected electrolyte disturbances.,Phenotypes,NICE,es_20
+739,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Family history of QTc-interval prolongation.,Phenotypes,NICE,es_20
+740,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of heavy alcohol exposure.,Phenotypes,NICE,es_20
+741,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hyperthyroidism.,Phenotypes,NICE,es_20
+742,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hypotension (including orthostatic hypotension).,Phenotypes,NICE,es_20
+743,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Prolactin-dependent tumours.,Phenotypes,NICE,es_20
+744,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Prolactinaemia.,Phenotypes,NICE,es_20
+745,Haloperidol,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Risk factors for stroke.,Phenotypes,NICE,es_20
+746,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Hypersensitivity to risperidone or to any of the excipients.,Phenotypes,NICE,es_20
+747,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Acute porphyrias.,Phenotypes,NICE,es_20
+748,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Cataract surgery (risk of intra-operative floppy iris syndrome).,Phenotypes,NICE,es_20
+749,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Dehydration.,Phenotypes,NICE,es_20
+750,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Dementia with Lewy bodies.,Phenotypes,NICE,es_20
+751,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Prolactin-dependent tumours.,Phenotypes,NICE,es_20
+752,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Blood dyscrasias.,Phenotypes,NICE,es_20
+753,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,"Cardiovascular disease  an ECG may be required, particularly if physical examination identifies cardiovascular risk factors, personal history of cardiovascular disease.",Phenotypes,NICE,es_20
+754,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Conditions predisposing to seizures.,Phenotypes,NICE,es_20
+755,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Depression.,Phenotypes,NICE,es_20
+756,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Diabetes (may raise blood glucose).,Phenotypes,NICE,es_20
+757,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Epilepsy.,Phenotypes,NICE,es_20
+758,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,History of jaundice.,Phenotypes,NICE,es_20
+759,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Myasthenia gravis.,Phenotypes,NICE,es_20
+760,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Parkinson宎s disease (may be exacerbated).,Phenotypes,NICE,es_20
+761,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Photosensitization (may occur with higher dosages).,Phenotypes,NICE,es_20
+762,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Prostatic hypertrophy.,Phenotypes,NICE,es_20
+763,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Severe respiratory disease.,Phenotypes,NICE,es_20
+764,Risperidone,drug,National Institute for Health and Care Excellence,es_20,DRUG_PHENOTYPES_CONTRAINDICATION,Susceptibility to angle-closure glaucoma,Phenotypes,NICE,es_20
+765,Galantamine Treatment (NICE),Treatment,National Institute for Health and Care Excellence,es_20,MONITORING_TREATMENT,Weight monthly,Monitoring,NICE,es_20
+766,Alzheimer disease,disease,成功大學,es_19,DISEASES_STAGE,,Stage,NCKU,es_19
+767,Alzheimer disease,disease,成功大學,es_19,DISEASES_STAGE,銝剜,Stage,NCKU,es_19
+768,Alzheimer disease,disease,成功大學,es_19,DISEASES_STAGE,,Stage,NCKU,es_19
+769,Alzheimer disease,disease,成功大學,es_19,DISEASES_TREATMENT,Donepezil Treatment (之),Treatment,NCKU,es_19
+770,Donepezil Treatment (之),Treatment,成功大學,es_19,DRUG_TREATMENT,Donepezil,drug,NCKU,es_19
+771,Donepezil Treatment (之),Treatment,成功大學,es_19,TREATMENT_STEP,Donepezil Treatment (之) (1),Step,NCKU,es_19
+772,Donepezil Treatment (之) (1),Step,成功大學,es_19,STEP_DOSAGE,Donepezil 5 mg/day,Dosage,NCKU,es_19
+773,Donepezil 5mg/day,Dosage,成功大學,es_19,DOSAGE_DURATION,4-6 week,Duration,NCKU,es_19
+774,Donepezil Treatment (之) (1),Step,成功大學,es_19,STEP_STEP,Donepezil Treatment (之) (2),Step,NCKU,es_19
+775,Donepezil Treatment (之) (2),Step,成功大學,es_19,STEP_DOSAGE,Donepezil 5-10 mg/day,Dosage,NCKU,es_19
+776,Alzheimer disease,disease,成功大學,es_19,DISEASES_TREATMENT,Rivastigmine Treatment (NICE),Treatment,NCKU,es_19
+777,Rivastigmine Treatment (之),Treatment,成功大學,es_19,DRUG_TREATMENT,Rivastigmine,drug,NCKU,es_19
+778,Rivastigmine Treatment (之),Treatment,成功大學,es_19,TREATMENT_DOSAGE,Rivastigmine 1.5-6mg/day*2,Dosage,NCKU,es_19
+779,Alzheimer disease,disease,成功大學,es_19,DISEASES_TREATMENT,Galantamine  Treatment (NICE),Treatment,NCKU,es_19
+780,Galantamine Treatment (之),Treatment,成功大學,es_19,DRUG_TREATMENT,Galantamine,drug,NCKU,es_19
+781,Galantamine Treatment (之),Treatment,成功大學,es_19,TREATMENT_STEP,Galantamine Treatment (之) (1),Step,NCKU,es_19
+782,Galantamine Treatment (之) (1),Step,成功大學,es_19,STEP_DOSAGE,Galantamine 4mg/day*2,Dosage,NCKU,es_19
+783,Galantamine Treatment (之) (1),Step,成功大學,es_19,STEP_STEP,Galantamine Treatment (之) (2),Step,NCKU,es_19
+784,Galantamine Treatment (之) (2),Step,成功大學,es_19,STEP_DOSAGE,Galantamine 16-24mg/day,Dosage,NCKU,es_19
+785,Alzheimer disease,disease,成功大學,es_19,DISEASES_TREATMENT,Memantine Treatment (NICE),Treatment,NCKU,es_19
+786,Memantine Treatment (之),Treatment,成功大學,es_19,DRUG_TREATMENT,Memantine,drug,NCKU,es_19
+787,Memantine Treatment (之),Treatment,成功大學,es_19,TREATMENT_DOSAGE,Memantine 5-20mg/day,Dosage,NCKU,es_19
+788,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Nausea,SideEffect,NCKU,es_19
+789,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,NCKU,es_19
+790,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Insomnia,SideEffect,NCKU,es_19
+791,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NCKU,es_19
+792,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Muscle cramps,SideEffect,NCKU,es_19
+793,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Fatigue,SideEffect,NCKU,es_19
+794,Donepezil,drug,成功大學,es_19,DRUG_SIDE_EFFECT,decreased appetite,SideEffect,NCKU,es_19
+795,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Headache,SideEffect,NCKU,es_19
+796,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NCKU,es_19
+797,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Anxiety,SideEffect,NCKU,es_19
+798,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Nausea,SideEffect,NCKU,es_19
+799,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,NCKU,es_19
+800,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Insomnia,SideEffect,NCKU,es_19
+801,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NCKU,es_19
+802,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Depressed,SideEffect,NCKU,es_19
+803,Rivastigmine patch,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dyspepsia,SideEffect,NCKU,es_19
+804,Rivastigmine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Nausea,SideEffect,NCKU,es_19
+805,Rivastigmine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NCKU,es_19
+806,Rivastigmine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,NCKU,es_19
+807,Rivastigmine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Anorexia,SideEffect,NCKU,es_19
+808,Rivastigmine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NCKU,es_19
+809,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Nausea,SideEffect,NCKU,es_19
+810,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NCKU,es_19
+811,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,NCKU,es_19
+812,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Anorexia,SideEffect,NCKU,es_19
+813,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NCKU,es_19
+814,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Drowsiness,SideEffect,NCKU,es_19
+815,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Anorexia,SideEffect,NCKU,es_19
+816,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dyspepsia,SideEffect,NCKU,es_19
+817,Galantamine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Weight lose,SideEffect,NCKU,es_19
+818,Memantine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Headache,SideEffect,NCKU,es_19
+819,Memantine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Dizziness,SideEffect,NCKU,es_19
+820,Memantine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Drowsiness,SideEffect,NCKU,es_19
+821,Memantine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Vomiting,SideEffect,NCKU,es_19
+822,Memantine,drug,成功大學,es_19,DRUG_SIDE_EFFECT,Hallucination,SideEffect,NCKU,es_19
+823,Memantine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Myalgia,SideEffect,MaHTAS,es_18
+824,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Mild (MMSE 21-26),Stage,MaHTAS,es_18
+825,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Moderate (MMSE 10-20),Stage,MaHTAS,es_18
+826,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Severe (MMSE <10),Stage,MaHTAS,es_18
+827,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Mild  (ADAS-Cog),Stage,MaHTAS,es_18
+828,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Moderate (ADAS-Cog),Stage,MaHTAS,es_18
+829,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_STAGE,Severe (ADAS-Cog),Stage,MaHTAS,es_18
+830,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,"Difficulties with instrumental activities of daily living (e.g. housework, managing money).",Phenotypes,MaHTAS,es_18
+831,Mild  (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,"Difficulties with instrumental activities of daily living (e.g. housework, managing money).",Phenotypes,MaHTAS,es_18
+832,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,"Difficulties with basic activities of daily living (e.g. feeding,dressing).",Phenotypes,MaHTAS,es_18
+833,Moderate (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,"Difficulties with instrumental activities of daily living (e.g. housework, managing money).",Phenotypes,MaHTAS,es_18
+834,Severe (MMSE <10),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,Fully dependent,Phenotypes,MaHTAS,es_18
+835,Severe (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_PHENOTYPES,Fully dependent,Phenotypes,MaHTAS,es_18
+836,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+837,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+838,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Patch Treatment (MaHTAS),Treatment,MaHTAS,es_18
+839,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Galantamine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+840,Mild  (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+841,Mild  (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Patch Treatment (MaHTAS),Treatment,MaHTAS,es_18
+842,Mild  (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+843,Mild  (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Galantamine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+844,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+845,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Patch Treatment (MaHTAS),Treatment,MaHTAS,es_18
+846,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+847,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Galantamine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+848,Moderate (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+849,Moderate (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Patch Treatment (MaHTAS),Treatment,MaHTAS,es_18
+850,Moderate (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Rivastigmine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+851,Moderate (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Galantamine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+852,Severe (MMSE <10),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+853,Severe (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+854,Severe (MMSE <10),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Memantine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+855,Severe (ADAS-Cog),Stage,Ministry of Health Malaysia,es_18,STAGE_TREATMENT,Memantine Treatment (MaHTAS),Treatment,Cochrane Library,es_10
+856,Donepezil Treatment  (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,Cochrane Library,es_10
+857,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,Cochrane Library,es_10
+858,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,Cochrane Library,es_10
+859,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,Cochrane Library,es_10
+860,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Moderate to Low quality,Evidence,Cochrane Library,es_10
+861,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_TREATMENT,Donepezil Treatment (MaHTAS),Treatment,MaHTAS,es_18
+862,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DRUG_TREATMENT,Donepezil,drug,MaHTAS,es_18
+863,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_DOSAGE,Donepezil 10 mg/day,Dosage,MaHTAS,es_18
+864,Donepezil 10 mg/day,Dosage,Ministry of Health Malaysia,es_18,DOSAGE_DURATION,12-24 week,Duration,MaHTAS,es_18
+865,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_POPULATION,Mild to Severe Alzheimer's Disease (MMSE 0-26) (ADAS-Cog),Population,MaHTAS,es_18
+866,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_TREATMENT,Rivastigmine Treatment (MaHTAS),Treatment,MaHTAS,es_18
+867,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DRUG_TREATMENT,Rivastigmine,drug,MaHTAS,es_18
+868,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_DOSAGE,Rivastigmine 6 - 12 mg/day*2,Dosage,MaHTAS,es_18
+869,Rivastigmine 6 - 12 mg/day*2,Dosage,Ministry of Health Malaysia,es_18,DOSAGE_DURATION,26 week,Duration,MaHTAS,es_18
+870,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 0-26),Population,MaHTAS,es_18
+871,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_TREATMENT,Rivastigmine Patch Treatment (MaHTAS),Treatment,MaHTAS,es_18
+872,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DRUG_TREATMENT,Rivastigmine,drug,MaHTAS,es_18
+873,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_DOSAGE,Rivastigmine,Dosage,MaHTAS,es_18
+874,Rivastigmine Patch 9.5 mg/day,Dosage,Ministry of Health Malaysia,es_18,DOSAGE_DURATION,Rivastigmine,Duration,MaHTAS,es_18
+875,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_POPULATION,Rivastigmine,Population,MaHTAS,es_18
+876,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_TREATMENT,Rivastigmine,Treatment,MaHTAS,es_18
+877,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DRUG_TREATMENT,Rivastigmine,drug,MaHTAS,es_18
+878,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_DOSAGE,Rivastigmine,Dosage,MaHTAS,es_18
+879,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DOSAGE_DURATION,Rivastigmine,Duration,MaHTAS,es_18
+880,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_POPULATION,Rivastigmine,Population,MaHTAS,es_18
+881,Alzheimer disease,disease,Ministry of Health Malaysia,es_18,DISEASES_TREATMENT,Rivastigmine,Treatment,MaHTAS,es_18
+882,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,DRUG_TREATMENT,Rivastigmine,drug,MaHTAS,es_18
+883,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_POPULATION,Rivastigmine,Population,MaHTAS,es_18
+884,Donepezil,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+885,Donepezil,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+886,Donepezil,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+887,Rivastigmine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+888,Rivastigmine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+889,Rivastigmine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+890,Rivastigmine Patch,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+891,Rivastigmine Patch,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+892,Rivastigmine Patch,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+893,Memantine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+894,Memantine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+895,Memantine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+896,Memantine,drug,Ministry of Health Malaysia,es_18,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,MaHTAS,es_18
+897,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_THERAPY,Rivastigmine,Therapy,MaHTAS,es_18
+898,Mild (MMSE 21-26),Stage,Ministry of Health Malaysia,es_18,STAGE_THERAPY,Rivastigmine,Therapy,MaHTAS,es_18
+899,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_THERAPY,Rivastigmine,Therapy,MaHTAS,es_18
+900,Moderate (MMSE 10-20),Stage,Ministry of Health Malaysia,es_18,STAGE_THERAPY,Rivastigmine,Therapy,MaHTAS,es_18
+901,Exercise,Therapy,Ministry of Health Malaysia,es_18,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,MaHTAS,es_18
+902,Diet and supplement,Therapy,American Academy of Family Physicians,es_1,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+903,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+904,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+905,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+906,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+907,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,Cochrane Library,es_10
+908,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+909,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+910,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+911,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+912,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,Cochrane Library,es_10
+913,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+914,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+915,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+916,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+917,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+918,Severe (MMSE <10),Stage,American Academy of Family Physicians,es_1,STAGE_TREATMENT,Rivastigmine,Treatment,Cochrane Library,es_10
+919,Donepezil Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_11
+920,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_11
+921,Rivastigmine Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_12
+922,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_12
+923,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_7
+924,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_7
+925,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,JAMA,es_16
+926,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,AAFP,es_1
+927,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+928,Donepezil Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+929,Donepezil Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+930,Donepezil Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+931,Donepezil 5mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+932,Donepezil Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+933,Donepezil Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+934,Donepezil 10 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+935,Donepezil Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+936,Donepezil Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+937,Donepezil Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+938,Donepezil Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+939,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+940,Rivastigmine Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+941,Rivastigmine Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+942,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+943,Rivastigmine 1.5 mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+944,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+945,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+946,Rivastigmine 3 mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+947,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+948,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+949,Rivastigmine 4.5 mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+950,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+951,Rivastigmine Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+952,Rivastigmine Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+953,Rivastigmine Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+954,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+955,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+956,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+957,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+958,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (1),Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+959,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+960,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+961,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (2),Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+962,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+963,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+964,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+965,Rivastigmine Patch Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+966,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+967,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+968,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+969,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+970,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1),Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+971,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+972,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+973,Galantamine 8 mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+974,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+975,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+976,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+977,Galantamine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+978,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+979,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+980,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+981,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+982,Galantamine 8 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+983,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+984,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+985,Galantamine 8 mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+986,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+987,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+988,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+989,Galantamine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+990,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+991,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+992,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+993,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+994,Memantine 5mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+995,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+996,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+997,Memantine 5mg/day*2,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+998,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+999,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1000,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1001,Memantine 10mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1002,Memantine 5mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1003,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1004,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1005,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1006,Memantine Immediate Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+1007,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+1008,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+1009,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1010,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+1011,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1012,Memantine 7 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1013,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1014,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1015,Memantine 14 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1016,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1017,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1018,Memantine 14 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1019,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1020,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1021,Memantine 21 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1022,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1023,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians) (5),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1024,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1025,Memantine Extended Release Treatment (AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+1026,Alzheimer disease,disease,American Academy of Family Physicians,es_1,DISEASES_TREATMENT,Rivastigmine,Treatment,AAFP,es_1
+1027,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+1028,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+1029,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,DRUG_TREATMENT,Rivastigmine,drug,AAFP,es_1
+1030,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_STEP,Rivastigmine,Step,AAFP,es_1
+1031,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1032,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1033,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1034,Memantine 7 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1035,Donepezil 10mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1036,"Vitamin E 1,000IU/day*2",Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1037,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (1),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1038,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1039,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1040,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1041,Memantine 14 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1042,Donepezil 10mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1043,"Vitamin E 1,000IU/day*2",Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1044,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (2),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1045,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1046,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1047,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1048,Memantine 14 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1049,Donepezil 10mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1050,"Vitamin E 1,000IU/day*2",Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1051,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (3),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1052,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1053,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1054,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1055,Memantine 21 mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1056,Donepezil 10mg/day,Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1057,"Vitamin E 1,000IU/day*2",Dosage,American Academy of Family Physicians,es_1,DOSAGE_DURATION,Rivastigmine,Duration,AAFP,es_1
+1058,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (4),Step,American Academy of Family Physicians,es_1,STEP_STEP,Rivastigmine,Step,AAFP,es_1
+1059,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (5),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1060,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (5),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1061,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians) (5),Step,American Academy of Family Physicians,es_1,STEP_DOSAGE,Rivastigmine,Dosage,AAFP,es_1
+1062,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1063,Combination Drug and Vitamin E(AmericanAcademy of Family Physicians),Treatment,American Academy of Family Physicians,es_1,TREATMENT_POPULATION,Rivastigmine,Population,AAFP,es_1
+1064,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1065,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1066,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1067,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1068,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1069,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1070,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1071,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1072,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1073,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1074,Donepezil,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1075,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1076,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1077,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1078,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1079,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1080,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1081,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1082,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1083,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1084,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1085,Rivastigmine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1086,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1087,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1088,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1089,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1090,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1091,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1092,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1093,Galantamine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1094,Memantine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1095,Memantine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1096,Memantine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1097,Memantine,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1098,Vitamin E,drug,American Academy of Family Physicians,es_1,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,AAFP,es_1
+1099,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1100,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1101,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1102,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1103,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1104,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1105,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1106,Alzheimer disease,disease,National Institute for Health and Care Excellence,es_20,DISEASES_THERAPY,Rivastigmine,Therapy,NICE,es_20
+1107,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1108,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1109,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1110,Mild (MMSE 21-26),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1111,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1112,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1113,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1114,Moderate (MMSE 10-20),Stage,American Academy of Family Physicians,es_1,STAGE_THERAPY,Rivastigmine,Therapy,AAFP,es_1
+1115,Enjoyable leisure activities,Therapy,American Academy of Family Physicians,es_1,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1116,Mental stimulation programs,Therapy,American Academy of Family Physicians,es_1,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1117,Occupational therapy training in coping strategies and cognitive aides,Therapy,American Academy of Family Physicians,es_1,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1118,Structured physical exercise programs,Therapy,American Academy of Family Physicians,es_1,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,AAFP,es_1
+1119,Mild (MMSE 21-26),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1120,Mild (MMSE 21-26),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1121,Mild (MMSE 21-26),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1122,Mild (MMSE 21-26),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1123,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1124,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1125,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1126,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1127,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1128,Moderate (MMSE 10-20),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1129,Severe (MMSE <10),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1130,Severe (MMSE <10),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1131,Severe (MMSE <10),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1132,Severe (MMSE <10),Stage,臺中榮總,es_22,STAGE_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1133,拇,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1134,拇,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1135,拇,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1136,拇,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1137,拇,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1138,銝剜,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1139,銝剜,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1140,銝剜,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1141,銝剜,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1142,銝剜,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1143,,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1144,,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1145,,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1146,,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1147,,Stage,臺中榮總,es_22,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,VGHTC,es_22
+1148,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1149,Donepezil Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1150,Donepezil Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_STEP,Rivastigmine,Step,VGHTC,es_22
+1151,Donepezil Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1152,Donepezil 5 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1153,Donepezil Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1154,Donepezil Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1155,Donepezil Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1156,Donepezil Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1157,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1158,Rivastigmine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1159,Rivastigmine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_STEP,Rivastigmine,Step,VGHTC,es_22
+1160,Rivastigmine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1161,Rivastigmine 1.5 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1162,Rivastigmine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1163,Rivastigmine Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1164,Rivastigmine 1.5 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1165,Rivastigmine Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1166,Rivastigmine Treatment (箔葉璁桃蜇) (3),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1167,Rivastigmine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1168,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1169,Rivastigmine Patch Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1170,Rivastigmine Patch Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_STEP,Rivastigmine,Step,VGHTC,es_22
+1171,Rivastigmine Patch Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1172,Rivastigmine Patch 4.6 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1173,Rivastigmine Patch Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1174,Rivastigmine Patch Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1175,Rivastigmine Patch Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1176,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1177,Galantamine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1178,Galantamine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_STEP,Rivastigmine,Step,VGHTC,es_22
+1179,Galantamine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1180,Rivastigmine Patch 4.6 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1181,Galantamine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1182,Galantamine Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1183,Galantamine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1184,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1185,Memantine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1186,Memantine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_STEP,Rivastigmine,Step,VGHTC,es_22
+1187,Memantine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1188,Rivastigmine Patch 4.6 mg/day,Dosage,臺中榮總,es_22,DOSAGE_DURATION,Rivastigmine,Duration,VGHTC,es_22
+1189,Memantine Treatment (箔葉璁桃蜇) (1),Step,臺中榮總,es_22,STEP_STEP,Rivastigmine,Step,VGHTC,es_22
+1190,Memantine Treatment (箔葉璁桃蜇) (2),Step,臺中榮總,es_22,STEP_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1191,Memantine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1192,Memantine Treatment (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1193,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_TREATMENT,Rivastigmine,Treatment,VGHTC,es_22
+1194,Memantine Treatment 賭雿唾 (箔葉璁桃蜇),Treatment,臺中榮總,es_22,DRUG_TREATMENT,Rivastigmine,drug,VGHTC,es_22
+1195,Memantine Treatment 賭雿唾 (箔葉璁桃蜇),Step,臺中榮總,es_22,TREATMENT_DOSAGE,Rivastigmine,Dosage,VGHTC,es_22
+1196,Memantine Treatment 賭雿唾 (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1197,Memantine Treatment 賭雿唾 (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1198,Memantine Treatment 賭雿唾 (箔葉璁桃蜇),Treatment,臺中榮總,es_22,TREATMENT_POPULATION,Rivastigmine,Population,VGHTC,es_22
+1199,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1200,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1201,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1202,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1203,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1204,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1205,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1206,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1207,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1208,Donepezil,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1209,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1210,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1211,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1212,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1213,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1214,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1215,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1216,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1217,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1218,Rivastigmine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1219,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1220,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1221,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1222,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1223,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1224,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1225,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1226,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1227,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1228,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1229,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1230,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1231,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1232,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1233,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1234,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1235,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1236,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1237,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1238,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1239,Galantamine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1240,Memantine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1241,Memantine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1242,Memantine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1243,Memantine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1244,Memantine,drug,臺中榮總,es_22,DRUG_SIDE_EFFECT,Rivastigmine,SideEffect,VGHTC,es_22
+1245,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1246,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1247,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1248,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1249,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1250,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1251,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1252,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1253,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1254,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1255,Alzheimer disease,disease,臺中榮總,es_22,DISEASES_THERAPY,Rivastigmine,Therapy,VGHTC,es_22
+1256,Reminiscence Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,THERAPY_EFFECTIVENESS,VGHTC,es_22
+1257,Cognitive Activities,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1258,Music Therapy Groups,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1259,Art Creation,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1260,Exercise Groups,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1261,Reality Orientation Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1262,Dance Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1263,Horticulture Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1264,Aromatherapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1265,Pet Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1266,Doll Therapy,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1267,Sensory Stimulation,Therapy,臺中榮總,es_22,THERAPY_EFFECTIVENESS,Rivastigmine,Effectiveness,VGHTC,es_22
+1268,Donepezil,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1269,Donepezil,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1270,Donepezil,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1271,Donepezil,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1272,Donepezil,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1273,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1274,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1275,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1276,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1277,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1278,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1279,Rivastigmine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1280,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1281,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1282,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1283,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1284,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1285,Rivastigmine Patch,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1286,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1287,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1288,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1289,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1290,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1291,Galantamine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1292,Memantine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1293,Memantine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1294,Memantine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1295,Memantine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1296,Memantine,drug,臺中榮總,es_22,DRUG_PHENOTYPES_CONTRAINDICATION,Rivastigmine,Phenotypes,VGHTC,es_22
+1297,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1298,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1299,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1300,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1301,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1302,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1303,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1304,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1305,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Treatment,Alzheimer Society,es_2
+1306,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1307,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1308,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1309,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1310,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1311,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1312,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1313,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1314,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1315,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1316,Early stage(GDS 2-5),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1317,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1318,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1319,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1320,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1321,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1322,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1323,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1324,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1325,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1326,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1327,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1328,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1329,Middle stage (GDS 4-6),Stage,Alzheimer Society,es_2,STAGE_PHENOTYPES,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1330,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1331,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1332,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1333,Late stage (GDS 7),Stage,Alzheimer Society,es_2,STAGE_TREATMENT,Rivastigmine,Phenotypes,Alzheimer Society,es_2
+1334,Mild (MMSE 21-26),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1335,Mild (MMSE 21-26),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1336,Mild (MMSE 21-26),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1337,Mild (MMSE 21-26),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1338,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1339,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1340,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1341,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1342,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1343,Moderate (MMSE 10-20),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1344,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1345,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1346,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1347,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
+1348,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
+1349,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
+1350,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
+1351,Combined Donepezil and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,IJN,es_15
+1352,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_7
+1353,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1354,Donepezil Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Rivastigmine,drug,Japanese Society of Neurology,es_17
+1355,Donepezil Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Rivastigmine,Dosage,Japanese Society of Neurology,es_17
+1356,Donepezil Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Rivastigmine,Population,Japanese Society of Neurology,es_17
+1357,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1358,Galantamine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Rivastigmine,drug,Japanese Society of Neurology,es_17
+1359,Galantamine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Rivastigmine,Dosage,Japanese Society of Neurology,es_17
+1360,Galantamine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Rivastigmine,Population,Japanese Society of Neurology,es_17
+1361,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1362,Rivastigmine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Rivastigmine,drug,Japanese Society of Neurology,es_17
+1363,Rivastigmine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Rivastigmine,Dosage,Japanese Society of Neurology,es_17
+1364,Rivastigmine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Rivastigmine,Population,Japanese Society of Neurology,es_17
+1365,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
+1366,Rivastigmine Patch Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Rivastigmine,drug,Japanese Society of Neurology,es_17
+1367,Rivastigmine Patch Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Rivastigmine Patch 9.5 mg/day,Dosage,Japanese Society of Neurology,es_17
+1368,Rivastigmine Patch Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,Japanese Society of Neurology,es_17
+1369,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17
+1370,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Memantine,drug,Japanese Society of Neurology,es_17
+1371,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Memantine 20 mg/day,Dosage,Japanese Society of Neurology,es_17
+1372,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,Japanese Society of Neurology,es_17
+1373,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Combined ChEIs and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17
+1374,Combined ChEIs and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Memantine,drug,Japanese Society of Neurology,es_17
+1375,Combined ChEIs and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Memantine 28 mg/day,Dosage,Japanese Society of Neurology,es_17
+1376,Combined ChEIs and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Donepezil 5-10 mg/day,Dosage,Japanese Society of Neurology,es_17
+1377,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,Japanese Society of Neurology,es_17
+1378,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_THERAPY,Exercise therapy,Therapy,Japanese Society of Neurology,es_17
+1379,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_THERAPY,Music therapy,Therapy,Japanese Society of Neurology,es_17
+1380,Exercise therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cocharne Library,es_8
+1381,Music therapy,Therapy,Ministry of Health Malaysia,es_18,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cocharne Library,es_9
+1382,Exercise therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EFFECTIVENESS,attenuates worsening of physical function and activities of daily living,Effectiveness,Japanese Society of Neurology,es_17
+1383,Music therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EFFECTIVENESS,"improving BPSD, including anxiety",Effectiveness,Japanese Society of Neurology,es_17
+1384,(MCI) due to Alzheimer's disease,Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1385,(MCI) due to Alzheimer's disease,Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Lecanemab (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1386,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Suvorexant,Treatment,Alzheimer's Association,es_3
+1387,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1388,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Lecanemab (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1389,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donepezil Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1390,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Rivastigmine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1391,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Galantamine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1392,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Suvorexant,Treatment,Alzheimer's Association,es_3
+1393,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donepezil Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1394,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Rivastigmine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1395,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Galantamine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1396,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Memantine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1397,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1398,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donepezil Treatment (Alzheimer Society of B.C.),Treatment,Alzheimer's Association,es_3
+1399,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Memantine Treatment (Alzheimer Society of B.C.),Treatment,Alzheimer's Association,es_3
+1400,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1401,MCI due to Alzheimer's disease,Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,memory loss,Phenotypes,Alzheimer's Association,es_3
+1402,MCI due to Alzheimer's disease,Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,cognitive ability loss,Phenotypes,Alzheimer's Association,es_3
+1403,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Difficultly coming up with the right word or name.,Phenotypes,Alzheimer's Association,es_3
+1404,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Difficultly remembering names when introduced to new people.,Phenotypes,Alzheimer's Association,es_3
+1405,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Having difficulty performing tasks in social or work settings.,Phenotypes,Alzheimer's Association,es_3
+1406,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Forgetting material that was just read.,Phenotypes,Alzheimer's Association,es_3
+1407,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Losing or misplacing a valuable object.,Phenotypes,Alzheimer's Association,es_3
+1408,Early stage(mild),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Experiencing increased trouble with planning or organizing.,Phenotypes,Alzheimer's Association,es_3
+1409,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Being forgetful of events or personal history.,Phenotypes,Alzheimer's Association,es_3
+1410,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Feeling moody or withdrawn, especially in socially or mentally challenging situations.",Phenotypes,Alzheimer's Association,es_3
+1411,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Being unable to recall information about themselves like their address or telephone number, and the high school or college they attended.",Phenotypes,Alzheimer's Association,es_3
+1412,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Experiencing confusion about where they are or what day it is.,Phenotypes,Alzheimer's Association,es_3
+1413,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Requiring help choosing proper clothing for the season or the occasion.,Phenotypes,Alzheimer's Association,es_3
+1414,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Having trouble controlling their bladder and bowels.,Phenotypes,Alzheimer's Association,es_3
+1415,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Experiencing changes in sleep patterns, such as sleeping during the day and becoming restless at night.",Phenotypes,Alzheimer's Association,es_3
+1416,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Showing an increased tendency to wander and become lost.,Phenotypes,Alzheimer's Association,es_3
+1417,Middle stage (moderate),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Demonstrating personality and behavioral changes, including suspiciousness and delusions or compulsive, repetitive behavior like hand-wringing or tissue shredding.",Phenotypes,Alzheimer's Association,es_3
+1418,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Require around-the-clock assistance with daily personal care.,Phenotypes,Alzheimer's Association,es_3
+1419,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Lose awareness of recent experiences as well as of their surroundings.,Phenotypes,Alzheimer's Association,es_3
+1420,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Experience changes in physical abilities, including walking, sitting and, eventually, swallowing",Phenotypes,Alzheimer's Association,es_3
+1421,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,Have difficulty communicating.,Phenotypes,Alzheimer's Association,es_3
+1422,Late stage (severe),Stage,Alzheimer's Association,es_3,STAGE_PHENOTYPES,"Become vulnerable to infections, especially pneumonia.",Phenotypes,Alzheimer's Association,es_3
+1423,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1424,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Donanemab,drug,Alzheimer's Association,es_3
+1425,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,MCI to Mild Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1426,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Lecanemab (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1427,Lecanemab (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Lecanemab,drug,Alzheimer's Association,es_3
+1428,Lecanemab (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,MCI to Mild Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1429,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Donepezil Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1430,Donepezil Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Donepezil,drug,Alzheimer's Association,es_3
+1431,Donepezil Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Mild to severe Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1432,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Rivastigmine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1433,Rivastigmine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Rivastigmine,drug,Alzheimer's Association,es_3
+1434,Rivastigmine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1435,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Galantamine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1436,Galantamine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Galantamine,drug,Alzheimer's Association,es_3
+1437,Galantamine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1438,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Memantine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1439,Memantine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Memantine,drug,Alzheimer's Association,es_3
+1440,Memantine Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1441,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1442,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Memantine,drug,Alzheimer's Association,es_3
+1443,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Donepezil,drug,Alzheimer's Association,es_3
+1444,Memantine + Donepezil (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1445,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Brexpiprazole Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1446,Brexpiprazole Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Brexpiprazole,drug,Alzheimer's Association,es_3
+1447,Brexpiprazole Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Agitation associated with dementia due to Alzheimer's disease,Population,Alzheimer's Association,es_3
+1448,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_TREATMENT,Suvorexant Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3
+1449,Suvorexant Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,DRUG_TREATMENT,Suvorexant,drug,Alzheimer's Association,es_3
+1450,Suvorexant Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Insomnia,Population,Alzheimer's Association,es_3
+1451,Suvorexant Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease,Population,Alzheimer's Association,es_3
+1452,Donanemab,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,ARIA,SideEffect,Alzheimer's Association,es_3
+1453,Donanemab,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,headache,SideEffect,Alzheimer's Association,es_3
+1454,Lecanemab,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Infusion-related reactions,SideEffect,Alzheimer's Association,es_3
+1455,Lecanemab,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,ARIA,SideEffect,Alzheimer's Association,es_3
+1456,Lecanemab,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,headache,SideEffect,Alzheimer's Association,es_3
+1457,Donepezil,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Nausea,SideEffect,Alzheimer's Association,es_3
+1458,Donepezil,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Vomiting,SideEffect,Alzheimer's Association,es_3
+1459,Donepezil,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Loss of appetite,SideEffect,Alzheimer's Association,es_3
+1460,Donepezil,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Muscle cramps,SideEffect,Alzheimer's Association,es_3
+1461,Donepezil,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Increased frequency of bowel movements,SideEffect,Alzheimer's Association,es_3
+1462,Galantamine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Nausea,SideEffect,Alzheimer's Association,es_3
+1463,Galantamine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Vomiting,SideEffect,Alzheimer's Association,es_3
+1464,Galantamine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Loss of appetite,SideEffect,Alzheimer's Association,es_3
+1465,Galantamine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Increased frequency of bowel movements,SideEffect,Alzheimer's Association,es_3
+1466,Rivastigmine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Nausea,SideEffect,Alzheimer's Association,es_3
+1467,Rivastigmine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Vomiting,SideEffect,Alzheimer's Association,es_3
+1468,Rivastigmine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Loss of appetite,SideEffect,Alzheimer's Association,es_3
+1469,Rivastigmine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Increased frequency of bowel movements,SideEffect,Alzheimer's Association,es_3
+1470,Memantine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,headache,SideEffect,Alzheimer's Association,es_3
+1471,Memantine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Constipation,SideEffect,Alzheimer's Association,es_3
+1472,Memantine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Confusion,SideEffect,Alzheimer's Association,es_3
+1473,Memantine,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Dizziness,SideEffect,Alzheimer's Association,es_3
+1474,Brexpiprazole,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Weight gain,SideEffect,Alzheimer's Association,es_3
+1475,Brexpiprazole,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Sleepiness,SideEffect,Alzheimer's Association,es_3
+1476,Brexpiprazole,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Dizziness,SideEffect,Alzheimer's Association,es_3
+1477,Brexpiprazole,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Common cold symptoms,SideEffect,Alzheimer's Association,es_3
+1478,Brexpiprazole,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Restlessness or feeling like  need to move,SideEffect,Alzheimer's Association,es_3
+1479,Suvorexant,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Impaired alertness and motor coordination,SideEffect,Alzheimer's Association,es_3
+1480,Suvorexant,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Worsening of depression or suicidal thinking,SideEffect,Alzheimer's Association,es_3
+1481,Suvorexant,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Complex sleep behaviors,SideEffect,Alzheimer's Association,es_3
+1482,Suvorexant,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Sleep paralysis,SideEffect,Alzheimer's Association,es_3
+1483,Suvorexant,drug,Alzheimer's Association,es_3,DRUG_SIDE_EFFECT,Compromised respiratory function,SideEffect,Alzheimer's Association,es_3
+1484,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Maintain regular times for meals and for going to bed and getting up,Therapy,Alzheimer's Association,es_3
+1485,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Seek morning sunlight exposure,Therapy,Alzheimer's Association,es_3
+1486,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,"Encourage regular daily exercise, but no later than four hours before bedtime",Therapy,Alzheimer's Association,es_3
+1487,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,"Avoid alcohol, caffeine and nicotine",Therapy,Alzheimer's Association,es_3
+1488,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Treat any pain,Therapy,Alzheimer's Association,es_3
+1489,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,"If the person is taking a cholinesterase inhibitor (tacrine, donepezil, rivastigmine or galantamine), avoid giving the medicine before bed",Therapy,Alzheimer's Association,es_3
+1490,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Make sure the bedroom temperature is comfortable,Therapy,Alzheimer's Association,es_3
+1491,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Provide nightlights and security objects,Therapy,Alzheimer's Association,es_3
+1492,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,"If the person awakens, discourage staying in bed while awake; use the bed only for sleep",Therapy,Alzheimer's Association,es_3
+1493,Alzheimer disease,disease,Alzheimer's Association,es_3,DISEASES_THERAPY,Discourage watching television during periods of wakefulness,Therapy,Alzheimer's Association,es_3
+1494,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_STAGE,Mild (MMSE 21-26),Stage,AWMF,es_4
+1495,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_STAGE,Moderate (MMSE 10-20),Stage,AWMF,es_4
+1496,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_STAGE,Severe (MMSE <10),Stage,AWMF,es_4
+1497,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Memory loss for recent events,Symptom,AWMF,es_4
+1498,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Difficulty learning new information,Symptom,AWMF,es_4
+1499,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Subtle language problems,Symptom,AWMF,es_4
+1500,Moderate (MMSE 10-20),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Significant memory loss,Symptom,AWMF,es_4
+1501,Moderate (MMSE 10-20),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Confusion in daily activities,Symptom,AWMF,es_4
+1502,Moderate (MMSE 10-20),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Behavioral changes,Symptom,AWMF,es_4
+1503,Severe (MMSE <10),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Severe memory loss,Symptom,AWMF,es_4
+1504,Severe (MMSE <10),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Complete dependence on others,Symptom,AWMF,es_4
+1505,Severe (MMSE <10),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_PHENOTYPES,Physical symptoms,Symptom,AWMF,es_4
+1506,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Donepezil Treatment (Demenzen),Treatment,AWMF,es_4
+1507,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Rivastigmine Treatment (Demenzen),Treatment,AWMF,es_4
+1508,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Galantamine Treatment (Demenzen),Treatment,AWMF,es_4
+1509,Moderate (MMSE 10-20),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Donepezil Treatment (Demenzen),Treatment,AWMF,es_4
+1510,Moderate (MMSE 10-20),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Memantine Treatment (Demenzen),Treatment,AWMF,es_4
+1511,Mild (MMSE 21-26),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Galantamine Treatment (Demenzen),Treatment,AWMF,es_4
+1512,Severe (MMSE <10),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Memantine Treatment (Demenzen),Treatment,AWMF,es_4
+1513,Severe (MMSE <10),Stage,The Association of Scientific Medical Societies in Germany,es_4,STAGE_TREATMENT,Memantine Treatment (Demenzen),Treatment,AWMF,es_4
+1514,Donepezil Treatment (Demenzen),Treatment,Japanese Society of Neurology,es_17,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,AWMF,es_4
+1515,Rivastigmine Treatment (Demenzen),Treatment,Japanese Society of Neurology,es_17,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,AWMF,es_4
+1516,Galantamine Treatment (Demenzen),Treatment,Japanese Society of Neurology,es_17,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,AWMF,es_4
+1517,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,pubmed,es_13
+1518,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_TREATMENT,Donepezil Treatment (Demenzen),Treatment,AWMF,es_4
+1519,Donepezil Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,DRUG_TREATMENT,Donepezil,drug,AWMF,es_4
+1520,Donepezil Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_DOSAGE,Donepezil 5mg/day,Dosage,AWMF,es_4
+1521,Donepezil 5mg/day,Dosage,The Association of Scientific Medical Societies in Germany,es_4,DOSAGE_DURATION,1 month,Duration,AWMF,es_4
+1522,Donepezil Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,AWMF,es_4
+1523,Donepezil Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,AWMF,es_4
+1524,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_TREATMENT,Galantamine Treatment (Demenzen),Treatment,AWMF,es_4
+1525,Galantamine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,DRUG_TREATMENT,Galantamine,drug,AWMF,es_4
+1526,Galantamine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_DOSAGE,Galantamine 8mg/day,Dosage,AWMF,es_4
+1527,Galantamine 8mg/day,Dosage,The Association of Scientific Medical Societies in Germany,es_4,DOSAGE_DURATION,1 month,Duration,AWMF,es_4
+1528,Galantamine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,AWMF,es_4
+1529,Galantamine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,AWMF,es_4
+1530,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_TREATMENT,Memantine Treatment (Demenzen),Treatment,AWMF,es_4
+1531,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,DRUG_TREATMENT,Memantine,drug,AWMF,es_4
+1532,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_DOSAGE,Memantine 5mg/day,Dosage,AWMF,es_4
+1533,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,DOSAGE_DURATION,Review every 6 months,Duration,AWMF,es_4
+1534,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_EFFECTIVENESS,significant effect on ADL function at 24 weeks,Effectiveness,AWMF,es_4
+1535,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,AWMF,es_4
+1536,Alzheimer disease,disease,The Association of Scientific Medical Societies in Germany,es_4,DISEASES_TREATMENT,Rivastigmine Treatment (Demenzen),Treatment,AWMF,es_4
+1537,Rivastigmine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,DRUG_TREATMENT,Rivastigmine,drug,AWMF,es_4
+1538,Rivastigmine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_DOSAGE,Rivastigmine 3mg/day,Dosage,AWMF,es_4
+1539,Rivastigmine 3mg/day,Dosage,The Association of Scientific Medical Societies in Germany,es_4,DOSAGE_DURATION,2 weeks,Duration,AWMF,es_4
+1540,Rivastigmine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,AWMF,es_4
+1541,Rivastigmine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,AWMF,es_4
+1542,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Nausea,SideEffect,AWMF,es_4
+1543,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Vomiting,SideEffect,AWMF,es_4
+1544,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,AWMF,es_4
+1545,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Headache,SideEffect,AWMF,es_4
+1546,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Dizziness,SideEffect,AWMF,es_4
+1547,Donepezil,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Agitation,SideEffect,AWMF,es_4
+1548,Rivastigmine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Gastrointestinal,SideEffect,AWMF,es_4
+1549,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Agitation,SideEffect,AWMF,es_4
+1550,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Hypertension,SideEffect,AWMF,es_4
+1551,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Falls,SideEffect,AWMF,es_4
+1552,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Dizziness,SideEffect,AWMF,es_4
+1553,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Headache,SideEffect,AWMF,es_4
+1554,Galantamine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Gastrointestinal,SideEffect,AWMF,es_4
+1555,Galantamine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Dizziness,SideEffect,AWMF,es_4
+1556,Galantamine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_SIDE_EFFECT,Headache,SideEffect,AWMF,es_4
+1557,Memantine,drug,The Association of Scientific Medical Societies in Germany,es_4,DRUG_PHENOTYPES_CONTRAINDICATION,Severe renal impairment,Condition,AWMF,es_4
+1558,Donepezil Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,AWMF,es_4
+1559,Memantine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,AWMF,es_4
+1560,Rivastigmine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,AWMF,es_4
+1561,Galantamine Treatment (Demenzen),Treatment,The Association of Scientific Medical Societies in Germany,es_4,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,AWMF,es_4
+1562,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_STAGE,Mild (MMSE 21-26),Stage,CDPC,es_5
+1563,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_STAGE,Moderate (MMSE 10-20),Stage,CDPC,es_5
+1564,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_STAGE,Severe (MMSE <10),Stage,CDPC,es_5
+1565,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Memory loss for recent events,Symptom,CDPC,es_5
+1566,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Difficulty learning new information,Symptom,CDPC,es_5
+1567,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Subtle language problems,Symptom,CDPC,es_5
+1568,Moderate (MMSE 10-20),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Significant memory loss,Symptom,CDPC,es_5
+1569,Moderate (MMSE 10-20),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Confusion in daily activities,Symptom,CDPC,es_5
+1570,Moderate (MMSE 10-20),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Behavioral changes,Symptom,CDPC,es_5
+1571,Severe (MMSE <10),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Severe memory loss,Symptom,CDPC,es_5
+1572,Severe (MMSE <10),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Complete dependence on others,Symptom,CDPC,es_5
+1573,Severe (MMSE <10),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_PHENOTYPES,Physical symptoms,Symptom,CDPC,es_5
+1574,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Donepezil Treatment (CDPC),Treatment,CDPC,es_5
+1575,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Rivastigmine Treatment (CDPC),Treatment,CDPC,es_5
+1576,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Galantamine Treatment (CDPC),Treatment,CDPC,es_5
+1577,Moderate (MMSE 10-20),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Donepezil Treatment (CDPC),Treatment,CDPC,es_5
+1578,Moderate (MMSE 10-20),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Memantine Treatment (CDPC),Treatment,CDPC,es_5
+1579,Mild (MMSE 21-26),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Galantamine Treatment (CDPC),Treatment,CDPC,es_5
+1580,Severe (MMSE <10),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Memantine Treatment (CDPC),Treatment,CDPC,es_5
+1581,Severe (MMSE <10),Stage,Cognitive Decline Partnership Centre,es_5,STAGE_TREATMENT,Memantine Treatment (CDPC),Treatment,CDPC,es_5
+1582,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EVIDENCE_LEVEL,Low quality (Level C),Evidence,pubmed,es_21
+1583,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,pubmed,es_21
+1584,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,pubmed,es_21
+1585,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EVIDENCE_LEVEL,Moderate quality (Level B),Evidence,pubmed,es_21
+1586,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_TREATMENT,Donepezil Treatment (CDPC),Treatment,CDPC,es_5
+1587,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,DRUG_TREATMENT,Donepezil,drug,CDPC,es_5
+1588,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_DOSAGE,Donepezil 5mg/day,Dosage,CDPC,es_5
+1589,Donepezil 5mg/day,Dosage,Cognitive Decline Partnership Centre,es_5,DOSAGE_DURATION,Review every 6 months,Duration,CDPC,es_5
+1590,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,CDPC,es_5
+1591,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,CDPC,es_5
+1592,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_TREATMENT,Galantamine Treatment (CDPC),Treatment,CDPC,es_5
+1593,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,DRUG_TREATMENT,Galantamine,drug,CDPC,es_5
+1594,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_DOSAGE,Galantamine 5mg/day,Dosage,CDPC,es_5
+1595,Galantamine 5mg/day,Dosage,Cognitive Decline Partnership Centre,es_5,DOSAGE_DURATION,Review every 6 months,Duration,CDPC,es_5
+1596,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,CDPC,es_5
+1597,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,CDPC,es_5
+1598,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_TREATMENT,Memantine Treatment (CDPC),Treatment,CDPC,es_5
+1599,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,DRUG_TREATMENT,Memantine,drug,CDPC,es_5
+1600,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_DOSAGE,Memantine 5mg/day,Dosage,CDPC,es_5
+1601,Memantine 5mg/day,Dosage,Cognitive Decline Partnership Centre,es_5,DOSAGE_DURATION,Review every 6 months,Duration,CDPC,es_5
+1602,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EFFECTIVENESS,significant effect on ADL function at 24 weeks,Effectiveness,CDPC,es_5
+1603,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,CDPC,es_5
+1604,Alzheimer disease,disease,Cognitive Decline Partnership Centre,es_5,DISEASES_TREATMENT,Rivastigmine Treatment (CDPC),Treatment,CDPC,es_5
+1605,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,DRUG_TREATMENT,Rivastigmine,drug,CDPC,es_5
+1606,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_DOSAGE,Rivastigmine 5mg/day,Dosage,CDPC,es_5
+1607,Rivastigmine 5mg/day,Dosage,Cognitive Decline Partnership Centre,es_5,DOSAGE_DURATION,Review every 6 months,Duration,CDPC,es_5
+1608,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_EFFECTIVENESS,small significant benefit on cognitive function and ADL,Effectiveness,CDPC,es_5
+1609,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,TREATMENT_POPULATION,Mild to moderate Alzheimer's Disease (MMSE 10-26),Population,CDPC,es_5
+1610,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Nausea,SideEffect,CDPC,es_5
+1611,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Vomiting,SideEffect,CDPC,es_5
+1612,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Diarrhea,SideEffect,CDPC,es_5
+1613,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Headache,SideEffect,CDPC,es_5
+1614,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Dizziness,SideEffect,CDPC,es_5
+1615,Donepezil,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Agitation,SideEffect,CDPC,es_5
+1616,Rivastigmine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Gastrointestinal,SideEffect,CDPC,es_5
+1617,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Agitation,SideEffect,CDPC,es_5
+1618,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Hypertension,SideEffect,CDPC,es_5
+1619,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Falls,SideEffect,CDPC,es_5
+1620,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Dizziness,SideEffect,CDPC,es_5
+1621,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Headache,SideEffect,CDPC,es_5
+1622,Galantamine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Gastrointestinal,SideEffect,CDPC,es_5
+1623,Galantamine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Dizziness,SideEffect,CDPC,es_5
+1624,Galantamine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_SIDE_EFFECT,Headache,SideEffect,CDPC,es_5
+1625,Memantine,drug,Cognitive Decline Partnership Centre,es_5,DRUG_PHENOTYPES_CONTRAINDICATION,Severe renal impairment,Condition,CDPC,es_5
+1626,Donepezil Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,CDPC,es_5
+1627,Memantine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,CDPC,es_5
+1628,Rivastigmine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,CDPC,es_5
+1629,Galantamine Treatment (CDPC),Treatment,Cognitive Decline Partnership Centre,es_5,MONITORING_TREATMENT,Cognitive function (MMSE) every 6 months,Monitoring,CDPC,es_5

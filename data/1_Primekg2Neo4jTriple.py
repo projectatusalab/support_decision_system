@@ -1,6 +1,34 @@
 import pandas as pd
 from typing import Dict, List
 import time
+import os
+
+def select_environment() -> str:
+    """
+    Let user select the environment (dev/prod).
+    Default is 'dev' if no input is provided.
+    
+    Returns:
+        str: Selected environment ('dev' or 'prod')
+    """
+    while True:
+        env = input("Select environment (dev/prod) [default: dev]: ").lower().strip()
+        if env == '':
+            return 'dev'
+        if env in ['dev', 'prod']:
+            return env
+        print("Invalid environment. Please enter 'dev' or 'prod' (or press Enter for dev)")
+
+def ensure_output_dir(env: str) -> None:
+    """
+    Ensure output directory exists for the selected environment.
+    
+    Args:
+        env (str): Selected environment ('dev' or 'prod')
+    """
+    output_dir = f"{env}/output"
+    os.makedirs(output_dir, exist_ok=True)
+    return output_dir
 
 def load_data_files(primekg_file: str, other_resources_file: str) -> pd.DataFrame:
     """
@@ -198,10 +226,17 @@ def main():
     """Main function to process data and create Neo4j compatible CSV files."""
     start_time = time.time()
     
+    # Select environment
+    env = select_environment()
+    output_dir = ensure_output_dir(env)
+    
     # Load data
-    print("Loading data files...")
-    df = load_data_files('1_primekg_Alzheimer.csv', '2_other_resources_triple.csv')
-    properties_df = load_properties('3_other_resources_property.csv')
+    print(f"Loading data files from {env} environment...")
+    df = load_data_files(
+        f'{env}/input/1_kg.csv',
+        f'{env}/input/2_other_resources_triple.csv'
+    )
+    properties_df = load_properties(f'{env}/input/3_other_resources_property.csv')
     
     # Create nodes
     print("Creating nodes...")
@@ -214,10 +249,10 @@ def main():
     df = create_relationships(df, nodes_df)
     relations_df = create_relations_dataframe(df, nodes_df)
     
-    # Save to CSV
-    print("Saving to CSV files...")
-    nodes_df.to_csv('nodes.csv', index=False)
-    relations_df.to_csv('relationships.csv', index=False)
+    # Save to CSV in the appropriate output directory
+    print(f"Saving to CSV files in {output_dir}...")
+    nodes_df.to_csv(f'{output_dir}/nodes.csv', index=False)
+    relations_df.to_csv(f'{output_dir}/relationships.csv', index=False)
     
     end_time = time.time()
     execution_time = end_time - start_time
