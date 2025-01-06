@@ -1,8 +1,22 @@
+# Python bytecode and cache
+__pycache__/
 **/__pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Python package and distribution
+*.egg-info/
+*.egg
+.eggs/
+dist/
+build/
+*.toml
+
+# Project specific directories
 data/prod/input/*
 !data/prod/input/.gitkeep
 data/prod/output/*
 !data/prod/output/.gitkeep
+lib/*
+temp_schema.html
