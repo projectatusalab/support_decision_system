@@ -29,8 +29,15 @@ class Neo4jLoader:
             RETURN 
                 n.nodeID as node_id,
                 labels(n)[0] as type,
-                n.name as name,
-                n.source_primary as source_primary,
+                CASE 
+                    WHEN labels(n)[0] = 'Source' AND n.source_secondary IS NOT NULL 
+                    THEN n.source_secondary 
+                    ELSE n.name 
+                END as name,
+                CASE
+                    WHEN labels(n)[0] = 'Source' THEN n.source_primary
+                    ELSE NULL
+                END as source_type,
                 n.source_secondary as source_secondary,
                 n.source_link as source_link,
                 n.source_date as source_date,
@@ -41,7 +48,7 @@ class Neo4jLoader:
             records = [record for record in result]
             
             if not records:
-                return pd.DataFrame(columns=['node_id', 'type', 'name'])
+                return pd.DataFrame(columns=['node_id', 'type', 'name', 'source_type'])
                 
             df = pd.DataFrame([dict(record) for record in records])
             return df
@@ -114,7 +121,7 @@ def load_data_from_neo4j(environment='dev'):
             st.error("No data found in Neo4j database")
             return None, None
             
-        required_node_columns = {'node_id', 'type', 'name'}
+        required_node_columns = {'node_id', 'type', 'name', 'source_type'}
         missing_node_columns = required_node_columns - set(nodes_df.columns)
         if missing_node_columns:
             st.error(f"Missing required node columns: {', '.join(missing_node_columns)}")
