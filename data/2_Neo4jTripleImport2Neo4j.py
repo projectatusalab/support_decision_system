@@ -32,6 +32,22 @@ class Neo4jImporter:
             """
             session.run(query, file_path=csv_file_path)
 
+    def import_external_source_properties(self, csv_file_path):
+        with self.driver.session() as session:
+            query = """
+            LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
+            WITH row, 's_' + substring(row.external_source_id, 3) as source_id
+            MATCH (n {nodeID: source_id})
+            SET n.source_primary = row.source_primary,
+                n.source_secondary = row.source_secondary,
+                n.title = row.title,
+                n.source_link = row.source_link,
+                n.source_date = row.source_date,
+                n.pubmed_id = row.pubmed_id,
+                n.country_of_origin = row.country_of_origin
+            """
+            session.run(query, file_path=csv_file_path)
+
     def delete_all_data(self):
         with self.driver.session() as session:
             session.run("MATCH (n) DETACH DELETE n")
@@ -47,5 +63,6 @@ try:
     importer.delete_all_data()
     importer.import_nodes("nodes.csv")
     importer.import_relationships("relationships.csv")
+    importer.import_external_source_properties("3_other_resources_property.csv")
 finally:
     importer.close()
