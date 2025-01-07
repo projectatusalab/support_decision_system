@@ -63,6 +63,6 @@ try:
     importer.delete_all_data()
     importer.import_nodes("nodes.csv")
     importer.import_relationships("relationships.csv")
-    importer.import_external_source_properties("3_other_resources_property.csv")
+    importer.import_external_source_properties("other_resources_property.csv")
 finally:
     importer.close()
