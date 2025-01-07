@@ -15,8 +15,36 @@ class Neo4jImporter:
             CALL apoc.create.node([row.TYPE], {
                 nodeID: row.NODE_ID,
                 name: CASE 
-                    WHEN row.TYPE = 'source' THEN null 
+                    WHEN row.TYPE = 'source' AND row.NODE_ID STARTS WITH 'es_' THEN null 
                     ELSE row.NAME 
+                END,
+                source_primary: CASE 
+                    WHEN row.TYPE = 'source' THEN row.source_primary 
+                    ELSE null 
+                END,
+                source_secondary: CASE 
+                    WHEN row.TYPE = 'source' THEN row.source_secondary 
+                    ELSE null 
+                END,
+                title: CASE 
+                    WHEN row.TYPE = 'source' AND row.title <> '' THEN row.title 
+                    ELSE null 
+                END,
+                source_link: CASE 
+                    WHEN row.TYPE = 'source' AND row.source_link <> '' THEN row.source_link 
+                    ELSE null 
+                END,
+                source_date: CASE 
+                    WHEN row.TYPE = 'source' AND row.source_date <> '' THEN row.source_date 
+                    ELSE null 
+                END,
+                pubmed_id: CASE 
+                    WHEN row.TYPE = 'source' AND row.pubmed_id <> '' THEN row.pubmed_id 
+                    ELSE null 
+                END,
+                country_of_origin: CASE 
+                    WHEN row.TYPE = 'source' AND row.country_of_origin <> '' THEN row.country_of_origin 
+                    ELSE null 
                 END
             }) YIELD node
             RETURN node
