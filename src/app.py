@@ -21,9 +21,28 @@ def main():
     # 轉換環境選擇為代碼值
     env_code = 'prod' if environment == "生產環境 (Production)" else 'dev'
     
+    # Neo4j連線設定
+    with st.sidebar.expander("Neo4j 連線設定", expanded=False):
+        st.session_state.neo4j_uri = st.text_input(
+            "Neo4j URI",
+            value=st.session_state.get('neo4j_uri', 'neo4j://localhost:7687'),
+            help="Neo4j資料庫連線位址"
+        )
+        st.session_state.neo4j_user = st.text_input(
+            "使用者名稱",
+            value=st.session_state.get('neo4j_user', 'neo4j'),
+            help="Neo4j資料庫使用者名稱"
+        )
+        st.session_state.neo4j_password = st.text_input(
+            "密碼",
+            value=st.session_state.get('neo4j_password', 'alex12345'),
+            type="password",
+            help="Neo4j資料庫密碼"
+        )
+    
     data_source = st.sidebar.radio(
         "選擇知識圖譜數據來源",
-        ["使用預設數據", "上傳自定義數據"]
+        ["使用Neo4j資料庫", "上傳自定義數據"]
     )
     
     nodes_file = None
@@ -54,7 +73,7 @@ def main():
                 nodes_file.seek(0)
                 relationships_file.seek(0)
         else:
-            st.sidebar.info("請上傳Neo4j格式的CSV文件或選擇使用預設數據")
+            st.sidebar.info("請上傳Neo4j格式的CSV文件或選擇使用Neo4j資料庫")
     
     # 載入數據
     data = load_data(nodes_file, relationships_file, environment=env_code)
@@ -62,10 +81,11 @@ def main():
     
     if nodes_df is None or relationships_df is None:
         st.error("無法載入數據。請確保：\n" + 
-                "1. CSV文件不是空的\n" +
-                "2. 文件格式正確（UTF-8編碼的CSV）\n" +
-                "3. 節點文件包含 node_id、name 和 type 列\n" +
-                "4. 關係文件包含 subject、predicate 和 object 列")
+                "1. Neo4j資料庫連線正確\n" +
+                "2. 資料庫中有正確格式的數據\n" +
+                "3. 或上傳的CSV文件格式正確（UTF-8編碼的CSV）\n" +
+                "4. 節點數據包含 node_id、name 和 type 列\n" +
+                "5. 關係數據包含 subject、predicate 和 object 列")
         st.stop()
     
     # 顯示數據統計資訊
