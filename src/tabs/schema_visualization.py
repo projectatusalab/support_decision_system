@@ -75,8 +75,11 @@ def render_source_statistics(nodes_df, relationships_df):
                         if node_type:
                             cited_types.add(node_type)
                 
+                # Use source_secondary for name if available
+                source_name = source.get('source_secondary', source['name'])
+                
                 source_stats.append({
-                    '來源名稱': source['name'],
+                    '來源名稱': source_name,
                     '引用次數': citation_count,
                     '關聯節點類型': ', '.join(sorted(cited_types)) if cited_types else '無'
                 })
@@ -138,14 +141,14 @@ def render_source_statistics(nodes_df, relationships_df):
         
         if not source_nodes.empty:
             # 統計來源名稱出現次數
-            name_counts = source_nodes['name'].value_counts().reset_index()
+            name_counts = source_nodes['source_secondary'].fillna(source_nodes['name']).value_counts().reset_index()
             name_counts.columns = ['來源名稱', '出現次數']
             
             # 獲取每個來源引用的節點類型統計
             source_type_stats = []
             for _, source in source_nodes.iterrows():
                 source_id = source['node_id']
-                source_name = source['name']
+                source_name = source.get('source_secondary', source['name'])
                 
                 # 獲取與該來源相關的關係
                 related_relations = relationships_df[
