@@ -212,8 +212,8 @@ def render(data):
             source_node = nodes_df[nodes_df['node_id'] == source_node_id]
             if not source_node.empty:
                 node_data = source_node.iloc[0]
-                source = node_data['name']  # 來源單位名稱
-                source_type = node_data.get('source_secondary', '')  # 來源類型
+                source = node_data.get('source_secondary', '')  # 來源單位名稱
+                source_type = node_data.get('source_primary', '')  # 來源類型
                 
                 # 嘗試從來源節點獲取更新日期
                 try:
