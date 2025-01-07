@@ -204,13 +204,14 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.DataFra
     
     return df
 
-def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.DataFrame:
+def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     """
     Create final relations dataframe with all relationship types.
     
     Args:
         df (pd.DataFrame): Processed dataframe with node IDs
         nodes_df (pd.DataFrame): Nodes dataframe
+        properties_df (pd.DataFrame): Properties dataframe with source information
         
     Returns:
         pd.DataFrame: Final relations dataframe
@@ -224,61 +225,20 @@ def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.D
     # Create source relations
     source_relations = []
     for _, row in df.iterrows():
-        if pd.notna(row['x_source']):
-            source_id = row['x_source']
-            if not str(source_id).startswith('es_'):
-                # Try to find matching source node by source_secondary or NAME
-                matching_sources = source_nodes[
-                    (source_nodes['source_secondary'].notna() & (source_nodes['source_secondary'] == source_id)) |
-                    (source_nodes['NAME'] == source_id)
-                ]
-                if not matching_sources.empty:
-                    source_id = matching_sources.iloc[0]['NODE_ID']
-                else:
-                    # If no match found, this source needs to be added to source_nodes
-                    new_idx = len(source_nodes)
-                    source_id = f's_{new_idx}'
-                    new_source = pd.DataFrame({
-                        'TYPE': ['source'],
-                        'NAME': [str(source_id)],
-                        'NODE_ID': [source_id],
-                        'source_secondary': [str(row['x_source'])]
-                    })
-                    source_nodes = pd.concat([source_nodes, new_source], ignore_index=True)
+        if pd.notna(row['x_external_source_id']):
+            source_id = row['x_external_source_id']
             source_relations.append({
                 'START_ID': row['START_ID'],
                 'END_ID': source_id,
                 'TYPE': 'SOURCE'
             })
-        if pd.notna(row['y_source']):
-            source_id = row['y_source']
-            if not str(source_id).startswith('es_'):
-                # Try to find matching source node by source_secondary or NAME
-                matching_sources = source_nodes[
-                    (source_nodes['source_secondary'].notna() & (source_nodes['source_secondary'] == source_id)) |
-                    (source_nodes['NAME'] == source_id)
-                ]
-                if not matching_sources.empty:
-                    source_id = matching_sources.iloc[0]['NODE_ID']
-                else:
-                    # If no match found, this source needs to be added to source_nodes
-                    new_idx = len(source_nodes)
-                    source_id = f's_{new_idx}'
-                    new_source = pd.DataFrame({
-                        'TYPE': ['source'],
-                        'NAME': [str(source_id)],
-                        'NODE_ID': [source_id],
-                        'source_secondary': [str(row['y_source'])]
-                    })
-                    source_nodes = pd.concat([source_nodes, new_source], ignore_index=True)
+        if pd.notna(row['y_external_source_id']):
+            source_id = row['y_external_source_id']
             source_relations.append({
                 'START_ID': row['END_ID'],
                 'END_ID': source_id,
                 'TYPE': 'SOURCE'
             })
-    
-    # Update nodes_df with any new sources that were added
-    nodes_df = process_nodes(nodes_df[nodes_df['TYPE'] != 'source'], source_nodes)
     
     # Combine all relations
     return pd.concat([
@@ -311,7 +271,7 @@ def main():
     # Create relationships
     print("Creating relationships...")
     df = create_relationships(df, nodes_df)
-    relations_df = create_relations_dataframe(df, nodes_df)
+    relations_df = create_relations_dataframe(df, nodes_df, properties_df)
     
     # Save to CSV in the appropriate output directory
     print(f"Saving to CSV files in {output_dir}...")
