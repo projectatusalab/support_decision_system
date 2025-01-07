@@ -54,7 +54,7 @@ def render_source_statistics(nodes_df, relationships_df):
                 (relationships_df['object'].isin(source_nodes['node_id']))
             ]
             
-            # 統計每個來源的引用數量
+            # 統計每個來源的計數數量
             source_stats = []
             for _, source in source_nodes.iterrows():
                 source_id = source['node_id']
@@ -63,7 +63,7 @@ def render_source_statistics(nodes_df, relationships_df):
                     (source_relations['object'] == source_id)
                 ])
                 
-                # 獲取被引用的節點類型統計
+                # 獲取被統計的節點類型統計
                 cited_types = set()
                 for _, rel in source_relations.iterrows():
                     if rel['subject'] == source_id:
@@ -80,7 +80,7 @@ def render_source_statistics(nodes_df, relationships_df):
                 
                 source_stats.append({
                     '來源名稱': source_name,
-                    '引用次數': citation_count,
+                    '計數': citation_count,
                     '關聯節點類型': ', '.join(sorted(cited_types)) if cited_types else '無'
                 })
             
@@ -93,7 +93,7 @@ def render_source_statistics(nodes_df, relationships_df):
                 with sort_col:
                     sort_by = st.selectbox(
                         "排序依據",
-                        options=['來源名稱', '引用次數'],
+                        options=['來源名稱', '計數'],
                         key="source_sort_by"
                     )
                 with sort_order:
@@ -110,9 +110,9 @@ def render_source_statistics(nodes_df, relationships_df):
                             "來源名稱",
                             help="引用來源的名稱"
                         ),
-                        "引用次數": st.column_config.NumberColumn(
-                            "引用次數",
-                            help="該來源被引用的總次數",
+                        "計數": st.column_config.NumberColumn(
+                            "計數",
+                            help="該來源的關聯總次數",
                             format="%d"
                         ),
                         "關聯節點類型": st.column_config.TextColumn(
@@ -127,8 +127,8 @@ def render_source_statistics(nodes_df, relationships_df):
                 # 顯示統計摘要
                 st.caption(
                     f"總共有 {len(source_nodes)} 個來源，"
-                    f"總引用次數 {source_df['引用次數'].sum()}，"
-                    f"平均每個來源被引用 {source_df['引用次數'].mean():.2f} 次。"
+                    f"總計數 {source_df['計數'].sum()}，"
+                    f"平均每個來源關聯 {source_df['計數'].mean():.2f} 次。"
                 )
         else:
             st.info("暫無來源節點數據")
@@ -144,7 +144,7 @@ def render_source_statistics(nodes_df, relationships_df):
             name_counts = source_nodes['source_secondary'].fillna(source_nodes['name']).value_counts().reset_index()
             name_counts.columns = ['來源名稱', '出現次數']
             
-            # 獲取每個來源引用的節點類型統計
+            # 獲取每個來源關聯的節點類型統計
             source_type_stats = []
             for _, source in source_nodes.iterrows():
                 source_id = source['node_id']
@@ -172,7 +172,7 @@ def render_source_statistics(nodes_df, relationships_df):
                     source_type_stats.append({
                         '來源名稱': source_name,
                         '節點類型': node_type,
-                        '引用次數': count
+                        '計數': count
                     })
             
             if source_type_stats:
@@ -183,15 +183,15 @@ def render_source_statistics(nodes_df, relationships_df):
                 pivot_table = stats_df.pivot_table(
                     index='節點類型',
                     columns='來源名稱',
-                    values='引用次數',
+                    values='計數',
                     fill_value=0
                 )
                 
                 # 顯示熱力圖
-                st.write("#### 來源名稱與節點類型引用關係")
+                st.write("#### 來源名稱與節點類型關聯關係")
                 fig = px.imshow(
                     pivot_table,
-                    labels=dict(x="來源名稱", y="節點類型", color="引用次數"),
+                    labels=dict(x="來源名稱", y="節點類型", color="計數"),
                     aspect="auto",
                     height=400
                 )
@@ -223,10 +223,10 @@ def render_source_statistics(nodes_df, relationships_df):
                         use_container_width=True
                     )
                     
-                    # 顯示節點類型引用統計
-                    st.write("##### 節點類型引用統計")
-                    type_summary = stats_df.groupby('節點類型')['引用次數'].sum().reset_index()
-                    type_summary = type_summary.sort_values('引用次數', ascending=False)
+                    # 顯示節點類型統計
+                    st.write("##### 節點類型統計")
+                    type_summary = stats_df.groupby('節點類型')['計數'].sum().reset_index()
+                    type_summary = type_summary.sort_values('計數', ascending=False)
                     st.dataframe(
                         type_summary,
                         column_config={
@@ -234,9 +234,9 @@ def render_source_statistics(nodes_df, relationships_df):
                                 "節點類型",
                                 help="節點的類型"
                             ),
-                            "引用次數": st.column_config.NumberColumn(
-                                "引用次數",
-                                help="該類型被引用的總次數",
+                            "計數": st.column_config.NumberColumn(
+                                "計數",
+                                help="該類型的關聯總次數",
                                 format="%d"
                             )
                         },
@@ -247,11 +247,11 @@ def render_source_statistics(nodes_df, relationships_df):
                 # 顯示統計摘要
                 total_sources = len(name_counts)
                 total_types = len(type_summary)
-                total_citations = type_summary['引用次數'].sum()
+                total_citations = type_summary['計數'].sum()
                 st.caption(
                     f"總共有 {total_sources} 個不同的來源，"
-                    f"引用了 {total_types} 種不同的節點類型，"
-                    f"總引用次數為 {total_citations}。"
+                    f"關聯了 {total_types} 種不同的節點類型，"
+                    f"總計數為 {total_citations}。"
                 )
 
 def render_schema_details(nodes_df, relationships_df):
