@@ -14,7 +14,10 @@ class Neo4jImporter:
             LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
             CALL apoc.create.node([row.TYPE], {
                 nodeID: row.NODE_ID,
-                name: row.NAME
+                name: CASE 
+                    WHEN row.TYPE = 'source' THEN null 
+                    ELSE row.NAME 
+                END
             }) YIELD node
             RETURN node
             """
@@ -36,15 +39,14 @@ class Neo4jImporter:
         with self.driver.session() as session:
             query = """
             LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
-            WITH row, 's_' + substring(row.external_source_id, 3) as source_id
-            MATCH (n {nodeID: source_id})
-            SET n.source_primary = row.source_primary,
+            MATCH (n {nodeID: row.external_source_id})
+            SET n.name = row.title,
+                n.source_primary = row.source_primary,
                 n.source_secondary = row.source_secondary,
-                n.title = row.title,
                 n.source_link = row.source_link,
                 n.source_date = row.source_date,
-                n.pubmed_id = row.pubmed_id,
-                n.country_of_origin = row.country_of_origin
+                n.pubmed_id = CASE WHEN row.pubmed_id <> '' THEN row.pubmed_id ELSE null END,
+                n.country_of_origin = CASE WHEN row.country_of_origin <> '' THEN row.country_of_origin ELSE null END
             """
             session.run(query, file_path=csv_file_path)
 
