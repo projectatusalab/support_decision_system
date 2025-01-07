@@ -2,6 +2,7 @@ import pandas as pd
 from typing import Dict, List
 import time
 import os
+import shutil
 
 def select_environment() -> str:
     """
@@ -316,6 +317,13 @@ def main():
     print(f"Saving to CSV files in {output_dir}...")
     nodes_df.to_csv(f'{output_dir}/nodes.csv', index=False)
     relations_df.to_csv(f'{output_dir}/relationships.csv', index=False)
+    
+    # Copy and rename the properties file
+    print("Copying properties file to output directory...")
+    shutil.copy(
+        f'{env}/input/3_other_resources_property.csv',
+        f'{output_dir}/other_resources_property.csv'
+    )
     
     end_time = time.time()
     execution_time = end_time - start_time
