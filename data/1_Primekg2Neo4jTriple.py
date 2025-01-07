@@ -104,11 +104,21 @@ def create_source_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.Dat
     Returns:
         pd.DataFrame: Source nodes dataframe with properties
     """
-    # Get unique source IDs from x_source and y_source
-    source_ids = pd.concat([
-        df['x_source'].dropna(),
-        df['y_source'].dropna()
-    ]).unique()
+    # First create a mapping of source_secondary to es_id from properties
+    source_mapping = {}
+    if not properties_df.empty:
+        for _, row in properties_df.iterrows():
+            if pd.notna(row['source_secondary']):
+                source_mapping[row['source_secondary']] = row['external_source_id']
+    
+    # Map source names to es_ids where possible
+    source_ids = []
+    for source in pd.concat([df['x_source'].dropna(), df['y_source'].dropna()]).unique():
+        if str(source).startswith('es_'):
+            source_ids.append(source)
+        else:
+            # If the source name exists in mapping, use the es_id
+            source_ids.append(source_mapping.get(source, source))
     
     # Create base source nodes dataframe
     source_nodes = pd.DataFrame({
@@ -116,27 +126,39 @@ def create_source_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.Dat
         'NAME': source_ids
     })
     
-    # Add NODE_ID
-    source_nodes = source_nodes.reset_index(drop=True)
-    source_nodes['NODE_ID'] = 's_' + source_nodes.index.astype(str)
+    # Initialize property columns
+    property_columns = ['source_primary', 'source_secondary', 'source_link', 
+                       'source_date', 'pubmed_id', 'country_of_origin']
+    for col in property_columns:
+        source_nodes[col] = None
     
     # Add properties for sources that have es_id
-    es_sources = source_nodes[source_nodes['NAME'].str.startswith('es_', na=False)].copy()
-    if not es_sources.empty:
+    if not properties_df.empty:
         # Merge with properties
-        es_sources = es_sources.merge(
+        source_nodes = source_nodes.merge(
             properties_df,
             left_on='NAME',
             right_on='external_source_id',
             how='left'
         )
         
-        # Update original source_nodes with properties
-        property_columns = ['source_primary', 'source_secondary', 'source_link', 
-                          'source_date', 'pubmed_id', 'country_of_origin']
+        # Update property columns from merged data
         for col in property_columns:
-            source_nodes[col] = None
-            source_nodes.loc[source_nodes['NAME'].str.startswith('es_', na=False), col] = es_sources[col]
+            mask = source_nodes['external_source_id'].notna()
+            source_nodes.loc[mask, col] = source_nodes.loc[mask, col + '_y']
+        
+        # Clean up merged columns
+        source_nodes = source_nodes.drop(columns=[col + '_y' for col in property_columns if col + '_y' in source_nodes.columns])
+        source_nodes = source_nodes.drop(columns=[col + '_x' for col in property_columns if col + '_x' in source_nodes.columns])
+        if 'external_source_id' in source_nodes.columns:
+            source_nodes = source_nodes.drop(columns=['external_source_id'])
+    
+    # Add NODE_ID - keep es_ prefix for external sources
+    source_nodes = source_nodes.reset_index(drop=True)
+    source_nodes['NODE_ID'] = source_nodes.apply(
+        lambda x: x['NAME'] if str(x['NAME']).startswith('es_') else 's_' + str(source_nodes.index[source_nodes['NAME'] == x['NAME']][0]),
+        axis=1
+    )
     
     return source_nodes
 
@@ -192,7 +214,7 @@ def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.D
     Returns:
         pd.DataFrame: Final relations dataframe
     """
-    # Get source nodes
+    # Get source nodes with their properties
     source_nodes = nodes_df[nodes_df['TYPE'] == 'source']
     
     # Create main relations
@@ -202,19 +224,60 @@ def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.D
     source_relations = []
     for _, row in df.iterrows():
         if pd.notna(row['x_source']):
-            source_node = source_nodes[source_nodes['NAME'] == row['x_source']].iloc[0]
+            source_id = row['x_source']
+            if not str(source_id).startswith('es_'):
+                # Try to find matching source node by source_secondary or NAME
+                matching_sources = source_nodes[
+                    (source_nodes['source_secondary'].notna() & (source_nodes['source_secondary'] == source_id)) |
+                    (source_nodes['NAME'] == source_id)
+                ]
+                if not matching_sources.empty:
+                    source_id = matching_sources.iloc[0]['NODE_ID']
+                else:
+                    # If no match found, this source needs to be added to source_nodes
+                    new_idx = len(source_nodes)
+                    source_id = f's_{new_idx}'
+                    new_source = pd.DataFrame({
+                        'TYPE': ['source'],
+                        'NAME': [str(source_id)],
+                        'NODE_ID': [source_id],
+                        'source_secondary': [str(row['x_source'])]
+                    })
+                    source_nodes = pd.concat([source_nodes, new_source], ignore_index=True)
             source_relations.append({
                 'START_ID': row['START_ID'],
-                'END_ID': source_node['NODE_ID'],
+                'END_ID': source_id,
                 'TYPE': 'SOURCE'
             })
         if pd.notna(row['y_source']):
-            source_node = source_nodes[source_nodes['NAME'] == row['y_source']].iloc[0]
+            source_id = row['y_source']
+            if not str(source_id).startswith('es_'):
+                # Try to find matching source node by source_secondary or NAME
+                matching_sources = source_nodes[
+                    (source_nodes['source_secondary'].notna() & (source_nodes['source_secondary'] == source_id)) |
+                    (source_nodes['NAME'] == source_id)
+                ]
+                if not matching_sources.empty:
+                    source_id = matching_sources.iloc[0]['NODE_ID']
+                else:
+                    # If no match found, this source needs to be added to source_nodes
+                    new_idx = len(source_nodes)
+                    source_id = f's_{new_idx}'
+                    new_source = pd.DataFrame({
+                        'TYPE': ['source'],
+                        'NAME': [str(source_id)],
+                        'NODE_ID': [source_id],
+                        'source_secondary': [str(row['y_source'])]
+                    })
+                    source_nodes = pd.concat([source_nodes, new_source], ignore_index=True)
             source_relations.append({
                 'START_ID': row['END_ID'],
-                'END_ID': source_node['NODE_ID'],
+                'END_ID': source_id,
                 'TYPE': 'SOURCE'
             })
+    
+    # Update nodes_df with any new sources that were added
+    nodes_df = process_nodes(nodes_df[nodes_df['TYPE'] != 'source'], source_nodes)
     
     # Combine all relations
     return pd.concat([
