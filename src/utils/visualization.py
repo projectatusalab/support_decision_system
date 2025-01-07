@@ -6,15 +6,23 @@ import tempfile
 
 # 定義節點類型的顏色映射
 COLOR_MAP = {
-    'disease': '#FF6B6B',  # 紅色
+    'disease': '#FF0000',  # 紅色
     'treatment': '#4ECDC4',  # 青色
-    'drug': '#45B7D1',  # 藍色
-    'stage': '#96CEB4',  # 綠色
-    'effect/phenotype': '#FFEEAD',  # 黃色
-    'side_effect': '#D4A5A5',  # 粉色
-    'contraindication': '#FF9999',  # 淺紅色
-    'guideline': '#9370DB',  # 紫色
-    'source': '#FFB347',  # 橙色
+    'drug': '#FF0000',  # 紅色
+    'stage': '#4ECDC4',  # 綠色
+    'effect/phenotype': '#CCCCCC',  # 黃色
+    'side_effect': '#4ECDC4',  # 綠色
+    'contraindication': '#CCCCCC',  # 淺紅色
+    'guideline': '#4ECDC4',  # 綠色
+    'source': '#4ECDC4',  # 綠色
+    'evidence': '#4ECDC4',  # 綠色
+    'dosage': '#4ECDC4',  # 綠色
+    'symptom': '#4ECDC4',  # 綠色
+    'therapy_effectiveness': '#4ECDC4',
+    'population': '#4ECDC4',  # 綠色
+    'step': '#4ECDC4',  # 綠色
+    'therapy': '#4ECDC4',  # 綠色
+    'duration': '#4ECDC4',  # 綠色
     'other': '#CCCCCC'  # 灰色 - 用於未定義的類型
 }
 
