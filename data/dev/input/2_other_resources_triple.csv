@@ -949,12 +949,12 @@ id,x_name,x_type,x_source,x_external_source_id,relation,y_name,y_type,y_source,y
 1344,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
 1345,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
 1346,Severe (MMSE <10),Stage,Japanese Society of Neurology,es_17,STAGE_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
-1347,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
-1348,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
-1349,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
-1350,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_6
+1347,Donepezil Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_6
+1348,Rivastigmine Patch Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_6
+1349,Rivastigmine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_6
+1350,Galantamine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_6
 1351,Combined Donepezil and Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,IJN,es_15
-1352,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cocharne Library,es_7
+1352,Memantine Treatment (MaHTAS),Treatment,Ministry of Health Malaysia,es_18,TREATMENT_EVIDENCE_LEVEL,Rivastigmine,Evidence,Cochrane Library,es_7
 1353,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_TREATMENT,Rivastigmine,Treatment,Japanese Society of Neurology,es_17
 1354,Donepezil Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,DRUG_TREATMENT,Rivastigmine,drug,Japanese Society of Neurology,es_17
 1355,Donepezil Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_DOSAGE,Rivastigmine,Dosage,Japanese Society of Neurology,es_17
@@ -982,8 +982,8 @@ id,x_name,x_type,x_source,x_external_source_id,relation,y_name,y_type,y_source,y
 1377,Memantine Treatment (Japanese Society of Neurology),Treatment,Japanese Society of Neurology,es_17,TREATMENT_POPULATION,Moderate to severe Alzheimer's Disease (MMSE < 20),Population,Japanese Society of Neurology,es_17
 1378,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_THERAPY,Exercise therapy,Therapy,Japanese Society of Neurology,es_17
 1379,Alzheimer disease,disease,Japanese Society of Neurology,es_17,DISEASES_THERAPY,Music therapy,Therapy,Japanese Society of Neurology,es_17
-1380,Exercise therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cocharne Library,es_8
-1381,Music therapy,Therapy,Ministry of Health Malaysia,es_18,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cocharne Library,es_9
+1380,Exercise therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cochrane Library,es_8
+1381,Music therapy,Therapy,Ministry of Health Malaysia,es_18,THERAPY_EVIDENCE_LEVEL,Low quality (Level C),Evidence,Cochrane Library,es_9
 1382,Exercise therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EFFECTIVENESS,attenuates worsening of physical function and activities of daily living,Effectiveness,Japanese Society of Neurology,es_17
 1383,Music therapy,Therapy,Japanese Society of Neurology,es_17,THERAPY_EFFECTIVENESS,"improving BPSD, including anxiety",Effectiveness,Japanese Society of Neurology,es_17
 1384,(MCI) due to Alzheimer's disease,Stage,Alzheimer's Association,es_3,STAGE_TREATMENT,Donanemab Treatment (Alzheimer's Association),Treatment,Alzheimer's Association,es_3

@@ -1,314 +1,317 @@
 import pandas as pd
-from typing import Dict, List
-import time
 import os
 import shutil
+from typing import Dict, List, Tuple
 
 def select_environment() -> str:
-    """
-    Let user select the environment (dev/prod).
-    Default is 'dev' if no input is provided.
-    
-    Returns:
-        str: Selected environment ('dev' or 'prod')
-    """
+    """Select environment (dev/prod)."""
     while True:
         env = input("Select environment (dev/prod) [default: dev]: ").lower().strip()
         if env == '':
             return 'dev'
         if env in ['dev', 'prod']:
             return env
-        print("Invalid environment. Please enter 'dev' or 'prod' (or press Enter for dev)")
+        print("Invalid environment. Please enter 'dev' or 'prod'")
 
-def ensure_output_dir(env: str) -> None:
-    """
-    Ensure output directory exists for the selected environment.
-    
-    Args:
-        env (str): Selected environment ('dev' or 'prod')
-    """
+def ensure_output_dir(env: str) -> str:
+    """Create output directory if it doesn't exist."""
     output_dir = f"{env}/output"
     os.makedirs(output_dir, exist_ok=True)
     return output_dir
 
-def load_data_files(primekg_file: str, other_resources_file: str) -> pd.DataFrame:
+def load_data(env: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
-    Load and merge data from PrimeKG and other resources files.
+    Load input data files.
     
-    Args:
-        primekg_file (str): Path to PrimeKG CSV file
-        other_resources_file (str): Path to other resources CSV file
-        
     Returns:
-        pd.DataFrame: Merged dataframe
+        Tuple[pd.DataFrame, pd.DataFrame]: (combined_df, properties_df)
     """
-    # Load both files
-    primekg_df = pd.read_csv(primekg_file)
-    other_df = pd.read_csv(other_resources_file) if other_resources_file else pd.DataFrame()
+    # Load main data files
+    primekg_df = pd.read_csv(f'{env}/input/1_kg.csv')
+    other_resources_df = pd.read_csv(f'{env}/input/2_other_resources_triple.csv')
+    properties_df = pd.read_csv(f'{env}/input/3_other_resources_property.csv')
     
-    # Merge dataframes if other_df exists
-    if not other_df.empty:
-        df = pd.concat([primekg_df, other_df], ignore_index=True)
-    else:
-        df = primekg_df
-        
-    return df
+    # Combine data
+    combined_df = pd.concat([primekg_df, other_resources_df], ignore_index=True)
+    
+    return combined_df, properties_df
 
-def load_properties(properties_file: str) -> pd.DataFrame:
+def create_source_mapping(properties_df: pd.DataFrame) -> Dict[str, str]:
     """
-    Load properties from CSV file.
+    Create mapping of source names to their external source IDs.
+    """
+    mapping = {}
     
-    Args:
-        properties_file (str): Path to properties CSV file
+    for _, row in properties_df.iterrows():
+        source_id = row['external_source_id']
         
-    Returns:
-        pd.DataFrame: Properties dataframe
-    """
-    return pd.read_csv(properties_file)
+        # Map all possible names from properties
+        for field in ['source_primary', 'source_secondary', 'title']:
+            if pd.notna(row[field]):
+                name = str(row[field]).strip()
+                mapping[name] = source_id
+                mapping[name.lower()] = source_id
+        
+        # Map the ID itself
+        mapping[source_id] = source_id
+    
+    return mapping
 
-def create_nodes_dataframe(df: pd.DataFrame) -> pd.DataFrame:
+def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Create nodes dataframe from input dataframe's x and y columns.
+    Create nodes dataframe with proper handling of source IDs.
+    """
+    # Extract all non-source nodes first
+    x_nodes = df[['x_type', 'x_name']].rename(columns={'x_type': 'TYPE', 'x_name': 'NAME'})
+    y_nodes = df[['y_type', 'y_name']].rename(columns={'y_type': 'TYPE', 'y_name': 'NAME'})
     
-    Args:
-        df (pd.DataFrame): Input dataframe containing node information
+    # Combine and remove duplicates
+    nodes_df = pd.concat([x_nodes, y_nodes], ignore_index=True)
+    nodes_df = nodes_df[nodes_df['TYPE'] != 'source'].drop_duplicates()
+    
+    # Add node IDs
+    nodes_df['NODE_ID'] = 'n_' + nodes_df.index.astype(str)
+    
+    # Add empty property columns
+    property_cols = ['source_primary', 'source_secondary', 'title', 
+                    'source_link', 'source_date', 'pubmed_id', 'country_of_origin']
+    for col in property_cols:
+        nodes_df[col] = ''
+    
+    # Create comprehensive source mapping
+    source_mapping = {}  # Maps any source identifier to its external source ID
+    source_properties = {}  # Maps external source IDs to their properties
+    
+    # First, process properties file to build mappings
+    for _, row in properties_df.iterrows():
+        source_id = row['external_source_id']
+        # Store properties
+        source_properties[source_id] = row.to_dict()
         
-    Returns:
-        pd.DataFrame: Combined nodes dataframe with TYPE, NAME, NODE_ID columns
-    """
-    # Create nodes dataframe from x and y columns
-    x_nodes = df[['x_type', 'x_name']].rename(columns={
-        'x_type': 'TYPE', 
-        'x_name': 'NAME'
-    })
-    
-    y_nodes = df[['y_type', 'y_name']].rename(columns={
-        'y_type': 'TYPE',
-        'y_name': 'NAME'
-    })
-    
-    # Combine and process nodes
-    nodes_df = pd.concat([x_nodes, y_nodes], ignore_index=True).drop_duplicates()
-    nodes_df = nodes_df.reset_index()
-    nodes_df['NODE_ID'] = 'n_' + (nodes_df.index + 1).astype(str)  # Start from n_1
-    nodes_df = nodes_df[['TYPE', 'NAME', 'NODE_ID']]  # Reorder columns
-    
-    return nodes_df
-
-def create_source_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Create source nodes dataframe with properties.
-    
-    Args:
-        df (pd.DataFrame): Input dataframe
-        properties_df (pd.DataFrame): Properties dataframe
+        # Map all possible identifiers to this source ID
+        source_mapping[source_id] = source_id  # Map ID to itself
         
-    Returns:
-        pd.DataFrame: Source nodes dataframe with TYPE, NAME, NODE_ID and additional properties
-    """
-    # Get unique external source IDs
-    external_sources = pd.concat([
+        # Map all variations of source names
+        for field in ['source_primary', 'source_secondary', 'title']:
+            if pd.notna(row[field]):
+                name = str(row[field]).strip()
+                source_mapping[name] = source_id
+                source_mapping[name.lower()] = source_id
+                # Also map without spaces and special characters
+                cleaned_name = ''.join(c.lower() for c in name if c.isalnum())
+                source_mapping[cleaned_name] = source_id
+    
+    # Get all unique sources
+    all_sources = pd.concat([
         df['x_external_source_id'].dropna(),
-        df['y_external_source_id'].dropna()
-    ]).unique()
-    
-    # Get unique knowledge graph sources
-    kg_sources = pd.concat([
+        df['y_external_source_id'].dropna(),
         df['x_source'].dropna(),
         df['y_source'].dropna()
     ]).unique()
     
-    # Create source nodes dataframe for external sources with properties
-    external_source_nodes = pd.DataFrame({
-        'TYPE': 'source',
-        'NAME': external_sources,
-        'NODE_ID': ['es_' + str(id).replace('es_', '') for id in external_sources]  # Remove any existing es_ prefix
-    })
+    # Process sources and create nodes
+    source_nodes = []
+    kg_source_counter = 0
+    processed_sources = set()  # Track which sources we've already processed
     
-    # Add properties from properties_df for external sources
-    properties_df['external_source_id'] = 'es_' + properties_df['external_source_id'].astype(str)
-    external_source_nodes = external_source_nodes.merge(
-        properties_df,
-        left_on='NODE_ID',
-        right_on='external_source_id',
-        how='left'
-    ).drop('external_source_id', axis=1)
+    # First pass: Process all external sources
+    for source in all_sources:
+        source_str = str(source).strip()
+        source_lower = source_str.lower()
+        cleaned_source = ''.join(c.lower() for c in source_str if c.isalnum())
+        
+        # Skip if we've already processed this source
+        if source_str in processed_sources or source_lower in processed_sources:
+            continue
+        
+        # Check if this is an external source
+        external_id = None
+        if source_str.startswith('es_'):
+            external_id = source_str
+        else:
+            # Try all possible variations of the name
+            external_id = (source_mapping.get(source_str) or 
+                         source_mapping.get(source_lower) or 
+                         source_mapping.get(cleaned_source))
+        
+        if external_id:
+            # Use external source properties
+            props = source_properties[external_id]
+            source_nodes.append({
+                'TYPE': 'source',
+                'NAME': props['source_secondary'],  # Use canonical name from properties
+                'NODE_ID': external_id,
+                'source_primary': props['source_primary'],
+                'source_secondary': props['source_secondary'],
+                'title': props['title'],
+                'source_link': props['source_link'],
+                'source_date': props['source_date'],
+                'pubmed_id': props['pubmed_id'],
+                'country_of_origin': props['country_of_origin']
+            })
+            # Add all variations of this source name to processed set
+            processed_sources.add(props['source_secondary'])
+            processed_sources.add(props['source_secondary'].lower())
+            if pd.notna(props['title']):
+                processed_sources.add(props['title'])
+                processed_sources.add(props['title'].lower())
+            processed_sources.add(source_str)
+            processed_sources.add(source_lower)
+            processed_sources.add(cleaned_source)
     
-    # Create source nodes dataframe for knowledge graph sources with properties
-    kg_source_nodes_list = []
-    for i, source in enumerate(kg_sources, 1):
-        # Create a dictionary with all properties
-        source_dict = {
+    # Second pass: Process remaining sources as PrimeKG sources
+    for source in all_sources:
+        source_str = str(source).strip()
+        source_lower = source_str.lower()
+        cleaned_source = ''.join(c.lower() for c in source_str if c.isalnum())
+        
+        # Skip if we've already processed this source
+        if (source_str in processed_sources or 
+            source_lower in processed_sources or 
+            cleaned_source in processed_sources):
+            continue
+        
+        # Create PrimeKG source node
+        source_nodes.append({
             'TYPE': 'source',
-            'NAME': source,
-            'NODE_ID': f's_{i}',
+            'NAME': source_str,
+            'NODE_ID': f's_{kg_source_counter}',
             'source_primary': 'PrimeKG',
-            'source_secondary': source,
-            'title': '',  # Empty string instead of None
-            'source_link': '',  # Empty string instead of None
-            'source_date': '',  # Empty string instead of None
-            'pubmed_id': '',  # Empty string instead of None
-            'country_of_origin': ''  # Empty string instead of None
-        }
-        kg_source_nodes_list.append(source_dict)
+            'source_secondary': source_str,
+            'title': '',
+            'source_link': '',
+            'source_date': '',
+            'pubmed_id': '',
+            'country_of_origin': ''
+        })
+        processed_sources.add(source_str)
+        processed_sources.add(source_lower)
+        processed_sources.add(cleaned_source)
+        kg_source_counter += 1
     
-    kg_source_nodes = pd.DataFrame(kg_source_nodes_list)
+    # Combine all nodes
+    source_df = pd.DataFrame(source_nodes)
+    final_nodes_df = pd.concat([nodes_df, source_df], ignore_index=True)
     
-    # Combine all source nodes and ensure column order
-    source_nodes = pd.concat([external_source_nodes, kg_source_nodes], ignore_index=True)
+    # Ensure proper column order
+    columns = ['TYPE', 'NAME', 'NODE_ID'] + property_cols
+    final_nodes_df = final_nodes_df[columns]
     
-    # Ensure TYPE, NAME, NODE_ID are first columns, followed by properties in a specific order
-    property_cols = ['source_primary', 'source_secondary', 'title', 'source_link', 'source_date', 'pubmed_id', 'country_of_origin']
-    source_nodes = source_nodes[['TYPE', 'NAME', 'NODE_ID'] + property_cols]
-    
-    # Replace NaN and None values with empty strings
-    source_nodes = source_nodes.fillna('')
-    
-    return source_nodes
+    return final_nodes_df
 
-def process_nodes(nodes_df: pd.DataFrame, source_nodes: pd.DataFrame) -> pd.DataFrame:
+def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Process and combine all nodes.
-    
-    Args:
-        nodes_df (pd.DataFrame): Main nodes dataframe
-        source_nodes (pd.DataFrame): Source nodes dataframe
-        
-    Returns:
-        pd.DataFrame: Processed nodes dataframe
+    Create relationships dataframe with proper source handling.
     """
-    return pd.concat([nodes_df, source_nodes], ignore_index=True).drop_duplicates()
-
-def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Create relationships dataframe by joining nodes information.
+    # Create main relationships
+    df = df.merge(
+        nodes_df[['TYPE', 'NAME', 'NODE_ID']],
+        left_on=['x_type', 'x_name'],
+        right_on=['TYPE', 'NAME'],
+        how='left'
+    ).rename(columns={'NODE_ID': 'START_ID'})
     
-    Args:
-        df (pd.DataFrame): Original dataframe
-        nodes_df (pd.DataFrame): Processed nodes dataframe
-        
-    Returns:
-        pd.DataFrame: Relationships dataframe
-    """
-    # Join with x nodes
-    df = df.merge(nodes_df, 
-                 left_on=['x_type', 'x_name'],
-                 right_on=['TYPE', 'NAME'],
-                 how='left')
-    df = df.rename(columns={'NODE_ID': 'START_ID'})
-
-    # Join with y nodes
-    df = df.merge(nodes_df,
-                 left_on=['y_type', 'y_name'], 
-                 right_on=['TYPE', 'NAME'],
-                 how='left',
-                 suffixes=('_x', '_y'))
-    df = df.rename(columns={'NODE_ID': 'END_ID'})
+    df = df.merge(
+        nodes_df[['TYPE', 'NAME', 'NODE_ID']],
+        left_on=['y_type', 'y_name'],
+        right_on=['TYPE', 'NAME'],
+        how='left',
+        suffixes=('_x', '_y')
+    ).rename(columns={'NODE_ID': 'END_ID'})
     
-    return df
-
-def create_relations_dataframe(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Create final relations dataframe with all relationship types.
+    # Get source mappings
+    source_mapping = create_source_mapping(properties_df)
+    node_mapping = nodes_df[nodes_df['TYPE'] == 'source'].set_index('NAME')['NODE_ID'].to_dict()
     
-    Args:
-        df (pd.DataFrame): Processed dataframe with node IDs
-        nodes_df (pd.DataFrame): Nodes dataframe
-        properties_df (pd.DataFrame): Properties dataframe with source information
-        
-    Returns:
-        pd.DataFrame: Final relations dataframe with START_ID, END_ID, TYPE columns
-    """
-    # Get source nodes mapping for knowledge graph sources
-    kg_source_mapping = nodes_df[nodes_df['TYPE'] == 'source'].set_index('NAME')['NODE_ID'].to_dict()
+    # Create relationships list
+    relationships = []
     
-    # Create main relations
-    relations = df[['START_ID', 'END_ID', 'relation']].dropna().rename(columns={'relation': 'TYPE'})
+    # Add main relationships
+    main_rels = df[['START_ID', 'END_ID', 'relation']].dropna()
+    main_rels = main_rels.rename(columns={'relation': 'TYPE'})
+    relationships.append(main_rels)
     
-    # Create source relations
-    source_relations = []
+    # Create source relationships
+    source_rels = []
+    
     for _, row in df.iterrows():
         # Handle external source IDs
         if pd.notna(row['x_external_source_id']):
-            source_id = 'es_' + str(row['x_external_source_id'])
-            source_relations.append({
+            source_rels.append({
                 'START_ID': row['START_ID'],
-                'END_ID': source_id,
+                'END_ID': row['x_external_source_id'],
                 'TYPE': 'SOURCE'
             })
+        
         if pd.notna(row['y_external_source_id']):
-            source_id = 'es_' + str(row['y_external_source_id'])
-            source_relations.append({
+            source_rels.append({
                 'START_ID': row['END_ID'],
-                'END_ID': source_id,
+                'END_ID': row['y_external_source_id'],
                 'TYPE': 'SOURCE'
             })
-            
-        # Handle x_source and y_source using the mapping
-        if pd.notna(row['x_source']) and row['x_source'] in kg_source_mapping:
-            source_relations.append({
-                'START_ID': row['START_ID'],
-                'END_ID': kg_source_mapping[row['x_source']],
-                'TYPE': 'SOURCE'
-            })
-        if pd.notna(row['y_source']) and row['y_source'] in kg_source_mapping:
-            source_relations.append({
-                'START_ID': row['END_ID'],
-                'END_ID': kg_source_mapping[row['y_source']],
-                'TYPE': 'SOURCE'
-            })
+        
+        # Handle regular sources
+        for source_type, node_id in [('x_source', 'START_ID'), ('y_source', 'END_ID')]:
+            if pd.notna(row[source_type]):
+                source_str = str(row[source_type]).strip()
+                source_lower = source_str.lower()
+                
+                # Try to find the correct source ID
+                source_id = (source_mapping.get(source_str) or 
+                           source_mapping.get(source_lower) or 
+                           node_mapping.get(source_str))
+                
+                if source_id:
+                    source_rels.append({
+                        'START_ID': row[node_id],
+                        'END_ID': source_id,
+                        'TYPE': 'SOURCE'
+                    })
     
-    # Combine all relations and ensure column order
-    relations_df = pd.concat([
-        relations,
-        pd.DataFrame(source_relations)
-    ], ignore_index=True)
-    relations_df = relations_df[['START_ID', 'END_ID', 'TYPE']]
+    # Add source relationships
+    if source_rels:
+        relationships.append(pd.DataFrame(source_rels))
     
-    return relations_df
+    # Combine all relationships
+    final_rels_df = pd.concat(relationships, ignore_index=True)
+    
+    # Remove duplicates and ensure proper column order
+    final_rels_df = final_rels_df[['START_ID', 'END_ID', 'TYPE']].drop_duplicates()
+    
+    return final_rels_df
 
 def main():
-    """Main function to process data and create Neo4j compatible CSV files."""
-    start_time = time.time()
+    """Main function to convert data to Neo4j format."""
+    print("Starting conversion process...")
     
     # Select environment
     env = select_environment()
     output_dir = ensure_output_dir(env)
     
     # Load data
-    print(f"Loading data files from {env} environment...")
-    df = load_data_files(
-        f'{env}/input/1_kg.csv',
-        f'{env}/input/2_other_resources_triple.csv'
-    )
-    properties_df = load_properties(f'{env}/input/3_other_resources_property.csv')
+    print(f"Loading data from {env} environment...")
+    df, properties_df = load_data(env)
     
     # Create nodes
     print("Creating nodes...")
-    nodes_df = create_nodes_dataframe(df)
-    source_nodes = create_source_nodes(df, properties_df)
-    nodes_df = process_nodes(nodes_df, source_nodes)
+    nodes_df = create_nodes(df, properties_df)
     
     # Create relationships
     print("Creating relationships...")
-    df = create_relationships(df, nodes_df)
-    relations_df = create_relations_dataframe(df, nodes_df, properties_df)
+    relationships_df = create_relationships(df, nodes_df, properties_df)
     
-    # Save to CSV in the appropriate output directory
-    print(f"Saving to CSV files in {output_dir}...")
+    # Save results
+    print(f"Saving results to {output_dir}...")
     nodes_df.to_csv(f'{output_dir}/nodes.csv', index=False)
-    relations_df.to_csv(f'{output_dir}/relationships.csv', index=False)
+    relationships_df.to_csv(f'{output_dir}/relationships.csv', index=False)
     
-    # Copy and rename the properties file
-    print("Copying properties file to output directory...")
+    # Copy properties file
     shutil.copy(
         f'{env}/input/3_other_resources_property.csv',
         f'{output_dir}/other_resources_property.csv'
     )
     
-    end_time = time.time()
-    execution_time = end_time - start_time
-    print(f"\nExecution completed in {execution_time:.2f} seconds")
+    print("Conversion completed successfully!")
 
 if __name__ == "__main__":
-    main()
+    main() 
