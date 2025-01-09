@@ -5,6 +5,7 @@ from utils.data_loader import get_node_by_id
 import plotly.express as px
 import tempfile
 import os
+from utils.neo4j_loader import get_neo4j_loader
 
 def render_source_statistics(nodes_df, relationships_df):
     """渲染來源統計資訊"""
@@ -452,6 +453,40 @@ def render_schema_details(nodes_df, relationships_df):
                 use_container_width=True
             )
 
+def create_drug_source_heatmap(nodes_df, relationships_df, disease_node_id="n_4"):
+    """創建藥物來源熱力圖"""
+    # 使用Neo4j執行查詢
+    loader = get_neo4j_loader()
+    
+    with loader.driver.session() as session:
+        # 執行Cypher查詢
+        query = """
+        MATCH (d:disease{nodeID:$disease_id})-[r:indication]-(dr:drug)-[s:SOURCE]-(so:source)
+        RETURN dr.name as drug_name, so.source_primary as source_primary, 
+               so.source_secondary as source_secondary, count(*) as count
+        """
+        result = session.run(query, disease_id=disease_node_id)
+        records = [dict(record) for record in result]
+        
+        if not records:
+            return None
+            
+        # 創建DataFrame
+        df = pd.DataFrame(records)
+        
+        # 創建多層次列標籤
+        df['source'] = df.apply(lambda x: f"{x['source_primary']} - {x['source_secondary']}", axis=1)
+        
+        # 透過樞紐表創建熱力圖數據，交換index和columns
+        pivot_df = df.pivot_table(
+            values='count',
+            index='source',  # 改為source作為行
+            columns='drug_name',  # 改為drug_name作為列
+            fill_value=0
+        )
+        
+        return pivot_df
+
 def render(data):
     """渲染知識圖譜Schema頁面"""
     st.header("知識圖譜Schema")
@@ -469,6 +504,48 @@ def render(data):
         with open(temp_path, "r", encoding="utf-8") as f:
             schema_html = f.read()
         st.components.v1.html(schema_html, height=600)
+    
+    # 創建藥物來源熱力圖
+    st.write("### 阿茲海默症藥物來源分布")
+    pivot_df = create_drug_source_heatmap(nodes_df, relationships_df)
+    
+    if pivot_df is not None:
+        # 創建熱力圖，交換x和y的標籤
+        fig = px.imshow(
+            pivot_df,
+            labels=dict(x="藥物名稱", y="來源", color="計數"),
+            aspect="auto",
+            height=max(400, len(pivot_df) * 30)  # 根據來源數量調整高度
+        )
+        
+        # 調整布局
+        fig.update_layout(
+            xaxis_tickangle=-45,  # 旋轉x軸標籤
+            margin=dict(l=20, r=20, t=30, b=100),  # 調整邊距
+            yaxis_title="來源",
+            xaxis_title="藥物名稱",
+            title="阿茲海默症藥物與來源關係分布"
+        )
+        
+        # 顯示熱力圖
+        st.plotly_chart(fig, use_container_width=True)
+        
+        # 顯示統計摘要
+        total_sources = len(pivot_df)  # 現在是來源的數量
+        total_drugs = len(pivot_df.columns)  # 現在是藥物的數量
+        total_citations = pivot_df.sum().sum()
+        
+        st.caption(
+            f"總共有 {total_drugs} 種藥物，"
+            f"來自 {total_sources} 個不同的來源，"
+            f"總計 {int(total_citations)} 個關聯。"
+        )
+        
+        # 顯示詳細數據
+        with st.expander("查看詳細數據"):
+            st.dataframe(pivot_df)
+    else:
+        st.info("未找到阿茲海默症相關的藥物來源數據")
     
     # 顯示來源統計
     render_source_statistics(nodes_df, relationships_df)
