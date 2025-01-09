@@ -1,4 +1,11 @@
 from neo4j import GraphDatabase
+import time
+from datetime import datetime
+
+def print_execution_time(start_time, operation_name):
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"{operation_name} completed in {execution_time:.2f} seconds")
 
 class Neo4jImporter:
     def __init__(self, uri, username, password):
@@ -83,6 +90,9 @@ class Neo4jImporter:
             session.run("MATCH (n) DETACH DELETE n")
 
 # Usage example
+start_total = time.time()
+print(f"\nStarting import process at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+
 importer = Neo4jImporter(
     "neo4j://localhost:7687",
     "neo4j",
@@ -90,9 +100,26 @@ importer = Neo4jImporter(
 )
 
 try:
+    # Delete all data
+    start_time = time.time()
     importer.delete_all_data()
+    print_execution_time(start_time, "Deleting all data")
+
+    # Import nodes
+    start_time = time.time()
     importer.import_nodes("nodes.csv")
+    print_execution_time(start_time, "Importing nodes")
+
+    # Import relationships
+    start_time = time.time()
     importer.import_relationships("relationships.csv")
+    print_execution_time(start_time, "Importing relationships")
+
+    # Import external source properties
+    start_time = time.time()
     importer.import_external_source_properties("other_resources_property.csv")
+    print_execution_time(start_time, "Importing external source properties")
+
+    print_execution_time(start_total, "\nTotal execution time")
 finally:
     importer.close()
