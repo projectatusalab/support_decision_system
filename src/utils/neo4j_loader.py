@@ -73,12 +73,9 @@ class Neo4jLoader:
             return df
 
 @st.cache_resource
-def get_neo4j_loader(environment='dev'):
-    """Get Neo4j loader instance based on environment
+def get_neo4j_loader():
+    """Get Neo4j loader instance
     
-    Args:
-        environment: 'dev' or 'prod'
-        
     Returns:
         Neo4jLoader: Neo4j loader instance
     """
@@ -87,26 +84,17 @@ def get_neo4j_loader(environment='dev'):
     username = st.session_state.get('neo4j_user', 'neo4j')
     password = st.session_state.get('neo4j_password', 'alex12345')
     
-    # If in production, use different defaults
-    if environment == 'prod' and not st.session_state.get('neo4j_uri'):
-        uri = "neo4j://localhost:7687"  # Change this to your production Neo4j URI
-        username = "neo4j"
-        password = "alex12345"  # Change this to your production password
-        
     return Neo4jLoader(uri, username, password)
 
 @st.cache_data
-def load_data_from_neo4j(environment='dev'):
+def load_data_from_neo4j():
     """Load graph data from Neo4j
     
-    Args:
-        environment: 'dev' or 'prod'
-        
     Returns:
         tuple: (nodes_df, relationships_df) Neo4j format node and relationship DataFrames
     """
     try:
-        loader = get_neo4j_loader(environment)
+        loader = get_neo4j_loader()
         
         # Fetch data
         nodes_df = loader.fetch_nodes()
