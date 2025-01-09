@@ -140,6 +140,148 @@ def render_source_statistics(nodes_df, relationships_df):
         source_nodes = nodes_df[nodes_df['type'] == 'source']
         
         if not source_nodes.empty:
+            # 創建treemap數據
+            treemap_data = []
+            for _, source in source_nodes.iterrows():
+                source_id = source['node_id']
+                primary = source.get('source_primary', 'Unknown')
+                secondary = source.get('source_secondary', source.get('name', 'Unknown'))
+                
+                # 計算與該來源相關的節點數量
+                related_nodes = set()
+                related_relations = relationships_df[
+                    (relationships_df['subject'] == source_id) |
+                    (relationships_df['object'] == source_id)
+                ]
+                
+                for _, rel in related_relations.iterrows():
+                    if rel['subject'] == source_id:
+                        related_nodes.add(rel['object'])
+                    else:
+                        related_nodes.add(rel['subject'])
+                
+                treemap_data.append({
+                    'primary': primary,
+                    'secondary': secondary,
+                    'connected_nodes_count': len(related_nodes)
+                })
+            
+            treemap_df = pd.DataFrame(treemap_data)
+            
+            # 顯示主要來源的圓餅圖
+            st.write("#### 主要來源統計")
+            primary_stats = treemap_df.groupby('primary')['connected_nodes_count'].sum().reset_index()
+            primary_stats = primary_stats.sort_values('connected_nodes_count', ascending=False)
+            
+            fig_pie = px.pie(
+                primary_stats,
+                values='connected_nodes_count',
+                names='primary',
+                title='主要來源關聯節點數量分布',
+                hover_data=['connected_nodes_count']
+            )
+            
+            # 調整圓餅圖布局
+            fig_pie.update_layout(
+                height=500,
+                margin=dict(t=30, l=10, r=10, b=10)
+            )
+            
+            # 自定義hover文本
+            fig_pie.update_traces(
+                textposition='inside',
+                textinfo='percent+label',
+                hovertemplate="<b>%{label}</b><br>" +
+                "關聯節點數量: %{customdata[0]}<br>" +
+                "佔比: %{percent}<br>" +
+                "<extra></extra>"
+            )
+            
+            st.plotly_chart(fig_pie, use_container_width=True)
+            
+            # 顯示主要來源的詳細統計
+            with st.expander("查看主要來源詳細統計"):
+                st.dataframe(
+                    primary_stats,
+                    column_config={
+                        "primary": st.column_config.TextColumn(
+                            "主要來源",
+                            help="主要來源名稱"
+                        ),
+                        "connected_nodes_count": st.column_config.NumberColumn(
+                            "關聯節點數量",
+                            help="該主要來源的關聯節點總數",
+                            format="%d"
+                        )
+                    },
+                    hide_index=True,
+                    use_container_width=True
+                )
+                
+                st.caption(
+                    f"總共有 {len(primary_stats)} 個主要來源，"
+                    f"總計關聯節點數量 {primary_stats['connected_nodes_count'].sum()}，"
+                    f"平均每個主要來源關聯 {primary_stats['connected_nodes_count'].mean():.2f} 個節點。"
+                )
+            
+            # 為每個主要來源創建單獨的treemap
+            st.write("#### 各主要來源的次要來源分布")
+            
+            # 獲取所有主要來源
+            primary_sources = sorted(treemap_df['primary'].unique())
+            
+            # 創建選擇框來選擇主要來源
+            selected_primary = st.selectbox(
+                "選擇主要來源查看詳細分布",
+                options=primary_sources,
+                format_func=lambda x: f"{x} (關聯節點數量: {primary_stats[primary_stats['primary'] == x]['connected_nodes_count'].iloc[0]})"
+            )
+            
+            # 為選中的主要來源創建treemap
+            filtered_df = treemap_df[treemap_df['primary'] == selected_primary]
+            
+            if not filtered_df.empty:
+                fig_tree = px.treemap(
+                    filtered_df,
+                    path=[px.Constant(selected_primary), 'secondary'],
+                    values='connected_nodes_count',
+                    title=f'{selected_primary} 的次要來源分布',
+                    custom_data=['connected_nodes_count']
+                )
+                
+                # 自定義hover文本
+                fig_tree.update_traces(
+                    hovertemplate="<b>%{label}</b><br>" +
+                    "關聯節點數量: %{customdata[0]}<br>" +
+                    "<extra></extra>"
+                )
+                
+                # 調整treemap布局
+                fig_tree.update_layout(
+                    height=500,
+                    margin=dict(t=30, l=10, r=10, b=10)
+                )
+                
+                st.plotly_chart(fig_tree, use_container_width=True)
+                
+                # 顯示該主要來源的詳細統計
+                with st.expander(f"查看 {selected_primary} 的詳細統計"):
+                    detailed_stats = filtered_df[['secondary', 'connected_nodes_count']].sort_values(
+                        'connected_nodes_count', ascending=False
+                    )
+                    detailed_stats.columns = ['次要來源', '關聯節點數量']
+                    st.dataframe(
+                        detailed_stats,
+                        hide_index=True,
+                        use_container_width=True
+                    )
+                    
+                    st.caption(
+                        f"該主要來源共有 {len(detailed_stats)} 個次要來源，"
+                        f"總計關聯節點數量 {detailed_stats['關聯節點數量'].sum()}，"
+                        f"平均每個次要來源關聯 {detailed_stats['關聯節點數量'].mean():.2f} 個節點。"
+                    )
+            
             # 統計來源名稱出現次數
             name_counts = source_nodes['source_secondary'].fillna(source_nodes['name']).value_counts().reset_index()
             name_counts.columns = ['來源名稱', '出現次數']
