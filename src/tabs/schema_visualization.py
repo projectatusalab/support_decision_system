@@ -21,6 +21,17 @@ def render_source_statistics(nodes_df, relationships_df):
         source_nodes = nodes_df[nodes_df['type'] == 'source']
         
         if not source_nodes.empty:
+            # Debug: 顯示可能的重複來源
+            st.write("#### 來源節點原始數據檢查")
+            debug_df = source_nodes[['node_id', 'name', 'source_primary', 'source_secondary']].copy()
+            debug_df = debug_df[
+                (debug_df['source_secondary'].str.contains('Cochrane Library', na=False)) |
+                (debug_df['name'].str.contains('Cochrane Library', na=False)) |
+                (debug_df['source_secondary'].str.contains('Evidence', na=False)) |
+                (debug_df['name'].str.contains('Evidence', na=False))
+            ]
+            st.dataframe(debug_df)
+            
             # 獲取與來源相關的關係
             source_relations = relationships_df[
                 (relationships_df['subject'].isin(source_nodes['node_id'])) |
@@ -48,11 +59,15 @@ def render_source_statistics(nodes_df, relationships_df):
                         if node_type:
                             cited_types.add(node_type)
                 
-                # Use source_secondary for name if available
+                # Use source_secondary for name if available, also keep node_id for debugging
                 source_name = source.get('source_secondary', source['name'])
                 
                 source_stats.append({
                     '來源名稱': source_name,
+                    '節點ID': source_id,
+                    '原始名稱': source['name'],
+                    '主要來源': source.get('source_primary', ''),
+                    '次要來源': source.get('source_secondary', ''),
                     '計數': citation_count,
                     '關聯節點類型': ', '.join(sorted(cited_types)) if cited_types else '無'
                 })
@@ -66,7 +81,7 @@ def render_source_statistics(nodes_df, relationships_df):
                 with sort_col:
                     sort_by = st.selectbox(
                         "排序依據",
-                        options=['來源名稱', '計數'],
+                        options=['來源名稱', '計數', '主要來源', '次要來源'],
                         key="source_sort_by"
                     )
                 with sort_order:
@@ -82,6 +97,22 @@ def render_source_statistics(nodes_df, relationships_df):
                         "來源名稱": st.column_config.TextColumn(
                             "來源名稱",
                             help="引用來源的名稱"
+                        ),
+                        "節點ID": st.column_config.TextColumn(
+                            "節點ID",
+                            help="來源節點的唯一標識"
+                        ),
+                        "原始名稱": st.column_config.TextColumn(
+                            "原始名稱",
+                            help="節點的原始名稱"
+                        ),
+                        "主要來源": st.column_config.TextColumn(
+                            "主要來源",
+                            help="來源的主要分類"
+                        ),
+                        "次要來源": st.column_config.TextColumn(
+                            "次要來源",
+                            help="來源的次要分類"
                         ),
                         "計數": st.column_config.NumberColumn(
                             "計數",
