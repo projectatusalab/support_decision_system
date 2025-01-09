@@ -14,74 +14,113 @@ class Neo4jImporter:
     def close(self):
         self.driver.close()
 
+    def create_indexes(self):
+        with self.driver.session() as session:
+            try:
+                # Drop any existing indexes first
+                session.run("DROP INDEX source_nodeID IF EXISTS")
+                session.run("DROP INDEX guideline_nodeID IF EXISTS")
+                session.run("DROP INDEX concept_nodeID IF EXISTS")
+                
+                # Create fresh indexes with specific configurations for better performance
+                session.run("CREATE INDEX source_nodeID FOR (n:source) ON (n.nodeID)")
+                session.run("CREATE INDEX guideline_nodeID FOR (n:guideline) ON (n.nodeID)")
+                session.run("CREATE INDEX concept_nodeID FOR (n:concept) ON (n.nodeID)")
+            except Exception as e:
+                print(f"Warning: Index operation failed - {str(e)}")
+
+    def drop_indexes(self):
+        with self.driver.session() as session:
+            try:
+                # Drop existing indexes if they exist
+                session.run("DROP INDEX source_nodeID IF EXISTS")
+                session.run("DROP INDEX guideline_nodeID IF EXISTS")
+                session.run("DROP INDEX concept_nodeID IF EXISTS")
+            except Exception as e:
+                print(f"Warning: Index dropping failed - {str(e)}")
+
     def import_nodes(self, csv_file_path):
         with self.driver.session() as session:
-            # Use built-in LOAD CSV instead of APOC
             query = """
-            LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
-            CALL apoc.create.node([row.TYPE], {
-                nodeID: row.NODE_ID,
-                name: CASE 
-                    WHEN row.TYPE = 'source' AND row.NODE_ID STARTS WITH 'es_' THEN null 
-                    ELSE row.NAME 
-                END,
-                source_primary: CASE 
-                    WHEN row.TYPE = 'source' THEN row.source_primary 
-                    ELSE null 
-                END,
-                source_secondary: CASE 
-                    WHEN row.TYPE = 'source' THEN row.source_secondary 
-                    ELSE null 
-                END,
-                title: CASE 
-                    WHEN row.TYPE = 'source' AND row.title <> '' THEN row.title 
-                    ELSE null 
-                END,
-                source_link: CASE 
-                    WHEN row.TYPE = 'source' AND row.source_link <> '' THEN row.source_link 
-                    ELSE null 
-                END,
-                source_date: CASE 
-                    WHEN row.TYPE = 'source' AND row.source_date <> '' THEN row.source_date 
-                    ELSE null 
-                END,
-                pubmed_id: CASE 
-                    WHEN row.TYPE = 'source' AND row.pubmed_id <> '' THEN row.pubmed_id 
-                    ELSE null 
-                END,
-                country_of_origin: CASE 
-                    WHEN row.TYPE = 'source' AND row.country_of_origin <> '' THEN row.country_of_origin 
-                    ELSE null 
-                END
-            }) YIELD node
-            RETURN node
+            CALL {
+                LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
+                CALL apoc.create.node([row.TYPE], {
+                    nodeID: row.NODE_ID,
+                    name: CASE 
+                        WHEN row.TYPE = 'source' AND row.NODE_ID STARTS WITH 'es_' THEN null 
+                        ELSE row.NAME 
+                    END,
+                    source_primary: CASE 
+                        WHEN row.TYPE = 'source' THEN row.source_primary 
+                        ELSE null 
+                    END,
+                    source_secondary: CASE 
+                        WHEN row.TYPE = 'source' THEN row.source_secondary 
+                        ELSE null 
+                    END,
+                    title: CASE 
+                        WHEN row.TYPE = 'source' AND row.title <> '' THEN row.title 
+                        ELSE null 
+                    END,
+                    source_link: CASE 
+                        WHEN row.TYPE = 'source' AND row.source_link <> '' THEN row.source_link 
+                        ELSE null 
+                    END,
+                    source_date: CASE 
+                        WHEN row.TYPE = 'source' AND row.source_date <> '' THEN row.source_date 
+                        ELSE null 
+                    END,
+                    pubmed_id: CASE 
+                        WHEN row.TYPE = 'source' AND row.pubmed_id <> '' THEN row.pubmed_id 
+                        ELSE null 
+                    END,
+                    country_of_origin: CASE 
+                        WHEN row.TYPE = 'source' AND row.country_of_origin <> '' THEN row.country_of_origin 
+                        ELSE null 
+                    END
+                }) YIELD node
+                RETURN count(node) as cnt
+            } IN TRANSACTIONS OF 10000 ROWS
+            RETURN sum(cnt)
             """
             session.run(query, file_path=csv_file_path)
 
     def import_relationships(self, csv_file_path):
         with self.driver.session() as session:
-            # Use built-in LOAD CSV to create relationships
+            # Use optimized query with better batching
             query = """
-            LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
-            MATCH (source {nodeID: row.`START_ID`})
-            MATCH (target {nodeID: row.`END_ID`})
-            CALL apoc.create.relationship(source, row.TYPE, {}, target) YIELD rel
-            RETURN rel
+            CALL {
+                LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS batch
+                WITH collect(batch) as rows
+                UNWIND rows as row
+                MATCH (source {nodeID: row.`START_ID`})
+                MATCH (target {nodeID: row.`END_ID`})
+                WITH source, target, row
+                CALL apoc.create.relationship(source, row.TYPE, {}, target) YIELD rel
+                RETURN count(rel) as cnt
+            } IN TRANSACTIONS OF 2000 ROWS
+            RETURN sum(cnt) as total
             """
+            
+            # Execute with optimized batch size
             session.run(query, file_path=csv_file_path)
 
     def import_external_source_properties(self, csv_file_path):
         with self.driver.session() as session:
             query = """
-            LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
-            MATCH (n {nodeID: row.external_source_id})
-            SET n.name = row.title,
-                n.source_primary = row.source_primary,
-                n.source_secondary = row.source_secondary,
-                n.source_link = row.source_link,
-                n.source_date = row.source_date,
-                n.pubmed_id = CASE WHEN row.pubmed_id <> '' THEN row.pubmed_id ELSE null END,
-                n.country_of_origin = CASE WHEN row.country_of_origin <> '' THEN row.country_of_origin ELSE null END
+            CALL {
+                LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
+                MATCH (n {nodeID: row.external_source_id})
+                SET n.name = row.title,
+                    n.source_primary = row.source_primary,
+                    n.source_secondary = row.source_secondary,
+                    n.source_link = row.source_link,
+                    n.source_date = row.source_date,
+                    n.pubmed_id = CASE WHEN row.pubmed_id <> '' THEN row.pubmed_id ELSE null END,
+                    n.country_of_origin = CASE WHEN row.country_of_origin <> '' THEN row.country_of_origin ELSE null END
+                RETURN count(*) as cnt
+            } IN TRANSACTIONS OF 5000 ROWS
+            RETURN sum(cnt)
             """
             session.run(query, file_path=csv_file_path)
 
@@ -100,10 +139,16 @@ importer = Neo4jImporter(
 )
 
 try:
-    # Delete all data
+    # Delete all data and prepare database
     start_time = time.time()
     importer.delete_all_data()
+    importer.drop_indexes()
     print_execution_time(start_time, "Deleting all data")
+
+    # Create indexes before import
+    start_time = time.time()
+    importer.create_indexes()
+    print_execution_time(start_time, "Creating indexes")
 
     # Import nodes
     start_time = time.time()
