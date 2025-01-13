@@ -1,6 +1,13 @@
 from neo4j import GraphDatabase
 import time
 from datetime import datetime
+import os
+import sys
+
+# Add project root to Python path to import config
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(project_root)
+from config import NEO4J_CONFIG
 
 def print_execution_time(start_time, operation_name):
     end_time = time.time()
@@ -133,9 +140,9 @@ start_total = time.time()
 print(f"\nStarting import process at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 importer = Neo4jImporter(
-    "neo4j://localhost:7687",
-    "neo4j",
-    "alex12345"
+    NEO4J_CONFIG["URI"],
+    NEO4J_CONFIG["USER"],
+    NEO4J_CONFIG["PASSWORD"]
 )
 
 try:

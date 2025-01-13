@@ -1,6 +1,13 @@
 from neo4j import GraphDatabase
 import pandas as pd
 import streamlit as st
+import os
+import sys
+
+# Add project root to Python path to import config
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "../.."))
+sys.path.append(project_root)
+from config import NEO4J_CONFIG
 
 class Neo4jLoader:
     def __init__(self, uri, username, password):
@@ -79,10 +86,10 @@ def get_neo4j_loader():
     Returns:
         Neo4jLoader: Neo4j loader instance
     """
-    # Get connection settings from session state
-    uri = st.session_state.get('neo4j_uri', 'neo4j://localhost:7687')
-    username = st.session_state.get('neo4j_user', 'neo4j')
-    password = st.session_state.get('neo4j_password', 'alex12345')
+    # Get connection settings from session state or defaults
+    uri = st.session_state.get('neo4j_uri', NEO4J_CONFIG["URI"])
+    username = st.session_state.get('neo4j_user', NEO4J_CONFIG["USER"])
+    password = st.session_state.get('neo4j_password', NEO4J_CONFIG["PASSWORD"])
     
     return Neo4jLoader(uri, username, password)
 

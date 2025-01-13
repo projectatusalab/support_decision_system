@@ -1,6 +1,13 @@
 import streamlit as st
 from utils.data_loader import load_data
 import tabs
+import os
+import sys
+
+# Add project root to Python path to import config
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(project_root)
+from config import NEO4J_CONFIG
 
 # 設置頁面配置
 st.set_page_config(page_title="阿茲海默症臨床決策支援系統", layout="wide")
@@ -15,17 +22,17 @@ def main():
     with st.sidebar.expander("Neo4j 連線設定", expanded=False):
         st.session_state.neo4j_uri = st.text_input(
             "Neo4j URI",
-            value=st.session_state.get('neo4j_uri', 'neo4j://localhost:7687'),
+            value=st.session_state.get('neo4j_uri', NEO4J_CONFIG["URI"]),
             help="Neo4j資料庫連線位址"
         )
         st.session_state.neo4j_user = st.text_input(
             "使用者名稱",
-            value=st.session_state.get('neo4j_user', 'neo4j'),
+            value=st.session_state.get('neo4j_user', NEO4J_CONFIG["USER"]),
             help="Neo4j資料庫使用者名稱"
         )
         st.session_state.neo4j_password = st.text_input(
             "密碼",
-            value=st.session_state.get('neo4j_password', 'alex12345'),
+            value=st.session_state.get('neo4j_password', NEO4J_CONFIG["PASSWORD"]),
             type="password",
             help="Neo4j資料庫密碼"
         )
