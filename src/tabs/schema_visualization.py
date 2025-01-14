@@ -334,6 +334,192 @@ def create_drug_source_heatmap(nodes_df, relationships_df, disease_node_id="n_4"
         
         return pivot_df
 
+def create_drug_disease_stats(nodes_df, relationships_df):
+    """創建藥物-疾病關係統計"""
+    # 使用Neo4j執行查詢
+    loader = get_neo4j_loader()
+    
+    with loader.driver.session() as session:
+        # 執行Cypher查詢獲取藥物-疾病關係統計
+        query = """
+        MATCH (d:drug)-[r]->(dis:disease)
+        WHERE type(r) IN ['SUPPORT', 'AGAINST', 'NON_RELATED']
+        OPTIONAL MATCH (d)-[:SOURCE]->(s:source)
+        RETURN dis.name as disease,
+               d.name as drug,
+               type(r) as relation,
+               s.name as source_name,
+               s.source_primary as source_primary,
+               s.source_secondary as source_secondary
+        ORDER BY disease, drug, relation
+        """
+        result = session.run(query)
+        records = [dict(record) for record in result]
+        
+        if not records:
+            return None, None, None
+            
+        # 創建DataFrame
+        df = pd.DataFrame(records)
+        
+        # 創建總體統計
+        overall_stats = df.groupby(['disease', 'relation']).size().unstack(fill_value=0).reset_index()
+        if 'SUPPORT' not in overall_stats.columns:
+            overall_stats['SUPPORT'] = 0
+        if 'AGAINST' not in overall_stats.columns:
+            overall_stats['AGAINST'] = 0
+        if 'NON_RELATED' not in overall_stats.columns:
+            overall_stats['NON_RELATED'] = 0
+        
+        # 創建來源統計
+        source_stats = df.groupby(['disease', 'source_primary', 'relation']).size().reset_index(name='count')
+        
+        # 創建藥物詳細資訊
+        drug_details = df.copy()
+        
+        return overall_stats, source_stats, drug_details
+
+def render_drug_disease_statistics(nodes_df, relationships_df):
+    """渲染藥物-疾病關係統計頁面"""
+    st.write("### 藥物-疾病關係統計")
+    
+    # 獲取統計數據
+    overall_stats, source_stats, drug_details = create_drug_disease_stats(nodes_df, relationships_df)
+    
+    if overall_stats is None:
+        st.info("未找到藥物-疾病關係數據")
+        return
+    
+    # 創建過濾器
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        selected_disease = st.selectbox(
+            "選擇疾病",
+            options=['全部'] + sorted(overall_stats['disease'].unique().tolist())
+        )
+    
+    with col2:
+        source_options = ['全部'] + sorted(drug_details['source_primary'].unique().tolist())
+        selected_source = st.selectbox("選擇來源類型", options=source_options)
+    
+    with col3:
+        drug_options = ['全部'] + sorted(drug_details['drug'].unique().tolist())
+        selected_drug = st.selectbox("選擇藥物", options=drug_options)
+    
+    # 過濾詳細數據
+    filtered_details = drug_details
+    if selected_disease != '全部':
+        filtered_details = filtered_details[filtered_details['disease'] == selected_disease]
+    if selected_source != '全部':
+        filtered_details = filtered_details[filtered_details['source_primary'] == selected_source]
+    if selected_drug != '全部':
+        filtered_details = filtered_details[filtered_details['drug'] == selected_drug]
+    
+    # 創建藥物來源分布
+    drug_source_stats = filtered_details.groupby(
+        ['disease', 'drug', 'source_primary', 'relation']
+    ).size().reset_index(name='count')
+    
+    # 創建樞紐表包含藥物信息
+    drug_source_pivot = drug_source_stats.pivot_table(
+        values='count',
+        index=['disease', 'source_primary', 'drug'],
+        columns='relation',
+        fill_value=0
+    ).reset_index()
+    
+    # 確保所有必要的列都存在
+    required_columns = ['SUPPORT', 'AGAINST', 'NON_RELATED']
+    for col in required_columns:
+        if col not in drug_source_pivot.columns:
+            drug_source_pivot[col] = 0
+    
+    # 重命名列以便於閱讀
+    column_mapping = {
+        'SUPPORT': '支持數量',
+        'AGAINST': '反對數量',
+        'NON_RELATED': '無關數量'
+    }
+    drug_source_pivot = drug_source_pivot.rename(columns=column_mapping)
+    
+    # 添加總計列
+    drug_source_pivot['總計'] = drug_source_pivot.filter(regex='^(支持|反對|無關)數量$').sum(axis=1)
+    
+    # 按總計降序排序
+    drug_source_pivot = drug_source_pivot.sort_values('總計', ascending=False)
+    
+    # 創建熱力圖數據
+    heatmap_data = drug_source_pivot.copy()
+    
+    # 按藥物名稱合併數據
+    merged_data = heatmap_data.groupby(['disease', 'drug']).agg({
+        'source_primary': lambda x: ', '.join(sorted(set(x))),  # 使用逗號分隔來源
+        '支持數量': 'sum',
+        '反對數量': 'sum',
+        '無關數量': 'sum',
+        '總計': 'sum'
+    }).reset_index()
+    
+    # 按總計降序排序
+    merged_data = merged_data.sort_values('總計', ascending=False)
+    
+    heatmap_columns = ['支持數量', '反對數量', '無關數量']
+    
+    # 創建標籤，包含藥物名稱和來源列表
+    heatmap_labels = merged_data.apply(
+        lambda x: f"{x['drug']} ({x['source_primary']})", 
+        axis=1
+    ).values
+    
+    # 創建熱力圖
+    fig = px.imshow(
+        merged_data[heatmap_columns],
+        labels=dict(x="關係類型", y="藥物 (來源列表)", color="數量"),
+        y=heatmap_labels,
+        aspect="auto",
+        height=max(400, len(merged_data) * 30),  # 根據數據量調整高度
+        color_continuous_scale=[[0, 'white'],
+                             [0.01, 'rgb(49,130,189)'],
+                             [1, 'rgb(0,0,139)']]  # 從白色到深藍色
+    )
+    
+    # 調整布局
+    fig.update_layout(
+        title="藥物-來源關係分布熱力圖",
+        margin=dict(l=200, r=20, t=30, b=50),  # 增加左邊距以顯示更多來源信息
+        xaxis_title="關係類型",
+        yaxis_title="藥物 (來源列表)"
+    )
+    
+    # 添加網格線
+    fig.update_traces(
+        xgap=2,  # x方向的間距
+        ygap=2,  # y方向的間距
+    )
+    
+    # 更新y軸標籤的顯示方式，支持HTML
+    fig.update_yaxes(tickmode='array', ticktext=heatmap_labels, tickvals=list(range(len(heatmap_labels))))
+    
+    # 顯示熱力圖
+    st.plotly_chart(fig, use_container_width=True)
+    
+    # 顯示帶有列配置的數據框
+    st.caption("詳細數據表格：")
+    st.dataframe(
+        merged_data,
+        column_config={
+            "disease": st.column_config.TextColumn("疾病", help="疾病名稱"),
+            "drug": st.column_config.TextColumn("藥物", help="藥物名稱"),
+            "source_primary": st.column_config.TextColumn("來源列表", help="所有相關來源"),
+            "支持數量": st.column_config.NumberColumn("支持數量", help="支持關係的數量"),
+            "反對數量": st.column_config.NumberColumn("反對數量", help="反對關係的數量"),
+            "無關數量": st.column_config.NumberColumn("無關數量", help="無關關係的數量"),
+            "總計": st.column_config.NumberColumn("總計", help="所有關係的總數")
+        },
+        hide_index=True,
+        use_container_width=True
+    )
+
 def render(data):
     """渲染知識圖譜Schema頁面"""
     st.title("知識圖譜結構與統計分析")
@@ -346,7 +532,8 @@ def render(data):
         "圖譜結構", 
         "基礎統計", 
         "來源分布",
-        "藥物來源"
+        "藥物來源",
+        "藥物疾病關係"  # 新增標籤頁
     ])
     
     # Schema總覽標籤頁
@@ -545,3 +732,9 @@ def render(data):
                 st.dataframe(pivot_df)
         else:
             st.info("未找到阿茲海默症相關的藥物來源數據") 
+    
+    # 新增藥物疾病關係標籤頁
+    with main_tabs[4]:
+        st.header("藥物-疾病關係分析")
+        st.caption("分析藥物與疾病之間的支持、反對和無關係統計")
+        render_drug_disease_statistics(nodes_df, relationships_df) 
