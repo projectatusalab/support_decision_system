@@ -51,42 +51,20 @@ class Neo4jImporter:
             query = """
             CALL {
                 LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
-                CALL apoc.create.node([row.TYPE], {
-                    nodeID: row.NODE_ID,
-                    name: CASE 
-                        WHEN row.TYPE = 'source' AND row.NODE_ID STARTS WITH 'es_' THEN null 
-                        ELSE row.NAME 
-                    END,
-                    source_primary: CASE 
-                        WHEN row.TYPE = 'source' THEN row.source_primary 
-                        ELSE null 
-                    END,
-                    source_secondary: CASE 
-                        WHEN row.TYPE = 'source' THEN row.source_secondary 
-                        ELSE null 
-                    END,
-                    title: CASE 
-                        WHEN row.TYPE = 'source' AND row.title <> '' THEN row.title 
-                        ELSE null 
-                    END,
-                    source_link: CASE 
-                        WHEN row.TYPE = 'source' AND row.source_link <> '' THEN row.source_link 
-                        ELSE null 
-                    END,
-                    source_date: CASE 
-                        WHEN row.TYPE = 'source' AND row.source_date <> '' THEN row.source_date 
-                        ELSE null 
-                    END,
-                    pubmed_id: CASE 
-                        WHEN row.TYPE = 'source' AND row.pubmed_id <> '' THEN row.pubmed_id 
-                        ELSE null 
-                    END,
-                    country_of_origin: CASE 
-                        WHEN row.TYPE = 'source' AND row.country_of_origin <> '' THEN row.country_of_origin 
-                        ELSE null 
-                    END
-                }) YIELD node
-                RETURN count(node) as cnt
+                CREATE (n)
+                WITH n, row
+                CALL apoc.create.addLabels(n, [row.TYPE]) YIELD node
+                SET node.nodeID = row.NODE_ID,
+                    node.name = row.NAME,
+                    node.type = row.TYPE,
+                    node.source_primary = CASE WHEN row.source_primary <> '' THEN row.source_primary ELSE null END,
+                    node.source_secondary = CASE WHEN row.source_secondary <> '' THEN row.source_secondary ELSE null END,
+                    node.title = CASE WHEN row.title <> '' THEN row.title ELSE null END,
+                    node.source_link = CASE WHEN row.source_link <> '' THEN row.source_link ELSE null END,
+                    node.source_date = CASE WHEN row.source_date <> '' THEN row.source_date ELSE null END,
+                    node.pubmed_id = CASE WHEN row.pubmed_id <> '' THEN row.pubmed_id ELSE null END,
+                    node.country_of_origin = CASE WHEN row.country_of_origin <> '' THEN row.country_of_origin ELSE null END
+                RETURN count(*) as cnt
             } IN TRANSACTIONS OF 10000 ROWS
             RETURN sum(cnt)
             """
@@ -94,22 +72,16 @@ class Neo4jImporter:
 
     def import_relationships(self, csv_file_path):
         with self.driver.session() as session:
-            # Use optimized query with better batching
             query = """
             CALL {
-                LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS batch
-                WITH collect(batch) as rows
-                UNWIND rows as row
-                MATCH (source {nodeID: row.`START_ID`})
-                MATCH (target {nodeID: row.`END_ID`})
-                WITH source, target, row
+                LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
+                MATCH (source {nodeID: row.START_ID})
+                MATCH (target {nodeID: row.END_ID})
                 CALL apoc.create.relationship(source, row.TYPE, {}, target) YIELD rel
-                RETURN count(rel) as cnt
+                RETURN count(*) as cnt
             } IN TRANSACTIONS OF 2000 ROWS
             RETURN sum(cnt) as total
             """
-            
-            # Execute with optimized batch size
             session.run(query, file_path=csv_file_path)
 
     def import_external_source_properties(self, csv_file_path):

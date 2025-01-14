@@ -86,7 +86,9 @@ def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     # Process source nodes from properties file
     source_nodes = []
     processed_sources = set()
+    name_to_id_map = {}  # Map to track source names to their IDs
     
+    # Process guideline and other sources from properties file first
     for _, row in properties_df.iterrows():
         source_id = row['external_source_id']
         if source_id in processed_sources:
@@ -99,12 +101,15 @@ def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
             # For other sources, keep using the es_ prefix
             node_id = source_id if source_id.startswith('es_') else f'es_{len(processed_sources) + 1}'
             
+        source_name = row['source_secondary']
+        name_to_id_map[source_name.lower()] = node_id
+        
         source_nodes.append({
             'TYPE': 'source',
-            'NAME': row['source_secondary'],
+            'NAME': source_name,
             'NODE_ID': node_id,
             'source_primary': row['source_primary'],
-            'source_secondary': row['source_secondary'],
+            'source_secondary': source_name,
             'title': row['title'],
             'source_link': row['source_link'],
             'source_date': row['source_date'],
@@ -112,6 +117,39 @@ def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
             'country_of_origin': str(row['country_of_origin']) if pd.notna(row['country_of_origin']) else ''
         })
         processed_sources.add(source_id)
+    
+    # Add PrimeKG source nodes
+    primekg_sources = pd.concat([
+        df[['x_source']].rename(columns={'x_source': 'source'}),
+        df[['y_source']].rename(columns={'y_source': 'source'})
+    ])['source'].unique()
+    
+    kg_source_counter = 0
+    for source_str in primekg_sources:
+        if pd.isna(source_str):
+            continue
+        source_str = str(source_str).strip()
+        source_lower = source_str.lower()
+        
+        # Skip if we've already processed this source
+        if source_lower in name_to_id_map or source_str in processed_sources:
+            continue
+            
+        source_nodes.append({
+            'TYPE': 'source',
+            'NAME': source_str,
+            'NODE_ID': f's_{kg_source_counter}',
+            'source_primary': 'PrimeKG',
+            'source_secondary': source_str,
+            'title': '',
+            'source_link': '',
+            'source_date': '',
+            'pubmed_id': '',
+            'country_of_origin': ''
+        })
+        name_to_id_map[source_lower] = f's_{kg_source_counter}'
+        processed_sources.add(source_str)
+        kg_source_counter += 1
     
     # Create source nodes dataframe
     source_df = pd.DataFrame(source_nodes)
@@ -176,18 +214,21 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
                 'TYPE': 'SOURCE'
             })
         
-        # Handle regular sources
+        # Handle regular sources and PrimeKG sources
         for source_type, node_id in [('x_source', 'START_ID'), ('y_source', 'END_ID')]:
             if pd.notna(row[source_type]):
                 source_str = str(row[source_type]).strip()
                 source_lower = source_str.lower()
                 
-                # Try to find the correct source ID
-                source_id = (source_mapping.get(source_str) or 
-                           source_mapping.get(source_lower) or 
-                           node_mapping.get(source_str))
+                # Try to find the source node ID
+                source_node = nodes_df[
+                    (nodes_df['TYPE'] == 'source') & 
+                    ((nodes_df['NAME'] == source_str) | 
+                     (nodes_df['source_secondary'] == source_str))
+                ]
                 
-                if source_id:
+                if not source_node.empty:
+                    source_id = source_node.iloc[0]['NODE_ID']
                     source_rels.append({
                         'START_ID': row[node_id],
                         'END_ID': source_id,
