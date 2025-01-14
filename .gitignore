@@ -20,3 +20,5 @@ data/prod/output/*
 !data/prod/output/.gitkeep
 lib/*
 temp_schema.html
+
+config.py
