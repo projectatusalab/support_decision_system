@@ -1,0 +1,197 @@
+id,x_name,x_type,x_source,x_external_source_id,relation,y_name,y_type,y_source,y_external_source_id
+1,Souvenaid,drug,Cochrane Library,Burckhardt20,AGAINST,dementia,disease,Cochrane Library,Burckhardt20
+2,Souvenaid,drug,Cochrane Library,Burckhardt20,AGAINST,cognitive impairment,disease,Cochrane Library,Burckhardt20
+3,Souvenaid,drug,Cochrane Library,Burckhardt20,AGAINST,Alzheimer's disease,disease,Cochrane Library,Burckhardt20
+4,Souvenaid,drug,Cochrane Library,Burckhardt20,AGAINST,MCI,disease,Cochrane Library,Burckhardt20
+5,Souvenaid,drug,Cochrane Library,Burckhardt20,AGAINST,Dementia,disease,Cochrane Library,Burckhardt20
+6,Ovid,drug,Cochrane Library,Burckhardt20,AGAINST,dementia,disease,Cochrane Library,Burckhardt20
+7,Ovid,drug,Cochrane Library,Burckhardt20,AGAINST,cognitive impairment,disease,Cochrane Library,Burckhardt20
+8,Ovid,drug,Cochrane Library,Burckhardt20,AGAINST,Alzheimer's disease,disease,Cochrane Library,Burckhardt20
+9,Ovid,drug,Cochrane Library,Burckhardt20,AGAINST,MCI,disease,Cochrane Library,Burckhardt20
+10,Ovid,drug,Cochrane Library,Burckhardt20,AGAINST,Dementia,disease,Cochrane Library,Burckhardt20
+11,Methylphenidate,drug,Cochrane Library,Ruthirakuhan18,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ruthirakuhan18
+12,Methylphenidate,drug,Cochrane Library,Ruthirakuhan18,SUPPORT,Dementia,disease,Cochrane Library,Ruthirakuhan18
+13,Donepezil,drug,Cochrane Library,Birks03,NON_RELATED,Dementia,disease,Cochrane Library,Birks03
+14,Donepezil,drug,Cochrane Library,Birks03,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,Birks03
+15,Donepezil,drug,Cochrane Library,Birks03,NON_RELATED,dementia,disease,Cochrane Library,Birks03
+16,Donepezil,drug,Cochrane Library,Birks03,NON_RELATED,Alzheimer's Disease,disease,Cochrane Library,Birks03
+17,State,drug,Cochrane Library,Birks03,NON_RELATED,Dementia,disease,Cochrane Library,Birks03
+18,State,drug,Cochrane Library,Birks03,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,Birks03
+19,State,drug,Cochrane Library,Birks03,NON_RELATED,dementia,disease,Cochrane Library,Birks03
+20,State,drug,Cochrane Library,Birks03,NON_RELATED,Alzheimer's Disease,disease,Cochrane Library,Birks03
+21,Ovid,drug,Cochrane Library,Liu16,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Liu16
+22,April,drug,Cochrane Library,Farina00,NON_RELATED,dementia,disease,Cochrane Library,Farina00
+23,April,drug,Cochrane Library,Farina00,NON_RELATED,Alzheimer's Disease,disease,Cochrane Library,Farina00
+24,April,drug,Cochrane Library,Farina00,NON_RELATED,cognitive impairment,disease,Cochrane Library,Farina00
+25,April,drug,Cochrane Library,Farina00,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,Farina00
+26,April,drug,Cochrane Library,Farina00,NON_RELATED,MCI,disease,Cochrane Library,Farina00
+27,April,drug,Cochrane Library,Farina00,NON_RELATED,Dementia,disease,Cochrane Library,Farina00
+28,Ovid,drug,Cochrane Library,Mühlbauer21,SUPPORT,Dementia,disease,Cochrane Library,Mühlbauer21
+29,Ovid,drug,Cochrane Library,Mühlbauer21,SUPPORT,dementia,disease,Cochrane Library,Mühlbauer21
+30,Ovid,drug,Cochrane Library,Mühlbauer21,SUPPORT,cognitive impairment,disease,Cochrane Library,Mühlbauer21
+31,Ovid,drug,Cochrane Library,Mühlbauer21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Mühlbauer21
+32,State,drug,Cochrane Library,Chau15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Chau15
+33,State,drug,Cochrane Library,Chau15,SUPPORT,dementia,disease,Cochrane Library,Chau15
+34,State,drug,Cochrane Library,Chau15,SUPPORT,Dementia,disease,Cochrane Library,Chau15
+35,Latrepirdine,drug,Cochrane Library,Chau15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Chau15
+36,Latrepirdine,drug,Cochrane Library,Chau15,SUPPORT,dementia,disease,Cochrane Library,Chau15
+37,Latrepirdine,drug,Cochrane Library,Chau15,SUPPORT,Dementia,disease,Cochrane Library,Chau15
+38,Tacrine,drug,Cochrane Library,Birks00,SUPPORT,Dementia,disease,Cochrane Library,Birks00
+39,Tacrine,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Birks00
+40,Tacrine,drug,Cochrane Library,Birks00,SUPPORT,dementia,disease,Cochrane Library,Birks00
+41,Tacrine,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Birks00
+42,State,drug,Cochrane Library,Birks00,SUPPORT,Dementia,disease,Cochrane Library,Birks00
+43,State,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Birks00
+44,State,drug,Cochrane Library,Birks00,SUPPORT,dementia,disease,Cochrane Library,Birks00
+45,State,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Birks00
+46,Rivastigmine,drug,Cochrane Library,Birks00,SUPPORT,Dementia,disease,Cochrane Library,Birks00
+47,Rivastigmine,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Birks00
+48,Rivastigmine,drug,Cochrane Library,Birks00,SUPPORT,dementia,disease,Cochrane Library,Birks00
+49,Rivastigmine,drug,Cochrane Library,Birks00,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Birks00
+50,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,dementia,disease,Cochrane Library,Martínez17
+51,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,cognitive impairment,disease,Cochrane Library,Martínez17
+52,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Martínez17
+53,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,MCI,disease,Cochrane Library,Martínez17
+54,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Dementia,disease,Cochrane Library,Martínez17
+55,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,dementia,disease,Cochrane Library,Martínez17
+56,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,cognitive impairment,disease,Cochrane Library,Martínez17
+57,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Martínez17
+58,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,MCI,disease,Cochrane Library,Martínez17
+59,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Dementia,disease,Cochrane Library,Martínez17
+60,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,dementia,disease,Cochrane Library,Martínez17
+61,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,cognitive impairment,disease,Cochrane Library,Martínez17
+62,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Martínez17
+63,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,MCI,disease,Cochrane Library,Martínez17
+64,Medicine,drug,Cochrane Library,Martínez17,SUPPORT,Dementia,disease,Cochrane Library,Martínez17
+65,State,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,cognitive impairment,disease,Cochrane Library,Taylor-Rowan23
+66,State,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,dementia,disease,Cochrane Library,Taylor-Rowan23
+67,State,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Taylor-Rowan23
+68,Symbol,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,cognitive impairment,disease,Cochrane Library,Taylor-Rowan23
+69,Symbol,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,dementia,disease,Cochrane Library,Taylor-Rowan23
+70,Symbol,drug,Cochrane Library,Taylor-Rowan23,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Taylor-Rowan23
+71,Clarivate,drug,Cochrane Library,Karkou17,SUPPORT,cognitive impairment,disease,Cochrane Library,Karkou17
+72,Clarivate,drug,Cochrane Library,Karkou17,SUPPORT,dementia,disease,Cochrane Library,Karkou17
+73,Clarivate,drug,Cochrane Library,Karkou17,SUPPORT,Dementia,disease,Cochrane Library,Karkou17
+74,Clarivate,drug,Cochrane Library,Karkou17,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Karkou17
+75,Relevant,drug,Cochrane Library,Karkou17,SUPPORT,cognitive impairment,disease,Cochrane Library,Karkou17
+76,Relevant,drug,Cochrane Library,Karkou17,SUPPORT,dementia,disease,Cochrane Library,Karkou17
+77,Relevant,drug,Cochrane Library,Karkou17,SUPPORT,Dementia,disease,Cochrane Library,Karkou17
+78,Relevant,drug,Cochrane Library,Karkou17,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Karkou17
+79,Ovid,drug,Cochrane Library,Karkou17,SUPPORT,cognitive impairment,disease,Cochrane Library,Karkou17
+80,Ovid,drug,Cochrane Library,Karkou17,SUPPORT,dementia,disease,Cochrane Library,Karkou17
+81,Ovid,drug,Cochrane Library,Karkou17,SUPPORT,Dementia,disease,Cochrane Library,Karkou17
+82,Ovid,drug,Cochrane Library,Karkou17,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Karkou17
+83,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,dementia,disease,Cochrane Library,Lim02
+84,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Lim02
+85,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,cognitive impairment,disease,Cochrane Library,Lim02
+86,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Lim02
+87,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,MCI,disease,Cochrane Library,Lim02
+88,Galantamine,drug,Cochrane Library,Lim02,SUPPORT,Dementia,disease,Cochrane Library,Lim02
+89,State,drug,Cochrane Library,Burckhardt16,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Burckhardt16
+90,State,drug,Cochrane Library,Burckhardt16,SUPPORT,dementia,disease,Cochrane Library,Burckhardt16
+91,State,drug,Cochrane Library,Burckhardt16,SUPPORT,Dementia,disease,Cochrane Library,Burckhardt16
+92,State,drug,Cochrane Library,Burckhardt16,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Burckhardt16
+93,State,drug,Cochrane Library,Cunningham09,NON_RELATED,cognitive impairment,disease,Cochrane Library,Cunningham09
+94,State,drug,Cochrane Library,Cunningham09,NON_RELATED,dementia,disease,Cochrane Library,Cunningham09
+95,State,drug,Cochrane Library,Cunningham09,NON_RELATED,Dementia,disease,Cochrane Library,Cunningham09
+96,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,dementia,disease,Cochrane Library,Smailagic15
+97,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Smailagic15
+98,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,cognitive impairment,disease,Cochrane Library,Smailagic15
+99,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Smailagic15
+100,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,MCI,disease,Cochrane Library,Smailagic15
+101,Medicine,drug,Cochrane Library,Smailagic15,SUPPORT,cognitive Impairment,disease,Cochrane Library,Smailagic15
+102,Bristol,drug,Cochrane Library,Parsons21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Parsons21
+103,Bristol,drug,Cochrane Library,Parsons21,SUPPORT,dementia,disease,Cochrane Library,Parsons21
+104,Bristol,drug,Cochrane Library,Parsons21,SUPPORT,Dementia,disease,Cochrane Library,Parsons21
+105,State,drug,Cochrane Library,Parsons21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Parsons21
+106,State,drug,Cochrane Library,Parsons21,SUPPORT,dementia,disease,Cochrane Library,Parsons21
+107,State,drug,Cochrane Library,Parsons21,SUPPORT,Dementia,disease,Cochrane Library,Parsons21
+108,State,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,cognitive impairment,disease,Cochrane Library,Arevalo-Rodriguez15
+109,State,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,dementia,disease,Cochrane Library,Arevalo-Rodriguez15
+110,State,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,Dementia,disease,Cochrane Library,Arevalo-Rodriguez15
+111,State,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,MCI,disease,Cochrane Library,Arevalo-Rodriguez15
+112,Baseline,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,cognitive impairment,disease,Cochrane Library,Arevalo-Rodriguez15
+113,Baseline,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,dementia,disease,Cochrane Library,Arevalo-Rodriguez15
+114,Baseline,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,Dementia,disease,Cochrane Library,Arevalo-Rodriguez15
+115,Baseline,drug,Cochrane Library,Arevalo-Rodriguez15,NON_RELATED,MCI,disease,Cochrane Library,Arevalo-Rodriguez15
+116,Ovid,drug,Cochrane Library,Creavin22,SUPPORT,dementia,disease,Cochrane Library,Creavin22
+117,Ovid,drug,Cochrane Library,Creavin22,SUPPORT,cognitive impairment,disease,Cochrane Library,Creavin22
+118,Ovid,drug,Cochrane Library,Creavin22,SUPPORT,Cognitive impairment,disease,Cochrane Library,Creavin22
+119,Ovid,drug,Cochrane Library,Creavin22,SUPPORT,MCI,disease,Cochrane Library,Creavin22
+120,Ovid,drug,Cochrane Library,Creavin22,SUPPORT,Dementia,disease,Cochrane Library,Creavin22
+121,Ovid,drug,Cochrane Library,Fage15,NON_RELATED,cognitive impairment,disease,Cochrane Library,Fage15
+122,Ovid,drug,Cochrane Library,Fage15,NON_RELATED,Dementia,disease,Cochrane Library,Fage15
+123,Ovid,drug,Cochrane Library,Fage15,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,Fage15
+124,Ovid,drug,Cochrane Library,Fage15,NON_RELATED,dementia,disease,Cochrane Library,Fage15
+125,Brazil,drug,Cochrane Library,Chan19,SUPPORT,Dementia,disease,Cochrane Library,Chan19
+126,Brazil,drug,Cochrane Library,Chan19,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Chan19
+127,Brazil,drug,Cochrane Library,Chan19,SUPPORT,dementia,disease,Cochrane Library,Chan19
+128,State,drug,Cochrane Library,Creavin16,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Creavin16
+129,State,drug,Cochrane Library,Creavin16,SUPPORT,dementia,disease,Cochrane Library,Creavin16
+130,State,drug,Cochrane Library,Creavin16,SUPPORT,Dementia,disease,Cochrane Library,Creavin16
+131,Dopamine,drug,Cochrane Library,McCleery15,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,McCleery15
+132,Dopamine,drug,Cochrane Library,McCleery15,NON_RELATED,dementia,disease,Cochrane Library,McCleery15
+133,Dopamine,drug,Cochrane Library,McCleery15,NON_RELATED,Dementia,disease,Cochrane Library,McCleery15
+134,State,drug,Cochrane Library,Kwan22,SUPPORT,cognitive impairment,disease,Cochrane Library,Kwan22
+135,State,drug,Cochrane Library,Kwan22,SUPPORT,dementia,disease,Cochrane Library,Kwan22
+136,State,drug,Cochrane Library,Kwan22,SUPPORT,Dementia,disease,Cochrane Library,Kwan22
+137,Medicine,drug,Cochrane Library,Davis15,SUPPORT,cognitive impairment,disease,Cochrane Library,Davis15
+138,Medicine,drug,Cochrane Library,Davis15,SUPPORT,dementia,disease,Cochrane Library,Davis15
+139,Medicine,drug,Cochrane Library,Davis15,SUPPORT,Dementia,disease,Cochrane Library,Davis15
+140,Control,drug,Cochrane Library,Herke18,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Herke18
+141,Control,drug,Cochrane Library,Herke18,SUPPORT,dementia,disease,Cochrane Library,Herke18
+142,Control,drug,Cochrane Library,Herke18,SUPPORT,Dementia,disease,Cochrane Library,Herke18
+143,Trail,drug,Cochrane Library,Li15,SUPPORT,cognitive impairment,disease,Cochrane Library,Li15
+144,Trail,drug,Cochrane Library,Li15,SUPPORT,Dementia,disease,Cochrane Library,Li15
+145,Trail,drug,Cochrane Library,Li15,SUPPORT,dementia,disease,Cochrane Library,Li15
+146,Trail,drug,Cochrane Library,Li15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Li15
+147,Symbol,drug,Cochrane Library,Li15,SUPPORT,cognitive impairment,disease,Cochrane Library,Li15
+148,Symbol,drug,Cochrane Library,Li15,SUPPORT,Dementia,disease,Cochrane Library,Li15
+149,Symbol,drug,Cochrane Library,Li15,SUPPORT,dementia,disease,Cochrane Library,Li15
+150,Symbol,drug,Cochrane Library,Li15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Li15
+151,School,drug,Cochrane Library,Visser18,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Visser18
+152,School,drug,Cochrane Library,Visser18,SUPPORT,dementia,disease,Cochrane Library,Visser18
+153,State,drug,Cochrane Library,McShane03,SUPPORT,Dementia,disease,Cochrane Library,McShane03
+154,State,drug,Cochrane Library,McShane03,SUPPORT,Alzheimer's disease,disease,Cochrane Library,McShane03
+155,State,drug,Cochrane Library,McShane03,SUPPORT,dementia,disease,Cochrane Library,McShane03
+156,Memantine,drug,Cochrane Library,McShane03,SUPPORT,Dementia,disease,Cochrane Library,McShane03
+157,Memantine,drug,Cochrane Library,McShane03,SUPPORT,Alzheimer's disease,disease,Cochrane Library,McShane03
+158,Memantine,drug,Cochrane Library,McShane03,SUPPORT,dementia,disease,Cochrane Library,McShane03
+159,Moderate,drug,Cochrane Library,McShane03,SUPPORT,Dementia,disease,Cochrane Library,McShane03
+160,Moderate,drug,Cochrane Library,McShane03,SUPPORT,Alzheimer's disease,disease,Cochrane Library,McShane03
+161,Moderate,drug,Cochrane Library,McShane03,SUPPORT,dementia,disease,Cochrane Library,McShane03
+162,April,drug,Cochrane Library,Tammenmaa‐Aho02,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Tammenmaa‐Aho02
+163,State,drug,Cochrane Library,Cui13,SUPPORT,dementia,disease,Cochrane Library,Cui13
+164,State,drug,Cochrane Library,Cui13,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Cui13
+165,Donepezil,drug,Cochrane Library,Battle21,SUPPORT,dementia,disease,Cochrane Library,Battle21
+166,Donepezil,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Battle21
+167,Donepezil,drug,Cochrane Library,Battle21,SUPPORT,cognitive impairment,disease,Cochrane Library,Battle21
+168,Donepezil,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Battle21
+169,Donepezil,drug,Cochrane Library,Battle21,SUPPORT,Dementia,disease,Cochrane Library,Battle21
+170,Rivastigmine,drug,Cochrane Library,Battle21,SUPPORT,dementia,disease,Cochrane Library,Battle21
+171,Rivastigmine,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Battle21
+172,Rivastigmine,drug,Cochrane Library,Battle21,SUPPORT,cognitive impairment,disease,Cochrane Library,Battle21
+173,Rivastigmine,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Battle21
+174,Rivastigmine,drug,Cochrane Library,Battle21,SUPPORT,Dementia,disease,Cochrane Library,Battle21
+175,Galantamine,drug,Cochrane Library,Battle21,SUPPORT,dementia,disease,Cochrane Library,Battle21
+176,Galantamine,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's Disease,disease,Cochrane Library,Battle21
+177,Galantamine,drug,Cochrane Library,Battle21,SUPPORT,cognitive impairment,disease,Cochrane Library,Battle21
+178,Galantamine,drug,Cochrane Library,Battle21,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Battle21
+179,Galantamine,drug,Cochrane Library,Battle21,SUPPORT,Dementia,disease,Cochrane Library,Battle21
+180,Acetylcholine,drug,Cochrane Library,Ure23,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ure23
+181,Significant,drug,Cochrane Library,Ure23,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ure23
+182,Donepezil,drug,Cochrane Library,Ure23,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ure23
+183,Aberrant,drug,Cochrane Library,Ure23,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ure23
+184,Galantamine,drug,Cochrane Library,Ure23,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Ure23
+185,Dexmedetomidine,drug,Cochrane Library,Burry19,SUPPORT,cognitive impairment,disease,Cochrane Library,Burry19
+186,Dexmedetomidine,drug,Cochrane Library,Burry19,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Burry19
+187,Ovid,drug,Cochrane Library,Burry19,SUPPORT,cognitive impairment,disease,Cochrane Library,Burry19
+188,Ovid,drug,Cochrane Library,Burry19,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Burry19
+189,State,drug,Cochrane Library,Woods12,SUPPORT,dementia,disease,Cochrane Library,Woods12
+190,State,drug,Cochrane Library,Woods12,SUPPORT,Dementia,disease,Cochrane Library,Woods12
+191,Ovid,drug,Cochrane Library,Livingstone15,SUPPORT,Dementia,disease,Cochrane Library,Livingstone15
+192,Ovid,drug,Cochrane Library,Livingstone15,SUPPORT,dementia,disease,Cochrane Library,Livingstone15
+193,Ovid,drug,Cochrane Library,Livingstone15,SUPPORT,Alzheimer's disease,disease,Cochrane Library,Livingstone15
+194,Ovid,drug,Cochrane Library,Archer15,NON_RELATED,cognitive impairment,disease,Cochrane Library,Archer15
+195,Ovid,drug,Cochrane Library,Archer15,NON_RELATED,dementia,disease,Cochrane Library,Archer15
+196,Ovid,drug,Cochrane Library,Archer15,NON_RELATED,Alzheimer's disease,disease,Cochrane Library,Archer15
