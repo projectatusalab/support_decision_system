@@ -8,5 +8,7 @@ setup(
         "streamlit",
         "pandas",
         "pyvis",
+        "neo4j",
+        "plotly"
     ],
 ) 

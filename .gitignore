@@ -22,3 +22,5 @@ lib/*
 temp_schema.html
 
 config.py
+
+.DS_Store
