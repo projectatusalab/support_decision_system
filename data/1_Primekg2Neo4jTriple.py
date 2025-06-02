@@ -91,18 +91,21 @@ def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     # Process guideline and other sources from properties file first
     for _, row in properties_df.iterrows():
         source_id = row['external_source_id']
+        if pd.isna(source_id):
+            continue
+        source_id = str(source_id)
         if source_id in processed_sources:
             continue
-            
+        
         # For Cochrane Library sources, use the original ID
         if row['source_primary'] == 'Cochrane Library':
             node_id = source_id
         else:
             # For other sources, keep using the es_ prefix
             node_id = source_id if source_id.startswith('es_') else f'es_{len(processed_sources) + 1}'
-            
+        
         source_name = row['source_secondary']
-        name_to_id_map[source_name.lower()] = node_id
+        name_to_id_map[str(source_name).lower()] = node_id
         
         source_nodes.append({
             'TYPE': 'source',
