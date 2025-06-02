@@ -168,7 +168,7 @@ def create_nodes(df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
 
 def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df: pd.DataFrame) -> pd.DataFrame:
     """
-    Create relationships dataframe with proper source handling.
+    Create relationships dataframe with proper source handling, and include is_effective as a property.
     """
     # Create main relationships
     df = df.merge(
@@ -193,9 +193,14 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
     # Create relationships list
     relationships = []
     
-    # Add main relationships
-    main_rels = df[['START_ID', 'END_ID', 'relation']].dropna()
-    main_rels = main_rels.rename(columns={'relation': 'TYPE'})
+    # Add main relationships，包含 is_effective
+    if 'relation_name' in df.columns:
+        main_rels = df[['START_ID', 'END_ID', 'relation', 'relation_name']].dropna(subset=['START_ID', 'END_ID', 'relation'])
+        main_rels = main_rels.rename(columns={'relation': 'TYPE', 'relation_name': 'is_effective'})
+    else:
+        main_rels = df[['START_ID', 'END_ID', 'relation']].dropna(subset=['START_ID', 'END_ID', 'relation'])
+        main_rels['is_effective'] = ''
+        main_rels = main_rels.rename(columns={'relation': 'TYPE'})
     relationships.append(main_rels)
     
     # Create source relationships
@@ -207,14 +212,16 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
             source_rels.append({
                 'START_ID': row['START_ID'],
                 'END_ID': row['x_external_source_id'],
-                'TYPE': 'SOURCE'
+                'TYPE': 'SOURCE',
+                'is_effective': ''
             })
         
         if pd.notna(row['y_external_source_id']):
             source_rels.append({
                 'START_ID': row['END_ID'],
                 'END_ID': row['y_external_source_id'],
-                'TYPE': 'SOURCE'
+                'TYPE': 'SOURCE',
+                'is_effective': ''
             })
         
         # Handle regular sources and PrimeKG sources
@@ -235,7 +242,8 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
                     source_rels.append({
                         'START_ID': row[node_id],
                         'END_ID': source_id,
-                        'TYPE': 'SOURCE'
+                        'TYPE': 'SOURCE',
+                        'is_effective': ''
                     })
     
     # Add source relationships
@@ -244,9 +252,11 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
     
     # Combine all relationships
     final_rels_df = pd.concat(relationships, ignore_index=True)
-    
+    # 確保 is_effective 欄位存在
+    if 'is_effective' not in final_rels_df.columns:
+        final_rels_df['is_effective'] = ''
     # Remove duplicates and ensure proper column order
-    final_rels_df = final_rels_df[['START_ID', 'END_ID', 'TYPE']].drop_duplicates()
+    final_rels_df = final_rels_df[['START_ID', 'END_ID', 'TYPE', 'is_effective']].drop_duplicates()
     
     return final_rels_df
 

@@ -1,4 +1,4 @@
-,relation,display_relation,x_index,x_id,x_type,x_name,x_source,y_index,y_id,y_type,y_name,y_source
+﻿,relation,display_relation,x_index,x_id,x_type,x_name,x_source,y_index,y_id,y_type,y_name,y_source
 3093313,disease_phenotype_positive,phenotype present,28310,7433,disease,dementia/parkinsonism with non-Alzheimer amyloid plaques,MONDO,23153,1300,effect/phenotype,Parkinsonism,HPO
 3093314,disease_phenotype_positive,phenotype present,28310,7433,disease,dementia/parkinsonism with non-Alzheimer amyloid plaques,MONDO,22442,726,effect/phenotype,Dementia,HPO
 3093315,disease_phenotype_positive,phenotype present,28310,7433,disease,dementia/parkinsonism with non-Alzheimer amyloid plaques,MONDO,89049,11960,effect/phenotype,Substantia nigra gliosis,HPO

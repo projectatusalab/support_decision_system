@@ -77,7 +77,11 @@ class Neo4jImporter:
                 LOAD CSV WITH HEADERS FROM 'file:///' + $file_path AS row
                 MATCH (source {nodeID: row.START_ID})
                 MATCH (target {nodeID: row.END_ID})
-                CALL apoc.create.relationship(source, row.TYPE, {}, target) YIELD rel
+                WITH source, target, row,
+                     (CASE WHEN row.is_effective IS NOT NULL AND row.is_effective <> '' 
+                           THEN apoc.map.fromPairs([['is_effective', row.is_effective]]) 
+                           ELSE {} END) AS rel_props
+                CALL apoc.create.relationship(source, row.TYPE, rel_props, target) YIELD rel
                 RETURN count(*) as cnt
             } IN TRANSACTIONS OF 2000 ROWS
             RETURN sum(cnt) as total

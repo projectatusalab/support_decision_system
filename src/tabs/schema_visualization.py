@@ -520,6 +520,53 @@ def render_drug_disease_statistics(nodes_df, relationships_df):
         use_container_width=True
     )
 
+def create_disease_treatment_stats(nodes_df, relationships_df):
+    """創建疾病-治療關係統計，統計 is_effective 屬性"""
+    loader = get_neo4j_loader()
+    with loader.driver.session() as session:
+        query = '''
+        MATCH (n:Disease)-[r:DISEASES_TREATMENT]-(t:Treatment)
+        RETURN n.name as disease, t.name as treatment, r.is_effective as is_effective
+        ORDER BY disease, treatment
+        '''
+        result = session.run(query)
+        records = [dict(record) for record in result]
+        if not records:
+            return None, None
+        df = pd.DataFrame(records)
+        # 統計每個疾病-治療組合的 is_effective 分布
+        stats = df.groupby(['disease', 'treatment', 'is_effective']).size().reset_index(name='count')
+        return df, stats
+
+def render_disease_treatment_statistics(nodes_df, relationships_df):
+    st.write("### 疾病-治療關係統計")
+    df, stats = create_disease_treatment_stats(nodes_df, relationships_df)
+    if df is None:
+        st.info("未找到疾病-治療關係數據")
+        return
+    # 以疾病為篩選器
+    diseases = ['全部'] + sorted(df['disease'].unique().tolist())
+    selected_disease = st.selectbox("選擇疾病", options=diseases)
+    filtered = stats if selected_disease == '全部' else stats[stats['disease'] == selected_disease]
+    # 明確指定 is_effective 的順序與類別
+    effective_order = [-1, 0, 1]
+    filtered['is_effective'] = pd.Categorical(filtered['is_effective'], categories=effective_order, ordered=True)
+    # 透過 pivot 產生熱力圖資料，columns 固定為 -1, 0, 1
+    pivot = filtered.pivot_table(index='treatment', columns='is_effective', values='count', fill_value=0).reindex(columns=effective_order, fill_value=0)
+    st.subheader("治療-有效性分布熱力圖")
+    fig = px.imshow(
+        pivot,
+        labels=dict(x="有效性", y="治療方案", color="數量"),
+        aspect="auto",
+        height=max(400, len(pivot) * 30),
+        color_continuous_scale=[[0, 'white'], [0.01, 'rgb(49,130,189)'], [1, 'rgb(0,0,139)']]
+    )
+    # 設定x軸刻度標籤
+    fig.update_xaxes(tickvals=[0, 1, 2], ticktext=["-1", "0", "1"])
+    st.plotly_chart(fig, use_container_width=True)
+    st.caption("詳細數據表格：")
+    st.dataframe(pivot, use_container_width=True)
+
 def render(data):
     """渲染知識圖譜Schema頁面"""
     st.title("知識圖譜結構與統計分析")
@@ -533,7 +580,7 @@ def render(data):
         "基礎統計", 
         "來源分布",
         "藥物來源",
-        "藥物疾病關係"  # 新增標籤頁
+        "疾病-治療關係"  # 新增標籤頁
     ])
     
     # Schema總覽標籤頁
@@ -733,8 +780,8 @@ def render(data):
         else:
             st.info("未找到阿茲海默症相關的藥物來源數據") 
     
-    # 新增藥物疾病關係標籤頁
+    # 新增疾病-治療關係標籤頁
     with main_tabs[4]:
-        st.header("藥物-疾病關係分析")
-        st.caption("分析藥物與疾病之間的支持、反對和無關係統計")
-        render_drug_disease_statistics(nodes_df, relationships_df) 
+        st.header("疾病-治療關係分析")
+        st.caption("分析疾病與治療之間的有效性統計（is_effective屬性）")
+        render_disease_treatment_statistics(nodes_df, relationships_df) 
