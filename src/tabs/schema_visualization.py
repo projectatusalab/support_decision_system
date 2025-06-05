@@ -548,11 +548,8 @@ def render_disease_treatment_statistics(nodes_df, relationships_df):
     diseases = ['全部'] + sorted(df['disease'].unique().tolist())
     selected_disease = st.selectbox("選擇疾病", options=diseases)
     filtered = stats if selected_disease == '全部' else stats[stats['disease'] == selected_disease]
-    # 明確指定 is_effective 的順序與類別
-    effective_order = [-1, 0, 1]
-    filtered['is_effective'] = pd.Categorical(filtered['is_effective'], categories=effective_order, ordered=True)
-    # 透過 pivot 產生熱力圖資料，columns 固定為 -1, 0, 1
-    pivot = filtered.pivot_table(index='treatment', columns='is_effective', values='count', fill_value=0).reindex(columns=effective_order, fill_value=0)
+    # 透過 pivot 產生熱力圖資料
+    pivot = filtered.pivot_table(index='treatment', columns='is_effective', values='count', fill_value=0)
     st.subheader("治療-有效性分布熱力圖")
     fig = px.imshow(
         pivot,
@@ -561,8 +558,6 @@ def render_disease_treatment_statistics(nodes_df, relationships_df):
         height=max(400, len(pivot) * 30),
         color_continuous_scale=[[0, 'white'], [0.01, 'rgb(49,130,189)'], [1, 'rgb(0,0,139)']]
     )
-    # 設定x軸刻度標籤
-    fig.update_xaxes(tickvals=[0, 1, 2], ticktext=["-1", "0", "1"])
     st.plotly_chart(fig, use_container_width=True)
     st.caption("詳細數據表格：")
     st.dataframe(pivot, use_container_width=True)
