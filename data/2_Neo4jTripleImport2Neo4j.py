@@ -79,7 +79,7 @@ class Neo4jImporter:
                 MATCH (target {nodeID: row.END_ID})
                 WITH source, target, row,
                      (CASE WHEN row.is_effective IS NOT NULL AND row.is_effective <> '' 
-                           THEN apoc.map.fromPairs([['is_effective', row.is_effective]]) 
+                           THEN apoc.map.fromPairs([['is_effective', toInteger(row.is_effective)]]) 
                            ELSE {} END) AS rel_props
                 CALL apoc.create.relationship(source, row.TYPE, rel_props, target) YIELD rel
                 RETURN count(*) as cnt

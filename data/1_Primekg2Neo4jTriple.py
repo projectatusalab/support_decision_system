@@ -197,9 +197,11 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
     if 'relation_name' in df.columns:
         main_rels = df[['START_ID', 'END_ID', 'relation', 'relation_name']].dropna(subset=['START_ID', 'END_ID', 'relation'])
         main_rels = main_rels.rename(columns={'relation': 'TYPE', 'relation_name': 'is_effective'})
+        # 將 is_effective 轉為 int，無法轉換時設為 None
+        main_rels['is_effective'] = pd.to_numeric(main_rels['is_effective'], errors='coerce').astype('Int64')
     else:
         main_rels = df[['START_ID', 'END_ID', 'relation']].dropna(subset=['START_ID', 'END_ID', 'relation'])
-        main_rels['is_effective'] = ''
+        main_rels['is_effective'] = pd.NA
         main_rels = main_rels.rename(columns={'relation': 'TYPE'})
     relationships.append(main_rels)
     
@@ -213,7 +215,7 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
                 'START_ID': row['START_ID'],
                 'END_ID': row['x_external_source_id'],
                 'TYPE': 'SOURCE',
-                'is_effective': ''
+                'is_effective': pd.NA
             })
         
         if pd.notna(row['y_external_source_id']):
@@ -221,7 +223,7 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
                 'START_ID': row['END_ID'],
                 'END_ID': row['y_external_source_id'],
                 'TYPE': 'SOURCE',
-                'is_effective': ''
+                'is_effective': pd.NA
             })
         
         # Handle regular sources and PrimeKG sources
@@ -243,7 +245,7 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
                         'START_ID': row[node_id],
                         'END_ID': source_id,
                         'TYPE': 'SOURCE',
-                        'is_effective': ''
+                        'is_effective': pd.NA
                     })
     
     # Add source relationships
@@ -252,9 +254,10 @@ def create_relationships(df: pd.DataFrame, nodes_df: pd.DataFrame, properties_df
     
     # Combine all relationships
     final_rels_df = pd.concat(relationships, ignore_index=True)
-    # 確保 is_effective 欄位存在
+    # 確保 is_effective 欄位存在且型態為 Int64
     if 'is_effective' not in final_rels_df.columns:
-        final_rels_df['is_effective'] = ''
+        final_rels_df['is_effective'] = pd.NA
+    final_rels_df['is_effective'] = final_rels_df['is_effective'].astype('Int64')
     # Remove duplicates and ensure proper column order
     final_rels_df = final_rels_df[['START_ID', 'END_ID', 'TYPE', 'is_effective']].drop_duplicates()
     
