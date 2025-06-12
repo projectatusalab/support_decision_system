@@ -13,7 +13,7 @@ from config import NEO4J_CONFIG
 st.set_page_config(page_title="阿茲海默症臨床決策支援系統", layout="wide")
 
 def main():
-    st.title("阿茲海默症臨床決策支援系統")
+    st.header("阿茲海默症臨床決策支援系統")
     
     # 添加數據來源設置
     st.sidebar.title("數據來源設置")

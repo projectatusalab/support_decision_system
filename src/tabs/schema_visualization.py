@@ -564,51 +564,43 @@ def render_disease_treatment_statistics(nodes_df, relationships_df):
 
 def render(data):
     """渲染知識圖譜Schema頁面"""
-    st.title("知識圖譜結構與統計分析")
+    # 頁面標題美化
+    st.markdown("""
+        <style>
+        .main-title { font-size: 2.6rem; font-weight: 800; color: #222; margin-bottom: 0.2em; letter-spacing: 1px; }
+        .page-title { font-size: 1.7rem; font-weight: 400; color: #555; margin-bottom: 0.1em; letter-spacing: 0.5px; }
+        .section-title { font-size: 1.25rem; font-weight: 400; color: #888; margin-bottom: 0.8em; letter-spacing: 0.5px; }
+        .metric-label { color: #888; font-size: 1.1rem; margin-bottom: 0.1em; }
+        .metric-value { font-size: 2.5rem; font-weight: 700; color: #222; }
+        .metric-block { padding: 1.2em 0 1.2em 0; border-radius: 12px; background: #fafbfc; border: 1px solid #eee; text-align: center; margin-bottom: 0.5em; }
+        </style>
+    """, unsafe_allow_html=True)
+    st.markdown('<div class="page-title">知識圖譜結構與統計分析</div>', unsafe_allow_html=True)
     st.caption("本頁面提供知識圖譜的整體結構視覺化、統計分析以及來源分布情況")
-    
+
     nodes_df, relationships_df = data
     
     # 創建主要標籤頁
     main_tabs = st.tabs([
-        "圖譜結構", 
         "基礎統計", 
         "來源分布",
         "藥物來源",
         "疾病-治療關係"  # 新增標籤頁
     ])
     
-    # Schema總覽標籤頁
-    with main_tabs[0]:
-        st.header("知識圖譜結構視覺化")
-        st.subheader("節點類型與關係類型的互動式視圖")
-        schema_net = create_schema_visualization(data)
-        
-        # 創建臨時目錄並保存網絡圖
-        with tempfile.TemporaryDirectory() as temp_dir:
-            temp_path = os.path.join(temp_dir, "temp_schema.html")
-            schema_net.save_graph(temp_path)
-            with open(temp_path, "r", encoding="utf-8") as f:
-                schema_html = f.read()
-            st.components.v1.html(schema_html, height=600)
-            
-        st.info("👆 此視覺化展示了知識圖譜中各類型節點之間的關係結構。您可以：\n"
-                "- 拖動節點調整布局\n"
-                "- 懸停在節點或邊上查看詳細資訊")
-    
     # 節點與關係統計標籤頁
-    with main_tabs[1]:
-        st.header("知識圖譜基礎統計")
+    with main_tabs[0]:
+        st.markdown('<div class="section-title">知識圖譜基礎統計</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title">整體規模</div>', unsafe_allow_html=True)
         
-        # 顯示總體統計
-        st.subheader("整體規模")
+        # 三欄平均分布，並用自訂樣式美化
         total_col1, total_col2, total_col3 = st.columns(3)
         with total_col1:
-            st.metric("總節點數", f"{len(nodes_df):,}")
+            st.markdown('<div class="metric-block"><div class="metric-label">總節點數</div><div class="metric-value">{:,}</div></div>'.format(len(nodes_df)), unsafe_allow_html=True)
         with total_col2:
-            st.metric("總關係數", f"{len(relationships_df):,}")
+            st.markdown('<div class="metric-block"><div class="metric-label">總關係數</div><div class="metric-value">{:,}</div></div>'.format(len(relationships_df)), unsafe_allow_html=True)
         with total_col3:
-            st.metric("節點類型數", f"{len(nodes_df['type'].unique()):,}")
+            st.markdown('<div class="metric-block"><div class="metric-label">節點類型數</div><div class="metric-value">{:,}</div></div>'.format(len(nodes_df['type'].unique())), unsafe_allow_html=True)
         
         st.markdown("---")
         
@@ -714,13 +706,13 @@ def render(data):
                 )
     
     # 來源分析標籤頁
-    with main_tabs[2]:
+    with main_tabs[1]:
         st.header("知識圖譜來源分析")
         st.caption("分析知識圖譜中各個來源的分布情況及其關聯統計")
         render_source_statistics(nodes_df, relationships_df)
     
     # 藥物來源分析標籤頁
-    with main_tabs[3]:
+    with main_tabs[2]:
         st.header("阿茲海默症藥物來源分析")
         st.caption("針對阿茲海默症相關藥物的來源分布進行深入分析")
         pivot_df = create_drug_source_heatmap(nodes_df, relationships_df)
@@ -776,7 +768,7 @@ def render(data):
             st.info("未找到阿茲海默症相關的藥物來源數據") 
     
     # 新增疾病-治療關係標籤頁
-    with main_tabs[4]:
+    with main_tabs[3]:
         st.header("疾病-治療關係分析")
         st.caption("分析疾病與治療之間的有效性統計（is_effective屬性）")
         render_disease_treatment_statistics(nodes_df, relationships_df) 

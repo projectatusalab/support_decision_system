@@ -26,7 +26,17 @@ def get_applicable_stages(treatment_id, nodes_df, relationships_df):
 
 def render(data):
     """渲染快速診療指引頁面"""
-    st.header("快速診療指引")
+    st.markdown("""
+        <style>
+        .main-title { font-size: 1.7rem; font-weight: 400; color: #222; margin-bottom: 0.2em; letter-spacing: 1px; }
+        .page-title { font-size: 1.7rem; font-weight: 400; color: #555; margin-bottom: 0.1em; letter-spacing: 0.5px; }
+        .section-title { font-size: 1.25rem; font-weight: 400; color: #888; margin-bottom: 0.8em; letter-spacing: 0.5px; }
+        .metric-label { color: #888; font-size: 1.1rem; margin-bottom: 0.1em; }
+        .metric-value { font-size: 2.5rem; font-weight: 700; color: #222; }
+        .metric-block { padding: 1.2em 0 1.2em 0; border-radius: 12px; background: #fafbfc; border: 1px solid #eee; text-align: center; margin-bottom: 0.5em; }
+        </style>
+    """, unsafe_allow_html=True)
+    st.markdown('<div class="main-title">快速診療指引</div>', unsafe_allow_html=True)
     
     nodes_df, relationships_df = data
     
@@ -56,7 +66,7 @@ def render(data):
         st.session_state.mmse_score = 20
     
     # 快速MMSE評分工具
-    st.subheader("MMSE快速評估")
+    st.markdown('<div class="section-title">MMSE評估</div>', unsafe_allow_html=True)
     st.session_state.mmse_score = st.number_input(
         "MMSE分數", 
         0, 30, 
