@@ -68,13 +68,14 @@ class Neo4jLoader:
             RETURN 
                 a.nodeID as subject,
                 type(r) as predicate,
-                b.nodeID as object
+                b.nodeID as object,
+                r.is_effective as is_effective
             """
             result = session.run(query)
             records = [record for record in result]
             
             if not records:
-                return pd.DataFrame(columns=['subject', 'predicate', 'object'])
+                return pd.DataFrame(columns=['subject', 'predicate', 'object', 'is_effective'])
                 
             df = pd.DataFrame([dict(record) for record in records])
             return df

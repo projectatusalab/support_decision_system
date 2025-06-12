@@ -2,6 +2,37 @@ import streamlit as st
 import pandas as pd
 from utils.data_loader import get_node_by_id
 
+# 1. 定義疾病階段 group 與關鍵字 mapping
+STAGE_MAPPING = {
+    "初期": [
+        "MCI", "Early", "Mild", "初期", "早期", "GDS 2", "GDS 3", "GDS 4", "GDS 5", "MMSE 21", "MMSE 22", "MMSE 23", "MMSE 24", "MMSE 25", "MMSE 26"
+    ],
+    "中期": [
+        "Middle", "Moderate", "中期", "GDS 4", "GDS 5", "GDS 6", "MMSE 10", "MMSE 11", "MMSE 12", "MMSE 13", "MMSE 14", "MMSE 15", "MMSE 16", "MMSE 17", "MMSE 18", "MMSE 19", "MMSE 20"
+    ],
+    "晚期": [
+        "Late", "Severe", "晚期", "GDS 7", "MMSE <10"
+    ]
+}
+
+def match_stage_nodes(nodes_df, group_keywords):
+    matched = []
+    for name in nodes_df[nodes_df['type'].str.lower().str.contains('stage')]['name']:
+        for kw in group_keywords:
+            if kw.lower() in name.lower():
+                matched.append(name)
+                break
+    # 也納入完全等於 group 名稱的節點（如"初期"、"中期"、"晚期"）
+    for group_name in group_keywords:
+        if group_name in nodes_df['name'].values:
+            matched.append(group_name)
+    return list(set(matched))
+
+def normalize_stage_name(name):
+    import re
+    name = re.sub(r"\\(.*?\\)", "", name)
+    return name.replace(" ", "").lower()
+
 def is_treatment_recommended(treatment_id, stage_id, relationships_df):
     """判斷治療方案是否建議用於特定階段"""
     stage_treatments = relationships_df[
@@ -10,6 +41,17 @@ def is_treatment_recommended(treatment_id, stage_id, relationships_df):
         (relationships_df['predicate'] == 'STAGE_TREATMENT')
     ]
     return len(stage_treatments) > 0
+
+def is_treatment_effective_for_disease(treatment_id, disease_id, relationships_df):
+    """判斷治療方案是否對疾病有效（is_effective==1）"""
+    rels = relationships_df[
+        (relationships_df['subject'] == disease_id) &
+        (relationships_df['object'] == treatment_id) &
+        (relationships_df['predicate'] == 'DISEASES_TREATMENT')
+    ]
+    if not rels.empty:
+        return int(rels.iloc[0].get('is_effective', 0)) == 1
+    return False
 
 def get_applicable_stages(treatment_id, nodes_df, relationships_df):
     """獲取治療方案適用的所有階段"""
@@ -65,30 +107,27 @@ def render(data):
     if 'mmse_score' not in st.session_state:
         st.session_state.mmse_score = 20
     
-    # 快速MMSE評分工具
-    st.markdown('<div class="section-title">MMSE評估</div>', unsafe_allow_html=True)
-    st.session_state.mmse_score = st.number_input(
-        "MMSE分數", 
-        0, 30, 
-        st.session_state.mmse_score,
-        help="請輸入病人的MMSE評分 (0-30分)"
-    )
-    
-    # 根據MMSE自動判斷疾病階段
-    if st.session_state.mmse_score >= 21:
-        current_stage = "Mild (MMSE 21-26)"
-        st.info("📋 輕度階段")
-    elif st.session_state.mmse_score >= 10:
-        current_stage = "Moderate (MMSE 10-20)"
-        st.warning("📋 中度階段")
-    else:
-        current_stage = "Severe (MMSE <10)"
-        st.error("📋 重度階段")
-    
+    # 疾病選擇器
+    disease_nodes = nodes_df[nodes_df['type'] == 'disease']
+    if disease_nodes.empty:
+        st.error("無法找到疾病節點，請確認數據")
+        return
+    disease_options = disease_nodes['name'].tolist()
+    default_index = 0
+    if "Alzheimer disease" in disease_options:
+        default_index = disease_options.index("Alzheimer disease")
+    selected_disease_name = st.selectbox("選擇疾病", disease_options, index=default_index)
+    selected_disease_id = disease_nodes[disease_nodes['name'] == selected_disease_name]['node_id'].iloc[0]
+
+    # 2. MMSE分數輸入改為三選一
+    selected_stage_group = st.selectbox("選擇疾病階段", list(STAGE_MAPPING.keys()))
+    current_stages = match_stage_nodes(nodes_df, STAGE_MAPPING[selected_stage_group])
+    st.info(f"📋 當前階段: {selected_stage_group} ({'、'.join(current_stages)})")
+
     # 檢查階段是否存在於數據中
-    stage_exists = len(nodes_df[nodes_df['name'] == current_stage]) > 0
+    stage_exists = nodes_df[nodes_df['name'].isin(current_stages)].shape[0] > 0
     if not stage_exists:
-        st.error(f"在數據中找不到對應的疾病階段: {current_stage}")
+        st.error(f"在數據中找不到對應的疾病階段: {selected_stage_group}")
         return
         
     st.write("### 治療建議")
@@ -104,8 +143,8 @@ def render(data):
     # 創建治療方案數據表
     treatments_data = []
     
-    # 獲取當前階段的節點ID
-    stage_id = nodes_df[nodes_df['name'] == current_stage]['node_id'].iloc[0]
+    # 獲取當前階段的所有節點ID
+    stage_ids = nodes_df[nodes_df['name'].isin(current_stages)]['node_id'].tolist()
     
     # 處理 Therapy 節點
     for _, therapy in therapy_nodes.iterrows():
@@ -162,12 +201,25 @@ def render(data):
                 except:
                     pass
         
+        # 嘗試取得 Therapy 的 is_effective
+        is_effective_val = None
+        rels = relationships_df[
+            (relationships_df['subject'] == selected_disease_id) &
+            (relationships_df['object'] == therapy_id) &
+            (relationships_df['predicate'] == 'DISEASES_THERAPY')
+        ]
+        if not rels.empty:
+            is_effective_val = rels.iloc[0].get('is_effective', None)
+        # 建議判斷（只有 is_effective_val 嚴格等於 1 才為 True）
+        is_recommended = (is_effective_val == 1)
+        # st.write('therapy_id:', therapy_id, 'selected_disease_id:', selected_disease_id)
+        # st.write('DISEASES_THERAPY rels:', rels)
         treatments_data.append({
-            '建議': True,  # Therapy 總是建議
-            '類型': 'Therapy',  # 新增類型欄位
+            '建議': is_recommended,
+            '類型': 'Therapy',
             '治療方案': therapy['name'],
             '使用藥物': drugs_text,
-            '適用階段': 'All Stages',  # Therapy 適用於所有階段
+            '適用階段': 'All Stages',
             '證據等級': evidence,
             '來源單位': source,
             '來源類型': source_type,
@@ -175,6 +227,7 @@ def render(data):
         })
     
     # 處理 Treatment 節點
+    debug_info = []
     for _, treatment in treatment_nodes.iterrows():
         treatment_id = treatment['node_id']
         
@@ -193,7 +246,14 @@ def render(data):
         
         # 獲取適用階段
         applicable_stages = get_applicable_stages(treatment_id, nodes_df, relationships_df)
-        stages_text = ', '.join([stage.replace('(MMSE', '').replace(')', '') for stage in applicable_stages])
+        # 標準化比對，允許部分比對
+        normalized_current_stages = [normalize_stage_name(s) for s in current_stages]
+        normalized_applicable_stages = [normalize_stage_name(s) for s in applicable_stages]
+        is_applicable = any(
+            any(ncs in nas or nas in ncs for ncs in normalized_current_stages)
+            for nas in normalized_applicable_stages
+        )
+        stages_text = ', '.join(applicable_stages)
         
         # 獲取證據等級
         evidence = ''
@@ -233,21 +293,48 @@ def render(data):
                 except:
                     pass
         
+        # 取得 is_effective 值
+        is_effective_val = None
+        rels = relationships_df[
+            (relationships_df['subject'] == selected_disease_id) &
+            (relationships_df['object'] == treatment_id) &
+            (relationships_df['predicate'] == 'DISEASES_TREATMENT')
+        ]
+        if not rels.empty:
+            is_effective_val = rels.iloc[0].get('is_effective', None)
+        # 建議判斷（只有 is_applicable 且 is_effective_val 嚴格等於 1 才為 True）
+        is_recommended = (is_applicable and is_effective_val == 1)
         treatments_data.append({
-            '建議': is_treatment_recommended(treatment_id, stage_id, relationships_df),
-            '類型': 'Treatment',  # 新增類型欄位
+            '建議': is_recommended,
+            '類型': 'Treatment',
             '治療方案': treatment['name'],
             '使用藥物': drugs_text,
             '適用階段': stages_text if stages_text else '',
             '證據等級': evidence,
             '來源單位': source,
             '來源類型': source_type,
-            '更新日期': update_date.strftime('%Y-%m-%d')
+            '更新日期': update_date.strftime('%Y-%m-%d'),
+            'is_effective': is_effective_val
         })
+        debug_info.append({
+            '治療方案': treatment['name'],
+            '適用階段': applicable_stages,
+            'current_stages': current_stages,
+            'is_applicable': is_applicable,
+            'is_effective_bool': is_effective_val
+        })
+    
+    # 只保留 Therapy 或 is_applicable 為 True 的 Treatment
+    treatments_data = [row for row in treatments_data if row['類型'] == 'Therapy' or (row['類型'] == 'Treatment' and row['is_effective'] == 1)]
+    
+    # debug: 顯示所有 Treatment 的適用階段與判斷結果
+    #with st.expander("[Debug] Treatment 適用階段對照表"):
+    #    st.dataframe(pd.DataFrame(debug_info))
     
     if treatments_data:
         # 創建DataFrame
         treatments_df = pd.DataFrame(treatments_data)
+        treatments_df = treatments_df[treatments_df['is_effective'] == 1]
         
         # 過濾控制
         col1, col2 = st.columns([2, 1])
@@ -288,7 +375,7 @@ def render(data):
         
         # 顯示互動式表格
         st.dataframe(
-            filtered_df,
+            filtered_df.drop(columns=["is_effective"], errors="ignore"),
             column_config={
                 "建議": st.column_config.CheckboxColumn(
                     "建議",
