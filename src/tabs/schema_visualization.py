@@ -6,6 +6,7 @@ import plotly.express as px
 import tempfile
 import os
 from utils.neo4j_loader import get_neo4j_loader
+import re
 
 def render_source_statistics(nodes_df, relationships_df):
     """渲染來源統計資訊"""
@@ -520,47 +521,6 @@ def render_drug_disease_statistics(nodes_df, relationships_df):
         use_container_width=True
     )
 
-def create_disease_treatment_stats(nodes_df, relationships_df):
-    """創建疾病-治療關係統計，統計 is_effective 屬性"""
-    loader = get_neo4j_loader()
-    with loader.driver.session() as session:
-        query = '''
-        MATCH (n:disease)-[r:DISEASES_TREATMENT]-(t:Treatment)
-        RETURN n.name as disease, t.name as treatment, r.is_effective as is_effective
-        ORDER BY disease, treatment
-        '''
-        result = session.run(query)
-        records = [dict(record) for record in result]
-        df = pd.DataFrame(records)
-        if df.empty:
-            return None, None
-        stats = df.groupby(['disease', 'treatment', 'is_effective']).size().reset_index(name='count')
-        return df, stats
-
-def render_disease_treatment_statistics(nodes_df, relationships_df):
-    st.write("### 疾病-治療關係統計")
-    df, stats = create_disease_treatment_stats(nodes_df, relationships_df)
-    if df is None:
-        st.info("未找到疾病-治療關係數據")
-        return
-    # 以疾病為篩選器
-    diseases = ['全部'] + sorted(df['disease'].unique().tolist())
-    selected_disease = st.selectbox("選擇疾病", options=diseases)
-    filtered = stats if selected_disease == '全部' else stats[stats['disease'] == selected_disease]
-    # 透過 pivot 產生熱力圖資料
-    pivot = filtered.pivot_table(index='treatment', columns='is_effective', values='count', fill_value=0)
-    st.subheader("治療-有效性分布熱力圖")
-    fig = px.imshow(
-        pivot,
-        labels=dict(x="有效性", y="治療方案", color="數量"),
-        aspect="auto",
-        height=max(400, len(pivot) * 30),
-        color_continuous_scale=[[0, 'white'], [0.01, 'rgb(49,130,189)'], [1, 'rgb(0,0,139)']]
-    )
-    st.plotly_chart(fig, use_container_width=True)
-    st.caption("詳細數據表格：")
-    st.dataframe(pivot, use_container_width=True)
-
 def create_disease_treatment_therapy_stats(nodes_df, relationships_df):
     """同時查詢疾病-Treatment與疾病-Therapy關係，並比較is_effective屬性，先存入df再處理"""
     loader = get_neo4j_loader()
@@ -586,15 +546,53 @@ def render_disease_treatment_therapy_comparison(nodes_df, relationships_df):
     if df is None or df.empty:
         st.info("未找到疾病-治療/治療法關係數據")
         return
-    # 疾病篩選
-    diseases = ['全部'] + sorted(df['disease'].dropna().unique().tolist())
-    selected_disease = st.selectbox("選擇疾病", options=diseases, key="disease_tt_compare")
-    filtered = df if selected_disease == '全部' else df[df['disease'] == selected_disease]
-    # groupby/pivot 統計
-    stats = filtered.groupby(['type', 'target', 'is_effective']).size().reset_index(name='count')
-    pivot = stats.pivot_table(index=['type', 'target'], columns='is_effective', values='count', fill_value=0)
-    st.subheader("治療/治療法 is_effective 分布比較表")
-    st.dataframe(pivot, use_container_width=True)
+    # 疾病篩選（已移除下拉選單，直接顯示所有資料）
+    # diseases = ['全部'] + sorted(df['disease'].dropna().unique().tolist())
+    # selected_disease = st.selectbox("選擇疾病", options=diseases, key="disease_tt_compare")
+    # filtered = df if selected_disease == '全部' else df[df['disease'] == selected_disease]
+    filtered = df.copy()
+    # 從治療方案名稱自動萃取藥物名稱（假設格式為 'XXX Treatment ...' 或 'XXX Therapy ...'）
+    def extract_drug(name):
+        m = re.match(r"([A-Za-z0-9\-\(\)\u4e00-\u9fa5]+) Treatment", name)
+        if not m:
+            m = re.match(r"([A-Za-z0-9\-\(\)\u4e00-\u9fa5]+) Therapy", name)
+        return m.group(1) if m else name
+    filtered['drug'] = filtered['target'].apply(extract_drug)
+    # 增加互動式 filter
+    col1, col2, col3 = st.columns([1,1,2])
+    with col1:
+        type_options = ['全部'] + sorted(filtered['type'].dropna().unique().tolist())
+        selected_type = st.selectbox("選擇類型", options=type_options, key="type_filter")
+    with col2:
+        eff_options = ['全部'] + sorted(filtered['is_effective'].dropna().unique().tolist())
+        selected_eff = st.selectbox("選擇有效性", options=eff_options, key="eff_filter")
+    with col3:
+        search_term = st.text_input("搜尋藥物名稱關鍵字", "", key="drug_search")
+    # 應用 filter
+    if selected_type != '全部':
+        filtered = filtered[filtered['type'] == selected_type]
+    if selected_eff != '全部':
+        filtered = filtered[filtered['is_effective'] == selected_eff]
+    if search_term:
+        filtered = filtered[filtered['drug'].str.contains(search_term, case=False, na=False)]
+    # groupby 藥物與 is_effective 統計（過濾掉 is_effective 為 None 的資料）
+    filtered = filtered[filtered['is_effective'].notnull()]
+    stats = filtered.groupby(['type', 'drug', 'is_effective']).size().reset_index(name='count')
+    # 分組橫向條形圖（以藥物為 y 軸）
+    fig = px.bar(
+        stats,
+        x='count',
+        y='drug',
+        color='is_effective',
+        barmode='group',
+        orientation='h',
+        facet_row='type',
+        height=max(400, len(stats['drug'].unique()) * 30),
+        labels={'drug': '藥物', 'count': '數量', 'is_effective': '有效性'}
+    )
+    fig.update_layout(yaxis={'categoryorder':'total ascending'})
+    st.subheader("依藥物分組的 is_effective 分布條形圖")
+    st.plotly_chart(fig, use_container_width=True)
     # 可選：顯示原始查詢資料
     with st.expander("查看原始查詢資料"):
         st.dataframe(df, use_container_width=True)
@@ -808,6 +806,4 @@ def render(data):
     with main_tabs[3]:
         st.header("疾病-治療關係分析")
         st.caption("分析疾病與治療之間的有效性統計（is_effective屬性）")
-        render_disease_treatment_statistics(nodes_df, relationships_df)
-        st.markdown("---")
         render_disease_treatment_therapy_comparison(nodes_df, relationships_df) 
