@@ -525,16 +525,15 @@ def create_disease_treatment_stats(nodes_df, relationships_df):
     loader = get_neo4j_loader()
     with loader.driver.session() as session:
         query = '''
-        MATCH (n:Disease)-[r:DISEASES_TREATMENT]-(t:Treatment)
+        MATCH (n:disease)-[r:DISEASES_TREATMENT]-(t:Treatment)
         RETURN n.name as disease, t.name as treatment, r.is_effective as is_effective
         ORDER BY disease, treatment
         '''
         result = session.run(query)
         records = [dict(record) for record in result]
-        if not records:
-            return None, None
         df = pd.DataFrame(records)
-        # 統計每個疾病-治療組合的 is_effective 分布
+        if df.empty:
+            return None, None
         stats = df.groupby(['disease', 'treatment', 'is_effective']).size().reset_index(name='count')
         return df, stats
 
@@ -561,6 +560,44 @@ def render_disease_treatment_statistics(nodes_df, relationships_df):
     st.plotly_chart(fig, use_container_width=True)
     st.caption("詳細數據表格：")
     st.dataframe(pivot, use_container_width=True)
+
+def create_disease_treatment_therapy_stats(nodes_df, relationships_df):
+    """同時查詢疾病-Treatment與疾病-Therapy關係，並比較is_effective屬性，先存入df再處理"""
+    loader = get_neo4j_loader()
+    with loader.driver.session() as session:
+        query = '''
+        MATCH (n:disease)-[r1:DISEASES_TREATMENT]-(t:Treatment)
+        RETURN n.name as disease, t.name as target, 'Treatment' as type, r1.is_effective as is_effective
+        UNION ALL
+        MATCH (n:disease)-[r2:DISEASES_THERAPY]-(t:Therapy)
+        RETURN n.name as disease, t.name as target, 'Therapy' as type, r2.is_effective as is_effective
+        ORDER BY disease, type, target
+        '''
+        result = session.run(query)
+        records = [dict(record) for record in result]
+        df = pd.DataFrame(records)
+        if df.empty:
+            return df
+        return df
+
+def render_disease_treatment_therapy_comparison(nodes_df, relationships_df):
+    st.write("### 疾病-治療/治療法關係比較（is_effective屬性）")
+    df = create_disease_treatment_therapy_stats(nodes_df, relationships_df)
+    if df is None or df.empty:
+        st.info("未找到疾病-治療/治療法關係數據")
+        return
+    # 疾病篩選
+    diseases = ['全部'] + sorted(df['disease'].dropna().unique().tolist())
+    selected_disease = st.selectbox("選擇疾病", options=diseases, key="disease_tt_compare")
+    filtered = df if selected_disease == '全部' else df[df['disease'] == selected_disease]
+    # groupby/pivot 統計
+    stats = filtered.groupby(['type', 'target', 'is_effective']).size().reset_index(name='count')
+    pivot = stats.pivot_table(index=['type', 'target'], columns='is_effective', values='count', fill_value=0)
+    st.subheader("治療/治療法 is_effective 分布比較表")
+    st.dataframe(pivot, use_container_width=True)
+    # 可選：顯示原始查詢資料
+    with st.expander("查看原始查詢資料"):
+        st.dataframe(df, use_container_width=True)
 
 def render(data):
     """渲染知識圖譜Schema頁面"""
@@ -771,4 +808,6 @@ def render(data):
     with main_tabs[3]:
         st.header("疾病-治療關係分析")
         st.caption("分析疾病與治療之間的有效性統計（is_effective屬性）")
-        render_disease_treatment_statistics(nodes_df, relationships_df) 
+        render_disease_treatment_statistics(nodes_df, relationships_df)
+        st.markdown("---")
+        render_disease_treatment_therapy_comparison(nodes_df, relationships_df) 
