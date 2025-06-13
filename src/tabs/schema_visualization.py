@@ -257,7 +257,7 @@ def render_source_statistics(nodes_df, relationships_df):
                 # 自定義hover文本
                 fig_tree.update_traces(
                     hovertemplate="<b>%{label}</b><br>" +
-                    "關聯節點數量: %{customdata[0]}<br>" +
+                    "數量: %{customdata[0]}<br>" +
                     "<extra></extra>"
                 )
                 
@@ -266,6 +266,9 @@ def render_source_statistics(nodes_df, relationships_df):
                     height=500,
                     margin=dict(t=30, l=10, r=10, b=10)
                 )
+                
+                # 設定 colorbar 為整數格式
+                fig_tree.update_coloraxes(colorbar_tickformat="d")
                 
                 st.plotly_chart(fig_tree, use_container_width=True)
                 
@@ -575,24 +578,52 @@ def render_disease_treatment_therapy_comparison(nodes_df, relationships_df):
         filtered = filtered[filtered['is_effective'] == selected_eff]
     if search_term:
         filtered = filtered[filtered['drug'].str.contains(search_term, case=False, na=False)]
-    # groupby 藥物與 is_effective 統計（過濾掉 is_effective 為 None 的資料）
-    filtered = filtered[filtered['is_effective'].notnull()]
+    # 先將 is_effective 與 drug 欄位轉成字串並去除前後空白
+    filtered['is_effective'] = filtered['is_effective'].astype(str).str.strip()
+    filtered['drug'] = filtered['drug'].astype(str).str.strip()
+    # 過濾掉 is_effective 欄位為空字串、nan、None
+    filtered = filtered[
+        filtered['is_effective'].notnull() &
+        (filtered['is_effective'] != '') &
+        (filtered['is_effective'].str.lower() != 'nan') &
+        (filtered['is_effective'].str.lower() != 'none')
+    ]
+    # 過濾掉 drug 欄位為空字串
+    filtered = filtered[filtered['drug'] != '']
+    # groupby 藥物與 is_effective 統計
     stats = filtered.groupby(['type', 'drug', 'is_effective']).size().reset_index(name='count')
-    # 分組橫向條形圖（以藥物為 y 軸）
-    fig = px.bar(
-        stats,
-        x='count',
-        y='drug',
-        color='is_effective',
-        barmode='group',
-        orientation='h',
-        facet_row='type',
-        height=max(400, len(stats['drug'].unique()) * 30),
-        labels={'drug': '藥物', 'count': '數量', 'is_effective': '有效性'}
-    )
-    fig.update_layout(yaxis={'categoryorder':'total ascending'})
-    st.subheader("依藥物分組的 is_effective 分布條形圖")
-    st.plotly_chart(fig, use_container_width=True)
+    # 依照 count 欄位降冪排序
+    stats = stats.sort_values('count', ascending=False)
+    # 依 is_effective 分為三個 treemap
+    for eff_value, eff_label in zip([1, 0, -1], ["有效 (1)", "無效 (0)", "未知/反向 (-1)"]):
+        eff_stats = stats[stats['is_effective'] == str(eff_value)]
+        if not eff_stats.empty:
+            st.subheader(f"is_effective = {eff_label} 的治療類型-藥物分布樹狀圖")
+            fig = px.treemap(
+                eff_stats,
+                path=['type', 'drug'],
+                values='count',
+                color='count',
+                color_continuous_scale='Blues',
+                custom_data=['count'],
+            )
+            fig.update_traces(
+                hovertemplate="<b>%{label}</b><br>數量: %{customdata[0]}<br>佔比: %{percentParent:.1%}<br><extra></extra>",
+                textfont_size=15  # 統一字體大小
+            )
+            fig.update_layout(
+                margin=dict(t=30, l=10, r=10, b=10),
+                paper_bgcolor='white',
+                plot_bgcolor='white',
+                font=dict(size=15, color='black'),  # 統一全局字體
+            )
+            # 設定 colorbar 為整數格式，並只顯示 0 ~ 最大值的刻度
+            max_count = int(eff_stats['count'].max()) if not eff_stats.empty else 1
+            fig.update_coloraxes(
+                colorbar_tickformat="d",
+                colorbar_tickvals=list(range(0, max_count + 1))
+            )
+            st.plotly_chart(fig, use_container_width=True)
     # 可選：顯示原始查詢資料
     with st.expander("查看原始查詢資料"):
         st.dataframe(df, use_container_width=True)
